@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the academic administration and leadership team of Sangamner College.">
+  <title>Administration | Sangamner College</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site-pages.css">
+  <script defer src="assets/header-footer.js"></script>
+  <style>
+    .admin-data-table table { min-width: 1080px; }
+    .admin-data-table th { padding: .9rem 1rem; background: #0f245f; color: #fff; font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; }
+    .admin-data-table th:first-child, .admin-data-table td:first-child { width: 70px; text-align: center; }
+    .admin-data-table td { padding: 1rem; border-bottom: 1px solid #e2e8f0; color: #475569; vertical-align: top; line-height: 1.5; }
+    .admin-data-table tbody tr:last-child td { border-bottom: 0; }
+    .admin-data-table tbody tr:not(.group-row):hover { background: #f8fafc; }
+    .admin-data-table strong { display: block; color: #0f172a; }
+    .admin-data-table small { display: block; margin-top: .2rem; color: #64748b; }
+    .admin-data-table a { color: #1d4ed8; font-weight: 700; }
+    .admin-data-table .group-row td { width: auto; padding: .75rem 1rem; background: #eff6ff; color: #1e3a8a; font-weight: 800; text-align: left; }
+    .admin-data-table .group-row--orange td { background: #fff7ed; }
+    .admin-staff-photo { width: 58px !important; height: 68px !important; max-width: none !important; border-radius: .65rem; object-fit: cover; object-position: top center; background: #e2e8f0; }
+    .admin-responsibilities { width: 42%; }
+    .admin-responsibilities ul { display: grid; gap: .4rem; margin: 0; padding-left: 1.1rem; color: #475569; font-size: .8rem; line-height: 1.45; }
+    .admin-responsibilities li::marker { color: #9f1239; }
+    .admin-responsibilities span { color: #94a3b8; font-size: .82rem; }
+    .admin-responsibilities details { width: 100%; }
+    .admin-responsibilities summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      padding: .7rem .85rem;
+      border: 1px solid #dbeafe;
+      border-radius: .75rem;
+      background: #eff6ff;
+      color: #1e3a8a;
+      cursor: pointer;
+      font-size: .8rem;
+      font-weight: 800;
+      list-style: none;
+    }
+    .admin-responsibilities summary::-webkit-details-marker { display: none; }
+    .admin-responsibilities summary::after { content: "+"; display: grid; width: 1.4rem; height: 1.4rem; place-items: center; border-radius: 999px; background: #1e3a8a; color: #fff; font-size: 1rem; line-height: 1; }
+    .admin-responsibilities details[open] summary::after { content: "−"; }
+    .admin-responsibilities summary span { color: inherit; font-size: inherit; }
+    .admin-responsibilities summary small { margin: 0 0 0 auto; color: #64748b; font-size: .7rem; font-weight: 700; }
+    .admin-responsibilities details[open] ul { margin-top: .85rem; }
+    @media (max-width: 900px) {
+      #panel-office-bearers .admin-data-table { margin-inline: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; overflow: visible; }
+      #panel-office-bearers .admin-data-table table { min-width: 0; width: 100%; }
+      #panel-office-bearers .admin-data-table thead { display: none; }
+      #panel-office-bearers .admin-data-table tbody { display: grid; gap: .8rem; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) {
+        position: relative;
+        display: grid;
+        grid-template-columns: 76px minmax(0,1fr);
+        gap: .15rem .85rem;
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        background: #fff;
+        box-shadow: 0 8px 24px rgba(15,23,42,.04);
+      }
+      #panel-office-bearers .admin-data-table td { width: auto !important; padding: 0; border: 0; text-align: left !important; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:first-child {
+        position: absolute;
+        top: .75rem;
+        right: .75rem;
+        display: grid;
+        width: 1.65rem !important;
+        height: 1.65rem;
+        place-items: center;
+        border-radius: 999px;
+        background: #eff6ff;
+        color: #1e40af;
+        font-size: .7rem;
+        font-weight: 800;
+      }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:nth-child(2) { grid-column: 1; grid-row: 1 / span 2; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:nth-child(3) { grid-column: 2; padding-right: 2rem; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:nth-child(4) { grid-column: 2; color: #1e3a8a; font-size: .82rem; font-weight: 700; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:nth-child(5) { grid-column: 1 / -1; margin-top: .75rem; padding-top: .8rem; border-top: 1px solid #e2e8f0; }
+      #panel-office-bearers .admin-data-table tbody tr:not(.group-row) > td:nth-child(5)::before {
+        content: none;
+        display: none;
+        margin-bottom: .6rem;
+        color: #1e3a8a;
+        font-size: .7rem;
+        font-weight: 800;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+      #panel-office-bearers .admin-data-table .group-row { display: block; }
+      #panel-office-bearers .admin-data-table .group-row td { display: block; padding: .75rem 1rem; border-radius: .75rem; }
+      #panel-office-bearers .admin-staff-photo { width: 68px !important; height: 80px !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <div class="site-utility"></div>
+
+  <main class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
+
+    <section aria-labelledby="admin-summary-heading" class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-4 sm:gap-6 mb-8 sm:mb-10">
+      <div class="relative overflow-hidden rounded-3xl bg-amber-300 p-6 sm:p-8 flex flex-col justify-center">
+        <span class="inline-flex mb-3 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Academic leadership</span>
+        <h1 id="admin-summary-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">Leadership built around learners.</h1>
+        <p class="text-sm sm:text-base text-slate-700/90 leading-relaxed mb-4">Our academic administration brings together experience, accountability and student-centred decision-making to advance the college's autonomous mission.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1.5 rounded-full bg-white/60 text-sm font-bold text-slate-800">Transparent</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/60 text-sm font-bold text-slate-800">Responsive</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/60 text-sm font-bold text-slate-800">Inclusive</span>
+          <span class="px-3 py-1.5 rounded-full bg-white/60 text-sm font-bold text-slate-800">Quality-led</span>
+        </div>
+        <div class="absolute -right-14 -bottom-16 w-44 h-44 rounded-full border-[28px] border-blue-900/10" aria-hidden="true"></div>
+      </div>
+
+      <article class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950 to-blue-800 text-white p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] gap-5 sm:gap-6 items-center">
+        <img src="/media/images/principal-photo.jpg" alt="Prof. Dr. Arun Hari Gaikwad" class="admin-leader-photo admin-leader-photo--large">
+        <div class="relative z-10">
+          <span class="text-amber-300 text-sm font-extrabold">Principal</span>
+          <h2 class="text-lg sm:text-xl font-extrabold text-white my-1">Prof. Dr. Arun Hari Gaikwad</h2>
+          <p class="text-white/75 text-sm sm:text-base">M.Com., M.Phil., Ph.D., D.C.F.A.</p>
+        </div>
+        <div class="relative z-10 flex sm:flex-col gap-2">
+          <a href="mailto:ahgaikwad@sangamnercollege.edu.in" class="flex-1 sm:flex-none px-4 py-2.5 rounded-full bg-white text-blue-800 text-sm font-extrabold text-center whitespace-nowrap hover:bg-amber-300 transition-colors">Email Principal</a>
+          <a href="message-from-the-principal.html" class="flex-1 sm:flex-none px-4 py-2.5 rounded-full bg-orange-500 text-white text-sm font-extrabold text-center whitespace-nowrap hover:bg-orange-600 transition-colors">View profile →</a>
+        </div>
+        <span class="absolute right-[12%] -bottom-12 text-[10rem] leading-none font-extrabold text-white/[.035] select-none pointer-events-none" aria-hidden="true">AG</span>
+      </article>
+    </section>
+
+    <div class="mb-8 sm:mb-10">
+      <div class="relative inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-slate-100 border border-slate-200 p-1.5 no-scrollbar" id="adminTabNav" role="tablist" aria-label="Administration sections">
+        <span id="adminTabIndicator" class="absolute top-1.5 bottom-1.5 left-0 rounded-full bg-blue-900 transition-all duration-300 ease-out" aria-hidden="true"></span>
+        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="academic" role="tab" aria-selected="true" aria-controls="panel-academic" id="tabbtn-academic">Academic</button>
+        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="office-bearers" role="tab" aria-selected="false" aria-controls="panel-office-bearers" id="tabbtn-office-bearers">Office Bearers</button>
+        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="grantable-staff" role="tab" aria-selected="false" aria-controls="panel-grantable-staff" id="tabbtn-grantable-staff">Grantable Non-Teaching Staff</button>
+        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="non-grantable-staff" role="tab" aria-selected="false" aria-controls="panel-non-grantable-staff" id="tabbtn-non-grantable-staff">Non Grantable Non-Teaching Staff</button>
+      </div>
+    </div>
+
+    <div id="panel-academic" class="adminTabPanel" role="tabpanel" aria-labelledby="tabbtn-academic">
+      <section aria-labelledby="leadership-heading" class="mb-8 sm:mb-10">
+        <div class="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+          <div>
+            <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Leadership team</span>
+            <h2 id="leadership-heading" class="text-lg sm:text-xl font-extrabold text-slate-900">Vice Principals</h2>
+          </div>
+          <p class="max-w-md text-sm text-slate-600 leading-relaxed">Working across academic coordination, examinations and institutional priorities to support every faculty.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-5">
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="flex items-center justify-between mb-6">
+              <img src="/media/images/admin-laddha.jpg" alt="Dr. Rajendra Shankarlal Laddha" class="admin-leader-photo">
+              <span class="px-2.5 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">Vice Principal &amp; CEO</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mb-1.5">Dr. Rajendra Shankarlal Laddha</h3>
+            <p class="text-sm text-slate-600 mb-4">M.Sc., M.Phil., Ph.D.</p>
+            <a href="mailto:rsladdha@sangamnercollege.edu.in" class="inline-flex text-sm font-bold text-blue-700 hover:text-orange-600 break-all">rsladdha@sangamnercollege.edu.in →</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="flex items-center justify-between mb-6">
+              <img src="/media/images/admin-tasildar.jpg" alt="Dr. Ravindra Baburao Tasildar" class="admin-leader-photo">
+              <span class="px-2.5 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">Vice Principal &amp; Nodal Officer</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mb-1.5">Dr. Ravindra Baburao Tasildar</h3>
+            <p class="text-sm text-slate-600 mb-4">M.A., SET, Ph.D.</p>
+            <a href="mailto:tasildar@sangamnercollege.edu.in" class="inline-flex text-sm font-bold text-blue-700 hover:text-orange-600 break-all">tasildar@sangamnercollege.edu.in →</a>
+          </article>
+          <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="flex items-center justify-between mb-6">
+              <img src="/media/images/admin-tryambake.jpg" alt="Prof. Dr. Pravin Tatyaram Tryambake" class="admin-leader-photo">
+              <span class="px-2.5 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">Vice Principal</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mb-1.5">Prof. Dr. Pravin Tatyaram Tryambake</h3>
+            <p class="text-sm text-slate-600 mb-4">M.Sc., SET, Ph.D.</p>
+            <a href="mailto:tryambake@sangamnercollege.edu.in" class="inline-flex text-sm font-bold text-blue-700 hover:text-orange-600 break-all">tryambake@sangamnercollege.edu.in →</a>
+          </article>
+        </div>
+
+        <article class="rounded-2xl bg-orange-500 p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-[auto_1fr_auto] gap-4 sm:gap-5 items-center">
+          <img src="/media/images/admin-pingle.jpg" alt="Dr. Shrihari Ashok Pingle" class="admin-leader-photo">
+          <div>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mb-0.5">Dr. Shrihari Ashok Pingle</h3>
+            <p class="text-sm text-slate-800/80">IQAC Coordinator · M.Sc., NET, Ph.D.</p>
+          </div>
+          <a href="mailto:pingle@sangamnercollege.edu.in" class="px-4 py-2.5 rounded-full bg-slate-900 text-white text-sm font-bold text-center whitespace-nowrap hover:bg-slate-800 transition-colors">Contact IQAC →</a>
+        </article>
+      </section>
+
+      <section aria-labelledby="governance-heading" class="rounded-3xl bg-slate-900 text-white p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-[.65fr_1.35fr] gap-6 sm:gap-8 items-center">
+        <div>
+          <span class="block mb-1 text-amber-300 text-xs font-extrabold uppercase tracking-widest">Institutional governance</span>
+          <h2 id="governance-heading" class="text-lg sm:text-xl font-extrabold text-white mb-2">Explore autonomous bodies.</h2>
+          <p class="max-w-xl text-sm text-white/65 leading-relaxed">Our statutory bodies guide academic quality, institutional planning, financial stewardship and fair examination practices.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <a href="autonomous-governing-body.html" class="flex items-center justify-between px-4 py-4 rounded-2xl border border-white/10 text-white font-bold hover:bg-amber-300 hover:text-slate-900 transition-colors"><span>Governing Body</span><span>↗</span></a>
+          <a href="autonomous-composition-academic-council.html" class="flex items-center justify-between px-4 py-4 rounded-2xl border border-white/10 text-white font-bold hover:bg-amber-300 hover:text-slate-900 transition-colors"><span>Academic Council</span><span>↗</span></a>
+          <a href="autonomous-finance-committee.html" class="flex items-center justify-between px-4 py-4 rounded-2xl border border-white/10 text-white font-bold hover:bg-amber-300 hover:text-slate-900 transition-colors"><span>Finance Committee</span><span>↗</span></a>
+          <a href="boe-committee.html" class="flex items-center justify-between px-4 py-4 rounded-2xl border border-white/10 text-white font-bold hover:bg-amber-300 hover:text-slate-900 transition-colors"><span>Board of Examinations</span><span>↗</span></a>
+        </div>
+      </section>
+    </div>
+
+    <div id="panel-office-bearers" class="adminTabPanel hidden" role="tabpanel" aria-labelledby="tabbtn-office-bearers">
+      <section aria-labelledby="office-bearers-heading">
+        <div class="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+          <div>
+            <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Governing body</span>
+            <h2 id="office-bearers-heading" class="text-lg sm:text-xl font-extrabold text-slate-900">Office Bearers</h2>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">23 office staff</span>
+        </div>
+        <div class="admin-data-table rounded-2xl border border-slate-200 bg-white shadow-sm overflow-x-auto">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead><tr><th>Sr. No.</th><th>Photo</th><th>Name and qualification</th><th>Designation / Section</th></tr></thead>
+            <tbody>
+              <tr class="group-row"><td colspan="4">Office Bearers (Aided)</td></tr>
+              <tr><td>1</td><td><img src="/media/images/office-s-e-phapale.jpg" alt="Mr. Santosh Eknath Phapale" class="admin-staff-photo"></td><td><strong>Mr. Santosh Eknath Phapale</strong><small>B.Com., M.B.A., G.D.C. &amp; A., P.G.D.B.M., C.C.A.<br><a href="mailto:registrar@sangamnercollege.edu.in">registrar@sangamnercollege.edu.in</a></small></td><td>Registrar</td></tr>
+              <tr><td>2</td><td><img src="/media/images/office-v-r-patil.jpg" alt="Mr. Vijay Ramesh Patil" class="admin-staff-photo"></td><td><strong>Mr. Vijay Ramesh Patil</strong><small>B.A. (Marathi), M.A. (Mass Communication &amp; Journalism), MIT-CCO</small></td><td>Junior Stenographer<small>Scholarship Section</small></td></tr>
+              <tr><td>3</td><td><img src="/media/images/office-m-r-kadale.jpg" alt="Mr. Maruti Rambhau Kadale" class="admin-staff-photo"></td><td><strong>Mr. Maruti Rambhau Kadale</strong><small>M.A., MS-CIT</small></td><td>Head Clerk<small>Exam Department</small></td></tr>
+              <tr><td>4</td><td><img src="/media/images/office-s-s-mahale.jpg" alt="Mr. Sanjay Shivaji Mahale" class="admin-staff-photo"></td><td><strong>Mr. Sanjay Shivaji Mahale</strong><small>M.A., B.Ed.</small></td><td>Senior Clerk<small>Account Section</small></td></tr>
+              <tr><td>5</td><td><img src="/media/images/office-j-k-abhale.jpg" alt="Smt. Janisha Kashinath Abhale" class="admin-staff-photo"></td><td><strong>Smt. Janisha Kashinath Abhale</strong><small>M.A., M.Lib., MS-CIT</small></td><td>Library Clerk</td></tr>
+              <tr><td>6</td><td><img src="/media/images/office-s-r-mandlik.jpg" alt="Mr. Santosh Rohidas Mandlik" class="admin-staff-photo"></td><td><strong>Mr. Santosh Rohidas Mandlik</strong><small>M.Com., MS-CIT, G.D.C. &amp; A.</small></td><td>Junior Clerk<small>Account Section</small></td></tr>
+              <tr><td>7</td><td><img src="/media/images/office-p-r-badade.jpg" alt="Mr. Prashant Ramesh Badade" class="admin-staff-photo"></td><td><strong>Mr. Prashant Ramesh Badade</strong></td><td>Laboratory Attendant<small>Reception Section</small></td></tr>
+              <tr><td>8</td><td><img src="/media/images/office-b-p-sonawane.jpg" alt="Mr. Bhanudas Prabhakar Sonawane" class="admin-staff-photo"></td><td><strong>Mr. Bhanudas Prabhakar Sonawane</strong><small>B.A., D.C.A.M., MS-CIT</small></td><td>Library Attendant<small>Documents Processing Unit</small></td></tr>
+              <tr><td>9</td><td><img src="/media/images/office-s-b-yelmame.jpg" alt="Mr. Suresh Baburao Yelmame" class="admin-staff-photo"></td><td><strong>Mr. Suresh Baburao Yelmame</strong><small>B.A., M.Lib., MS-CIT</small></td><td>Library Attendant<small>LC/TC/Bonafide Section</small></td></tr>
+              <tr class="group-row group-row--orange"><td colspan="4">Office Bearers (Unaided)</td></tr>
+              <tr><td>1</td><td><img src="/media/images/office-s-g-malawade.jpg" alt="Mr. Sandip Gorakshanath Malwade" class="admin-staff-photo"></td><td><strong>Mr. Sandip Gorakshanath Malwade</strong><small>M.A., B.Ed., MS-CIT, G.D.C. &amp; A.</small></td><td>Establishment Section</td></tr>
+              <tr><td>2</td><td><img src="/media/images/office-m-s-kawade.jpg" alt="Mr. Mininath Shantaram Kawade" class="admin-staff-photo"></td><td><strong>Mr. Mininath Shantaram Kawade</strong><small>M.A., B.Ed., MS-CIT</small></td><td>LC/TC/Bonafide Section</td></tr>
+              <tr><td>3</td><td><img src="/media/images/office-c-b-sahane.jpg" alt="Mr. Chandrakant Bhausaheb Sahane" class="admin-staff-photo"></td><td><strong>Mr. Chandrakant Bhausaheb Sahane</strong><small>M.Com., B.Ed., M.Lib., MS-CIT</small></td><td>Account Section</td></tr>
+              <tr><td>4</td><td><img src="/media/images/office-r-s-kothwal.jpg" alt="Mr. Ramnath Shankar Kothwal" class="admin-staff-photo"></td><td><strong>Mr. Ramnath Shankar Kothwal</strong><small>B.A., MS-CIT</small></td><td>Inward and Outward Section</td></tr>
+              <tr><td>5</td><td><img src="/media/images/office-n-d-raut.jpg" alt="Mr. Navnath Dilip Raut" class="admin-staff-photo"></td><td><strong>Mr. Navnath Dilip Raut</strong><small>M.Com., G.D.C. &amp; A., MS-CIT, Journalism</small></td><td>Pay Unit</td></tr>
+              <tr><td>6</td><td><img src="/media/images/office-y-c-katke.jpg" alt="Mr. Yogesh Chandrabhan Katke" class="admin-staff-photo"></td><td><strong>Mr. Yogesh Chandrabhan Katke</strong><small>M.Com., MS-CIT, Tally</small></td><td>Pay Unit</td></tr>
+              <tr><td>7</td><td><img src="/media/images/office-n-l-dighe.jpg" alt="Mr. Nitin Lahanu Dighe" class="admin-staff-photo"></td><td><strong>Mr. Nitin Lahanu Dighe</strong><small>M.Com., G.D.C. &amp; A., C++</small></td><td>Account Section</td></tr>
+              <tr><td>8</td><td><img src="/media/images/office-h-a-misal.jpg" alt="Mr. Hanumant Ashruba Misal" class="admin-staff-photo"></td><td><strong>Mr. Hanumant Ashruba Misal</strong><small>M.B.A. (Finance), B.Com., G.D.C. &amp; A., MS-CIT</small></td><td>Establishment Section</td></tr>
+              <tr><td>9</td><td><img src="/media/images/office-d-b-wale.jpg" alt="Mr. Dadasaheb Balkrushna Wale" class="admin-staff-photo"></td><td><strong>Mr. Dadasaheb Balkrushna Wale</strong><small>B.A., MS-CIT, Tally ERP-9</small></td><td>Admission Section</td></tr>
+              <tr><td>10</td><td><img src="/media/images/office-a-d-kandalkar.jpg" alt="Mr. Anna Dhondiba Kandalkar" class="admin-staff-photo"></td><td><strong>Mr. Anna Dhondiba Kandalkar</strong><small>B.A., D.Ed.</small></td><td>Reception</td></tr>
+              <tr><td>11</td><td><img src="/media/images/office-y-g-gangad.jpg" alt="Mr. Yashwanta Gajanan Gangad" class="admin-staff-photo"></td><td><strong>Mr. Yashwanta Gajanan Gangad</strong><small>B.A., M.B.A., MS-CIT</small></td><td>Inward and Outward Section</td></tr>
+              <tr><td>12</td><td><img src="/media/images/office-s-g-kadam.jpg" alt="Mr. Sandip Gautam Kadam" class="admin-staff-photo"></td><td><strong>Mr. Sandip Gautam Kadam</strong><small>M.A., MS-CIT</small></td><td>Scholarship Section</td></tr>
+              <tr><td>13</td><td><img src="/media/images/office-s-a-deshmukh.jpg" alt="Mr. Sudhir Arun Deshmukh" class="admin-staff-photo"></td><td><strong>Mr. Sudhir Arun Deshmukh</strong><small>B.A., M.B.A., MS-CIT, DCA</small></td><td>Account Section</td></tr>
+              <tr><td>14</td><td><img src="/media/images/office-s-n-dongare.jpg" alt="Miss Shital Narayan Dongare" class="admin-staff-photo"></td><td><strong>Miss Shital Narayan Dongare</strong><small>M.Com., B.Com., B.Sc. (Horticulture), D.T.L., MS-CIT, Tally</small></td><td>Documents Processing Unit</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hidden" aria-hidden="true">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200">
+                <th class="py-3 pr-4 font-extrabold text-slate-900 w-16">Sr. No</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Name</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Designation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">1</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">President</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">2</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">Vice President</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">3</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">Secretary</td></tr>
+              <tr><td class="py-3 pr-4 text-slate-500">4</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">Treasurer</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div id="panel-grantable-staff" class="adminTabPanel hidden" role="tabpanel" aria-labelledby="tabbtn-grantable-staff">
+      <section aria-labelledby="grantable-staff-heading">
+        <div class="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+          <div>
+            <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Non-teaching staff</span>
+            <h2 id="grantable-staff-heading" class="text-lg sm:text-xl font-extrabold text-slate-900">Grantable Non-Teaching Staff</h2>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">19 staff members</span>
+        </div>
+        <div class="admin-data-table rounded-2xl border border-slate-200 bg-white shadow-sm overflow-x-auto">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead><tr><th>Sr. No.</th><th>Name</th><th>Designation</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Mr. Santosh Eknath Phapale</strong></td><td>Registrar</td></tr>
+              <tr><td>2</td><td><strong>Mr. Patil Vijay Ramesh</strong></td><td>Junior Steno</td></tr>
+              <tr><td>3</td><td><strong>Mr. Kadale Maruti Rambhau</strong></td><td>Senior Clerk</td></tr>
+              <tr><td>4</td><td><strong>Mr. Mahale Sanjay Shivaji</strong></td><td>Head Clerk</td></tr>
+              <tr><td>5</td><td><strong>Mr. Annasaheb Bajirao Wadekar</strong></td><td>Laboratory Assistant</td></tr>
+              <tr><td>6</td><td><strong>Mrs. Abhale Janabai Kashinath</strong></td><td>Library Clerk</td></tr>
+              <tr><td>7</td><td><strong>Mr. Barde Rohidas Bapurao</strong></td><td>Laboratory Assistant</td></tr>
+              <tr><td>8</td><td><strong>Mr. Walzade Rupesh Sampat</strong></td><td>Laboratory Assistant</td></tr>
+              <tr><td>9</td><td><strong>Mr. Mandlik Santosh Rohidas</strong></td><td>Junior Clerk</td></tr>
+              <tr><td>10</td><td><strong>Mr. Jadhav Rajendra Dhanaji</strong></td><td>Laboratory Attendant</td></tr>
+              <tr><td>11</td><td><strong>Mr. Gorkha Ramesh Dansing</strong></td><td>Library Attendant</td></tr>
+              <tr><td>12</td><td><strong>Mr. Gophane Balasaheb Karbhari</strong></td><td>Laboratory Attendant</td></tr>
+              <tr><td>13</td><td><strong>Mr. Dhadage Nandkumar Karbhari</strong></td><td>Library Attendant</td></tr>
+              <tr><td>14</td><td><strong>Mr. Badade Prashant Ramesh</strong></td><td>Laboratory Attendant</td></tr>
+              <tr><td>15</td><td><strong>Mr. Kashid Sanjay Pundlik</strong></td><td>Laboratory Attendant</td></tr>
+              <tr><td>16</td><td><strong>Mr. Sonawane Bhanudas Prabhakar</strong></td><td>Library Attendant</td></tr>
+              <tr><td>17</td><td><strong>Mr. Yelmame Suresh Baburao</strong></td><td>Library Attendant</td></tr>
+              <tr><td>18</td><td><strong>Mr. Jedhe Narendra Vijay</strong></td><td>Library Attendant</td></tr>
+              <tr class="group-row group-row--orange"><td colspan="3">Vocational Department</td></tr>
+              <tr><td>1</td><td><strong>Mr. Kadu Raosaheb Dada</strong></td><td>Bulkaman</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hidden" aria-hidden="true">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200">
+                <th class="py-3 pr-4 font-extrabold text-slate-900 w-16">Sr. No</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Name</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Designation</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Qualification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">1</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">2</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+              <tr><td class="py-3 pr-4 text-slate-500">3</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div id="panel-non-grantable-staff" class="adminTabPanel hidden" role="tabpanel" aria-labelledby="tabbtn-non-grantable-staff">
+      <section aria-labelledby="non-grantable-staff-heading">
+        <div class="flex flex-wrap items-end justify-between gap-4 pb-4 mb-6 border-b border-slate-200">
+          <div>
+            <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Non-teaching staff</span>
+            <h2 id="non-grantable-staff-heading" class="text-lg sm:text-xl font-extrabold text-slate-900">Non Grantable Non-Teaching Staff</h2>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-amber-50 text-blue-700 text-xs font-extrabold">76 staff members</span>
+        </div>
+        <div class="admin-data-table rounded-2xl border border-slate-200 bg-white shadow-sm overflow-x-auto">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead><tr><th>Sr. No.</th><th>Name</th><th>Nature of work</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td><strong>Mr. Ghotekar Babasaheb Bajirao</strong></td><td>Estate Manager</td></tr>
+              <tr><td>2</td><td><strong>Mr. Kedar Vilas Haribhau</strong></td><td>Chemistry (UG) Department</td></tr>
+              <tr><td>3</td><td><strong>Mr. Pathade Annasaheb Radhakrushna</strong></td><td>General</td></tr>
+              <tr><td>4</td><td><strong>Mr. Malwade Sandip Gorakshanath</strong></td><td>Establishment Department / General and Statistical Information</td></tr>
+              <tr><td>5</td><td><strong>Mr. Kawade Mininath Shantaram</strong></td><td>LC / TC Section</td></tr>
+              <tr><td>6</td><td><strong>Mr. Gadekar Balasaheb Rajaram</strong></td><td>Chemistry (UG) Department</td></tr>
+              <tr><td>7</td><td><strong>Mrs. Gaikwad Sandhya Ramesh</strong></td><td>Examination Department</td></tr>
+              <tr><td>8</td><td><strong>Mr. Shermale Dilip Manohar</strong></td><td>Gymkhana</td></tr>
+              <tr><td>9</td><td><strong>Mr. Bhandari Manoj Devichand</strong></td><td>IMF</td></tr>
+              <tr><td>10</td><td><strong>Mr. Sahane Chandrakant Bhausaheb</strong></td><td>Account Department, Senior College</td></tr>
+              <tr><td>11</td><td><strong>Mr. Magar Ravindra Gorakshanath</strong></td><td>Sanstha Office</td></tr>
+              <tr><td>12</td><td><strong>Mr. Thorat Ramdas Laxman</strong></td><td>General</td></tr>
+              <tr><td>13</td><td><strong>Mr. Chaudhari Sachin Bhanudas</strong></td><td>Recording Studio</td></tr>
+              <tr><td>14</td><td><strong>Mr. Kothwal Ramnath Shankar</strong></td><td>Inward-Outward Department (Senior College)</td></tr>
+              <tr><td>15</td><td><strong>Mr. Dighe Rajendra Appaji</strong></td><td>Physics Department</td></tr>
+              <tr><td>16</td><td><strong>Mrs. Shelke Sunanda Sunil</strong></td><td>Girls Hostel</td></tr>
+              <tr><td>17</td><td><strong>Mr. Shermale Rajendra Jagannath</strong></td><td>Botany Garden</td></tr>
+              <tr><td>18</td><td><strong>Mr. Dighe Kailas Manohar</strong></td><td>BCA (Science) Department</td></tr>
+              <tr><td>19</td><td><strong>Mr. Shinde Abasaheb Appaji</strong></td><td>Commerce Department</td></tr>
+              <tr><td>20</td><td><strong>Ms. Thorat Bhagyashri Balasaheb</strong></td><td>Girls Hostel Rector</td></tr>
+              <tr><td>21</td><td><strong>Mr. Supe Sandip Popat</strong></td><td>Electronics Department</td></tr>
+              <tr><td>22</td><td><strong>Mr. Gulave Gitaram Ramnath</strong></td><td>UG Library</td></tr>
+              <tr><td>23</td><td><strong>Ms. More Savita Raosaheb</strong></td><td>Girls Hostel</td></tr>
+              <tr><td>24</td><td><strong>Mrs. Ganjave Mandakini Sakharam</strong></td><td>UG Library</td></tr>
+              <tr><td>25</td><td><strong>Mr. Katke Yogesh Chandrabhan</strong></td><td>Pay Unit</td></tr>
+              <tr><td>26</td><td><strong>Mr. Satpute Ganesh Shivaji</strong></td><td>Construction and General</td></tr>
+              <tr><td>27</td><td><strong>Mr. Bhagwat Bharat Ashok</strong></td><td>Zoology Department</td></tr>
+              <tr><td>28</td><td><strong>Mr. Raut Navnath Dilip</strong></td><td>Pay Unit</td></tr>
+              <tr><td>29</td><td><strong>Mr. Raut Vijay Baban</strong></td><td>Examination Department</td></tr>
+              <tr><td>30</td><td><strong>Mr. Kadayat Nirbahadur Khadaksingh</strong></td><td>Security Staff</td></tr>
+              <tr><td>31</td><td><strong>Mr. Malunjkar Vishal Waliba</strong></td><td>Admission Office</td></tr>
+              <tr><td>32</td><td><strong>Mrs. Sheral Anita Prakash</strong></td><td>Examination Department</td></tr>
+              <tr><td>33</td><td><strong>Mrs. Lanke Shubhangi Haribhau</strong></td><td>PG Library</td></tr>
+              <tr><td>34</td><td><strong>Mr. Gophane Raosaheb Sahadu</strong></td><td>Chemistry (PG) Department</td></tr>
+              <tr><td>35</td><td><strong>Mrs. Kharat Sangita Sudhir</strong></td><td>Office IQAC</td></tr>
+              <tr><td>36</td><td><strong>Mr. Dighe Nitin Lahanu</strong></td><td>Account Department</td></tr>
+              <tr><td>37</td><td><strong>Mr. Misal Hanumant Ashruba</strong></td><td>Establishment Section, Registrar Office</td></tr>
+              <tr><td>38</td><td><strong>Mr. Kandalkar Anna Dhondiba</strong></td><td>Office Reception</td></tr>
+              <tr><td>39</td><td><strong>Mr. Wale Dadasaheb Balkrishna</strong></td><td>Admission, Eligibility Office</td></tr>
+              <tr><td>40</td><td><strong>Mr. Gapale Ravindra Dilip</strong></td><td>Zoology Department</td></tr>
+              <tr><td>41</td><td><strong>Mr. Ughade Ankush Manohar</strong></td><td>Examination Department</td></tr>
+              <tr><td>42</td><td><strong>Mr. Kudal Dnyaneshwar Parasram</strong></td><td>BCS Department</td></tr>
+              <tr><td>43</td><td><strong>Mr. Argade Sagar Balasaheb</strong></td><td>Sanstha Office</td></tr>
+              <tr><td>44</td><td><strong>Mr. Gadekar Akshay Ashok</strong></td><td>B.Voc Dairy / B.Voc Agriculture / BBA</td></tr>
+              <tr><td>45</td><td><strong>Mr. Sonawane Dnyaneshwar Arun</strong></td><td>Examination Department</td></tr>
+              <tr><td>46</td><td><strong>Mr. Jejurkar Ranjit Subhash</strong></td><td>Examination Department</td></tr>
+              <tr><td>47</td><td><strong>Mr. Jadhav Swapnil Pralhad</strong></td><td>PMKVY / Ph.D.</td></tr>
+              <tr><td>48</td><td><strong>Mr. Gaikwad Dnyaneshwar Muralidhar</strong></td><td>Physics Department</td></tr>
+              <tr><td>49</td><td><strong>Mr. Varpe Digambar Khanderao</strong></td><td>Boys Hostel</td></tr>
+              <tr><td>50</td><td><strong>Ms. Gunjal Balutai Ashok</strong></td><td>Sanstha Office</td></tr>
+              <tr><td>51</td><td><strong>Mrs. Wakchaure Ashwini Rajendra</strong></td><td>Student Facility Centre</td></tr>
+              <tr><td>52</td><td><strong>Mr. Nirmal Sachin Annasaheb</strong></td><td>Sanstha Office / Purchase Department</td></tr>
+              <tr><td>53</td><td><strong>Mr. Gaikwad Kishor Popat</strong></td><td>Chemistry Department</td></tr>
+              <tr><td>54</td><td><strong>Mr. Pachpute Mahesh Shivaji</strong></td><td>General</td></tr>
+              <tr><td>55</td><td><strong>Mr. Satpute Suraj Kailas</strong></td><td>Maintenance</td></tr>
+              <tr><td>56</td><td><strong>Mr. Pawar Hrushikesh Jagnnath</strong></td><td>Yoga Department</td></tr>
+              <tr><td>57</td><td><strong>Mr. Mungase Sharad Ramnath</strong></td><td>Workshop</td></tr>
+              <tr><td>58</td><td><strong>Mr. Kawade Sachin Navnath</strong></td><td>Saibaba Hall</td></tr>
+              <tr><td>59</td><td><strong>Ms. Dongare Shital Narayan</strong></td><td>DPU Section, Senior College</td></tr>
+              <tr><td>60</td><td><strong>Mr. Deshmukh Sudhir Arun</strong></td><td>Account Section, Senior College</td></tr>
+              <tr><td>61</td><td><strong>Mr. Ughade Santosh Nathu</strong></td><td>PG Chemistry Department</td></tr>
+              <tr><td>62</td><td><strong>Mr. Chaudhari Bhanudas Bhagavnta</strong></td><td>Boys Hostel</td></tr>
+              <tr><td>63</td><td><strong>Mr. Gaikwad Popat Anna</strong></td><td>Boys Hostel</td></tr>
+              <tr><td>64</td><td><strong>Mr. Joshi Vashili Prasad</strong></td><td>UG Library</td></tr>
+              <tr><td>65</td><td><strong>Mr. Kadlag Ram Bhausaheb</strong></td><td>Earn and Learn</td></tr>
+              <tr><td>66</td><td><strong>Mr. Hire Akash Suresh</strong></td><td>BCS Department</td></tr>
+              <tr><td>67</td><td><strong>Mr. Kadam Sandip Gautam</strong></td><td>Scholarship Section, Senior College</td></tr>
+              <tr><td>68</td><td><strong>Mr. Gangad Yashwanta Gajanan</strong></td><td>Inward-Outward Section, Senior College</td></tr>
+              <tr><td>69</td><td><strong>Mr. Kolhe Rushikesh Balasaheb</strong></td><td>Geography Department</td></tr>
+              <tr><td>70</td><td><strong>Mr. Ghotekar Ganesh Sainath</strong></td><td>Microbiology Department</td></tr>
+              <tr><td>71</td><td><strong>Mr. Gangad Kashinath Gajanan</strong></td><td>Botany Department</td></tr>
+              <tr><td>72</td><td><strong>Mr. Karpe Prashant Maruti</strong></td><td>Sanstha Office / Purchase</td></tr>
+              <tr><td>73</td><td><strong>Ms. Raut Jyoti Sharad</strong></td><td>Girls Hostel</td></tr>
+              <tr><td>74</td><td><strong>Mr. Sanat Kumar Pradhan</strong></td><td>Plumbing</td></tr>
+              <tr><td>75</td><td><strong>Mr. Gapale Satyam Rajendra</strong></td><td>B.Voc H.T.</td></tr>
+              <tr><td>76</td><td><strong>Mr. Kale Anil Bhaskar</strong></td><td>Electrician Department</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hidden" aria-hidden="true">
+          <table class="w-full text-sm text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200">
+                <th class="py-3 pr-4 font-extrabold text-slate-900 w-16">Sr. No</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Name</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Designation</th>
+                <th class="py-3 pr-4 font-extrabold text-slate-900">Qualification</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">1</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+              <tr class="border-b border-slate-100"><td class="py-3 pr-4 text-slate-500">2</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+              <tr><td class="py-3 pr-4 text-slate-500">3</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td><td class="py-3 pr-4 text-slate-500">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .admin-leader-photo {
+      width: 58px !important;
+      height: 58px !important;
+      max-width: none !important;
+      border-radius: 1rem;
+      object-fit: cover;
+      object-position: top center;
+      flex: 0 0 auto;
+    }
+    .admin-leader-photo--large {
+      width: 82px !important;
+      height: 82px !important;
+      border: 3px solid rgba(255,255,255,.2);
+    }
+    .admin-data-table table { min-width: 680px; }
+    .admin-data-table th {
+      padding: .9rem 1rem;
+      background: #0f245f;
+      color: #fff;
+      font-size: .75rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .admin-data-table th:first-child,
+    .admin-data-table td:first-child { width: 76px; text-align: center; }
+    .admin-data-table td {
+      padding: .85rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #475569;
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .admin-data-table tbody tr:last-child td { border-bottom: 0; }
+    .admin-data-table tbody tr:not(.group-row):hover { background: #f8fafc; }
+    .admin-data-table strong { color: #0f172a; }
+    .admin-data-table small { display: block; margin-top: .2rem; color: #64748b; }
+    .admin-data-table a { color: #1d4ed8; font-weight: 700; }
+    .admin-data-table .group-row td {
+      width: auto;
+      padding: .75rem 1rem;
+      background: #eff6ff;
+      color: #1e3a8a;
+      font-weight: 800;
+      text-align: left;
+    }
+    .admin-data-table .group-row--orange td { background: #fff7ed; }
+    @media (max-width: 639px) {
+      .admin-data-table { margin-inline: -1rem; border-radius: 0; }
+      .admin-data-table td, .admin-data-table th { padding-inline: .75rem; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('adminTabNav');
+      var indicator = document.getElementById('adminTabIndicator');
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.adminTab'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.adminTabPanel'));
+
+      function moveIndicator(btn) {
+        indicator.style.width = btn.offsetWidth + 'px';
+        indicator.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
+      }
+
+      function activate(tabName) {
+        tabs.forEach(function (btn) {
+          var isActive = btn.getAttribute('data-tab') === tabName;
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          btn.classList.toggle('text-white', isActive);
+          btn.classList.toggle('text-slate-700', !isActive);
+          if (isActive) moveIndicator(btn);
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle('hidden', panel.id !== 'panel-' + tabName);
+        });
+      }
+
+      tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activate(btn.getAttribute('data-tab'));
+        });
+      });
+
+      window.addEventListener('resize', function () {
+        var current = tabs.find(function (btn) { return btn.getAttribute('aria-selected') === 'true'; });
+        if (current) moveIndicator(current);
+      });
+
+      activate('academic');
+    })();
+  </script>
+
+  <div class="site-footer"></div>
+</body>
+</html>

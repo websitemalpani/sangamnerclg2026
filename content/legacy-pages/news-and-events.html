@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Official notices, circulars and updates from Sangamner College.">
+  <title>News &amp; Events | Sangamner College</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site-pages.css">
+  <script defer src="assets/header-footer.js"></script>
+  <style>
+    #UserModalContent { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    #UserModalContent li { border: 1px solid var(--line); border-radius: 14px; background: #faf9f5; }
+    #UserModalContent li a { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; color: var(--ink); font-weight: 700; text-decoration: none; }
+    #UserModalContent li a:hover { color: var(--coral); }
+    #UserModalContent:empty::after { content: "No notices to show right now — please check back soon."; display: block; padding: 16px; color: rgba(17,29,69,.5); font-size: .9rem; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <div class="site-utility"></div>
+
+  <main class="mx-auto max-w-[1000px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
+
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-950 to-blue-800 text-white p-6 sm:p-8 lg:p-10">
+      <span class="relative z-10 block mb-2 text-amber-300 text-xs font-extrabold uppercase tracking-widest">Stay informed</span>
+      <h1 class="relative z-10 text-xl sm:text-2xl lg:text-3xl font-extrabold text-white mb-3">News that keeps you connected.</h1>
+      <p class="relative z-10 max-w-xl text-sm sm:text-base text-white/80 leading-relaxed">Official notices, circulars, deadlines and college updates—organised in one clear place.</p>
+      <div class="absolute -right-16 -top-24 w-64 h-64 rounded-full border-[43px] border-amber-300/[.13]" aria-hidden="true"></div>
+    </section>
+
+    <section class="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 mt-4 sm:mt-5">
+      <div class="mb-4">
+        <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Latest updates</span>
+        <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Notices &amp; Circulars</h2>
+        <p class="mt-1 text-sm text-slate-500">New announcements appear here when they are published.</p>
+      </div>
+      <ul id="UserModalContent"></ul>
+    </section>
+
+  </main>
+
+  <div class="site-footer"></div>
+
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $.ajax({
+        url: "news_ajax.php",
+        type: "POST",
+        async: false,
+        data: { id: 1 },
+        dataType: "html",
+        success: function (data) {
+          if (data !== "Error") { $("#UserModalContent").html(data); }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

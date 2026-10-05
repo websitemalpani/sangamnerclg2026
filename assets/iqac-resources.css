@@ -1,0 +1,30 @@
+.legacy-page--aqar-reports,.legacy-page--policies-and-procedures{background:#f7f3e9}
+.legacy-page--aqar-reports>main,.legacy-page--policies-and-procedures>main{max-width:1440px!important;padding-top:24px!important;padding-bottom:42px!important}
+.iqac-resource-layout{display:grid!important;grid-template-columns:250px minmax(0,1fr)!important;gap:14px!important;align-items:start}
+.iqac-resource-nav{position:sticky!important;top:16px!important;padding:8px!important;border:1px solid #111d4517!important;border-radius:16px!important;background:#fff!important;box-shadow:0 16px 38px -30px #111d4580}
+.iqac-resource-nav>ul{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.iqac-resource-nav>ul>li>a,.iqac-resource-nav>ul>li>details>summary{display:flex;min-height:40px;align-items:center;justify-content:space-between;padding:8px 10px!important;border-radius:10px!important;background:#f8f5ed;color:#111d45!important;font-size:.78rem!important;font-weight:800;transition:.18s}
+.iqac-resource-nav>ul>li>a:hover,.iqac-resource-nav>ul>li>details>summary:hover,.iqac-resource-nav details[open]>summary,.iqac-resource-nav>ul>li>a.bg-blue-50{background:#183b73!important;color:#fff!important}
+.iqac-resource-nav details summary{position:relative;list-style:none}.iqac-resource-nav details summary::-webkit-details-marker{display:none}
+.iqac-resource-nav details summary::after{content:"";width:7px;height:7px;margin-right:3px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .18s}.iqac-resource-nav details[open]>summary::after{transform:rotate(225deg)}
+.iqac-resource-nav details ul{display:grid;gap:3px;margin:4px 0 0!important;padding:5px!important;border:0!important;border-radius:10px;background:#eef2f8;list-style:none}
+.iqac-resource-nav details ul a,.iqac-resource-nav details ul span{display:block;padding:6px 8px!important;border-radius:7px!important;font-size:.7rem!important;line-height:1.3}.iqac-resource-nav details ul a:hover{background:#fff!important;color:#1f5cac!important}
+.iqac-resource-content{position:relative;overflow:hidden;padding:18px!important;border:1px solid #111d4512!important;border-radius:20px!important;background:#fff!important;box-shadow:0 20px 50px -42px #111d4599!important}
+.iqac-resource-content::before{content:"";position:absolute;right:-75px;top:-75px;width:190px;height:190px;border:32px solid #ffd84d26;border-radius:50%;pointer-events:none}
+.iqac-resource-title{position:relative;margin:0 0 12px!important;font:800 clamp(1.7rem,3vw,2.5rem)/1 var(--font-display)!important;letter-spacing:-.045em;color:#111d45!important}
+.iqac-resource-title::after{content:"";display:inline-block;width:35px;height:6px;margin-left:8px;border-radius:6px;background:#f15b3a}
+.iqac-resource-subtitle{position:relative;margin:0 0 12px!important;color:#183b73!important;font:800 1rem/1.2 var(--font-display)!important;text-align:left!important}
+.iqac-resource-grid{position:relative;display:grid!important;max-width:none!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin:0!important}
+.iqac-resource-card{position:relative;display:flex!important;min-height:72px;flex-direction:column;justify-content:center;gap:4px;margin:0!important;padding:11px 13px!important;border:1px solid #111d4510!important;border-radius:12px!important;background:#f8f5ed!important;color:#111d45!important;text-align:left!important;transition:transform .2s ease,box-shadow .2s ease}
+.iqac-resource-card:nth-child(4n+2){background:#eaf1ff!important}.iqac-resource-card:nth-child(4n+3){background:#fff0ec!important}.iqac-resource-card:nth-child(4n){background:#eef7f1!important}
+.iqac-resource-card::after{content:"";position:absolute;right:10px;top:10px;width:7px;height:7px;border-radius:50%;background:#f15b3a;opacity:.75}
+.iqac-resource-card:hover{transform:translateY(-2px);box-shadow:0 12px 24px -20px #111d4580}
+.iqac-resource-card p{margin:0!important;color:#111d45!important;font-size:.78rem!important;font-weight:800!important}
+.iqac-resource-card a{color:#1f5cac!important;font-size:.75rem!important;font-weight:800!important}
+.iqac-resource-content--policies-and-procedures .iqac-resource-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.iqac-resource-content--policies-and-procedures .iqac-resource-card{min-height:62px;font-size:.77rem!important;font-weight:800!important;line-height:1.35}
+.iqac-resource-content--policies-and-procedures a.iqac-resource-card{color:#183b73!important}
+@media(max-width:980px){.iqac-resource-layout{grid-template-columns:1fr!important}.iqac-resource-nav{position:static!important}.iqac-resource-nav>ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.legacy-page--aqar-reports>main,.legacy-page--policies-and-procedures>main{padding-top:16px!important}.iqac-resource-nav>ul{grid-template-columns:repeat(2,minmax(0,1fr))}.iqac-resource-content{padding:14px!important}.iqac-resource-content--policies-and-procedures .iqac-resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:480px){.iqac-resource-nav>ul{grid-template-columns:1fr}.iqac-resource-grid,.iqac-resource-content--policies-and-procedures .iqac-resource-grid{grid-template-columns:1fr!important}.iqac-resource-card{min-height:60px}}
+@media(prefers-reduced-motion:reduce){.iqac-resource-nav a,.iqac-resource-nav summary,.iqac-resource-card{transition:none}}

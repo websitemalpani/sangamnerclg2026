@@ -1,0 +1,106 @@
+/* Faculty profile tables: a normal table on wide screens, one card per person on phones.
+   Cells carry data-label attributes added by transformFacultyTables in lib/legacy-pages.ts. */
+
+.legacy-page .faculty-table th:first-child { width: 4.5rem; }
+.legacy-page .faculty-table th { vertical-align: bottom; }
+.legacy-page .faculty-table-group td {
+  padding: .7rem 1rem !important;
+  background: #eff6ff !important;
+  color: #1e3a8a !important;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+@media (max-width: 700px) {
+  .legacy-page .faculty-table-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .legacy-page .faculty-table,
+  .legacy-page .faculty-table tbody,
+  .legacy-page .faculty-table tr,
+  .legacy-page .faculty-table td {
+    display: block;
+    width: 100% !important;
+  }
+  .legacy-page .faculty-table {
+    min-width: 0 !important;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .legacy-page .faculty-table-head { display: none !important; }
+
+  .legacy-page .faculty-table-row {
+    position: relative;
+    margin-bottom: .75rem;
+    padding: .35rem 0;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    background: #fff !important;
+    box-shadow: 0 8px 22px -16px rgba(17, 29, 69, .45);
+  }
+  .legacy-page .faculty-table-row td {
+    display: grid;
+    grid-template-columns: minmax(6.5rem, 38%) 1fr;
+    gap: .75rem;
+    padding: .5rem 1rem !important;
+    border: 0 !important;
+    border-top: 1px dashed #e2e8f0 !important;
+    background: transparent !important;
+    color: #334155;
+    font-size: .875rem !important;
+    line-height: 1.45 !important;
+  }
+  .legacy-page .faculty-table-row td::before {
+    content: attr(data-label);
+    color: #64748b;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    overflow-wrap: normal;
+  }
+
+  /* Sr.No becomes a small badge in the card's top-right corner. */
+  .legacy-page .faculty-table-row td[data-label^="Sr"] {
+    position: absolute;
+    top: .7rem;
+    right: .75rem;
+    display: block;
+    width: auto !important;
+    padding: .15rem .6rem !important;
+    border: 0 !important;
+    border-radius: 999px;
+    background: #eff6ff !important;
+    color: #1e40af;
+    font-size: .75rem !important;
+    font-weight: 800;
+  }
+  .legacy-page .faculty-table-row td[data-label^="Sr"]::before { content: "#"; font-size: inherit; letter-spacing: 0; color: inherit; }
+
+  /* The name is the card title. */
+  .legacy-page .faculty-table-row td[data-label^="Name"] {
+    display: block;
+    padding: .55rem 3.75rem .6rem 1rem !important;
+    border-top: 0 !important;
+    color: #0f172a;
+    font-family: var(--font-display), sans-serif;
+    font-size: 1rem !important;
+    font-weight: 800;
+  }
+  .legacy-page .faculty-table-row td[data-label^="Name"]::before { display: none; }
+  .legacy-page .faculty-table-row td[data-label^="Name"] + td { border-top: 0 !important; padding-top: 0 !important; }
+
+  .legacy-page .faculty-table-group { margin: 1.25rem 0 .75rem; }
+  .legacy-page .faculty-table-group td {
+    display: block;
+    border: 0 !important;
+    border-radius: 12px;
+  }
+}

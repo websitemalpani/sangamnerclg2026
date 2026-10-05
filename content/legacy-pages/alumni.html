@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Alumni registration and feedback form for Sangamner College graduates.">
+  <title>Alumni — Sangamner College</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site-pages.css">
+  <script defer src="assets/header-footer.js"></script>
+
+  <style>
+    .af-row { display: grid; grid-template-columns: 1fr; gap: .375rem; margin-bottom: 1rem; }
+    @media (min-width: 640px) { .af-row { grid-template-columns: 220px minmax(0,1fr); align-items: center; gap: 1rem; } }
+    .af-label { font-size: .875rem; font-weight: 700; color: #334155; }
+    .af-input, .af-select, .af-textarea { width: 100%; border: 1px solid #cbd5e1; border-radius: .75rem; padding: .6rem .85rem; font-size: .875rem; color: #0f172a; background: #fff; }
+    .af-input:focus, .af-select:focus, .af-textarea:focus { outline: none; border-color: #1d4ed8; box-shadow: 0 0 0 3px rgba(29,78,216,.12); }
+    label.error { color: #dc2626; font-size: .75rem; display: block; margin-top: .25rem; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <div class="site-utility"></div>
+
+  <div class="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 items-start">
+
+      <!-- Alumni registration form -->
+      <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 shadow-sm">
+        <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">Alumni</h1>
+        <p class="text-sm sm:text-base font-bold text-blue-700 mb-6">Alumni Registration and Feedback Form</p>
+
+        <form id="alumni_form" method="post" action="#">
+          <div id="succ_msg" class="text-center text-emerald-700 font-bold mb-4"></div>
+
+          <div class="af-row">
+            <label class="af-label" for="faculty">* Faculty</label>
+            <select name="faculty" id="faculty" class="af-select">
+              <option value="">--Select Faculty--</option>
+              <option value="1">Arts</option>
+              <option value="2">Commerce</option>
+              <option value="3">Science</option>
+              <option value="4">Other</option>
+              <option value="43">Mental-Moral</option>
+              <option value="55">B.Voc</option>
+            </select>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="department">* Department</label>
+            <select name="department" id="department" class="af-select">
+              <option value="">--Select Department--</option>
+            </select>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="course-completed">* Course Completed</label>
+            <select name="course_completed" id="course_completed" class="af-select">
+              <option value="">--Select Course--</option>
+            </select>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="fname">* Full Name</label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <input type="text" class="af-input" placeholder="Last Name" name="lname" id="lname"/>
+              <input type="text" class="af-input" placeholder="First Name" name="fname" id="fname"/>
+              <input type="text" class="af-input" placeholder="Middle Name" name="mname" id="mname"/>
+            </div>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="gender">* Gender</label>
+            <div class="flex items-center gap-6 text-sm font-semibold text-slate-700">
+              <label class="inline-flex items-center gap-2"><input type="radio" name="gender" id="gender" value="Male" checked/> Male</label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="gender" id="gender" value="Female"/> Female</label>
+            </div>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="passingyear">* Passing Year</label>
+            <input type="text" class="af-input" id="passingyear" name="passingyear"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="email">* Email</label>
+            <input type="text" class="af-input" id="email" name="email"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="mobile">* Mobile No</label>
+            <input type="text" class="af-input" id="mobile" name="mobile"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="alumni_photo">Photo</label>
+            <input type="file" id="alumni_photo" name="alumni_photo" class="text-sm"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="phone">Phone No</label>
+            <input type="text" class="af-input" id="phone" name="phone"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="address">* Address for Correspondence</label>
+            <textarea id="address" class="af-textarea" rows="3" name="address"></textarea>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label">Whether Employed / Self Employed</label>
+            <div class="flex items-center gap-6 text-sm font-semibold text-slate-700">
+              <label class="inline-flex items-center gap-2"><input type="radio" name="employed" id="employed" value="E"/> Employed</label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="employed" id="employed" value="S"/> Self Employed</label>
+            </div>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="organization">Name of the Organization</label>
+            <input type="text" class="af-input" id="organization" name="organization"/>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="work_profile">Present work profile</label>
+            <textarea id="work_profile" class="af-textarea" rows="4" name="work_profile"></textarea>
+          </div>
+
+          <div class="af-row">
+            <label class="af-label" for="achivement">Achievment After College</label>
+            <textarea id="achivement" class="af-textarea" rows="4" name="achivement"></textarea>
+          </div>
+
+          <div class="mb-4">
+            <label class="af-label block mb-1.5" for="opinion">* What is your overall opinion about College/Department?</label>
+            <textarea id="opinion" class="af-textarea" rows="4" name="opinion"></textarea>
+          </div>
+
+          <div class="af-row items-start">
+            <label class="af-label" for="letters_code">* Security Code</label>
+            <div>
+              <div class="flex items-center gap-3 mb-1.5">
+                <img src="php-captcha/captcha_code_file.php?rand=131070268" id="captchaimg" alt="captcha" class="rounded-lg border border-slate-200">
+                <a href="javascript:void(0);" onclick="refreshCaptcha();" class="text-xs font-bold text-blue-700 hover:text-blue-900">Click to refresh</a>
+              </div>
+              <input name="letters_code" type="text" id="letters_code" class="af-input textfiled max-w-xs"/>
+            </div>
+          </div>
+
+          <hr class="my-6 border-slate-200">
+          <div class="text-center">
+            <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-extrabold px-8 py-3 text-sm transition-all">Submit</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- News & Events sidebar -->
+      <aside class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm lg:sticky lg:top-6">
+        <h3 class="text-sm font-extrabold uppercase tracking-widest text-blue-700 pb-3 mb-3 border-b border-slate-100 flex items-center gap-2"><img src="/media/images/news-event-icon.png" alt="" class="w-4 h-4"> News & Events</h3>
+        <ul id="UserModalContent" class="space-y-3 text-sm"></ul>
+      </aside>
+    </div>
+  </div>
+
+  <div class="site-footer"></div>
+
+  <!-- Form scripts (unchanged logic) -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.validate.js"></script>
+  <script language="javascript">
+
+  $(document).ready(function()
+  {
+  id=1;
+  $.ajax({
+
+  url:"news_ajax.php",
+  type:"POST",
+  async: false,
+  data:{'id':id},
+  dataType: "html",
+  success:function(data){
+  if(data=='Error')
+  {
+
+  }
+  else
+  {
+  $('#UserModalContent').html(data)
+  }
+
+  },
+  error:function(){
+
+  }
+  });
+
+  });
+  </script>
+
+  <script type="text/javascript">
+  $( document ).ready( function ()
+  {
+  $.validator.addMethod("valid_email",
+  function(value, element)
+  {
+  if ($.trim(value) != '')
+  {
+  var pattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  return pattern.test(value);
+  }
+  else
+  {
+  return true;
+  }
+  }
+  );
+
+  $( "#alumni_form" ).validate(
+  {
+  rules: {
+  faculty: "required",
+
+  department: "required",
+  course_completed: "required",
+  gender: "required",
+
+  lname: "required",
+  fname: "required",
+  mname: "required",
+
+  passingyear: { required: true, digits: true, minlength: 4, maxlength:4 },
+  email: { required: true, valid_email: true },
+  mobile: { required: true, digits: true, minlength: 9, maxlength:12 },
+  phone: { digits: true, minlength: 5 },
+  address: { required: true },
+  opinion: { required: true },
+  letters_code: { required: true, remote: { url: "check_contact_captcha.php", type: "post" } }
+  },
+  messages: 	{
+  faculty: "Please select the Faculty",
+  department: "Please select the Department ",
+  course_completed: "Please select the Course Completed",
+  gender: "Please select gender",
+  lname: "Please enter the Last Name",
+  fname: "Please enter the First Name",
+  mname: "Please enter the Middle Name",
+  passingyear: { required: "Please enter the Passing Year",digits: "Please enter the Valid year" },
+  email: { required: "Please enter the Email Address", valid_email: "Please enter the valid Email Address" },
+  mobile: { required: "Please enter the Mobile Number" },
+  address: { required: "Please enter the Address" },
+  opinion: { required: "Please enter the Opinion" },
+  letters_code: { required: "Please enter the Captcha Code", remote: "Please enter valid captcha code" }
+  },
+  submitHandler: function(form)
+  {
+  //alert('****')
+  ajax_submit_form();
+  }
+  });
+
+  $.validator.addMethod("valid_email",
+  function(value, element)
+  {
+  if ($.trim(value) != '')
+  {
+  var pattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  return pattern.test(value);
+  }
+  else
+  {
+  return true;
+  }
+  }
+  );
+  } );
+
+
+
+  function ajax_submit_form()
+  {
+    var formData = new FormData();
+	//alert($("input[name='gender']:checked").val())
+
+	var employed = $("input[name='employed']:checked").val();
+if (!employed) {
+    alert("Please select employment status");
+    return false;
+}
+
+//alert($("#fname").val()+" "+$("#mname").val()+" "+$("#lname").val())
+
+//return false;
+
+    formData.append("faculty", $("#faculty").val());
+    formData.append("department", $("#department").val());
+    formData.append("course_completed", $("#course_completed").val());
+    formData.append("fname", $("#fname").val());
+    formData.append("mname", $("#mname").val());
+    formData.append("lname", $("#lname").val());
+    formData.append("gender", $("input[name='gender']:checked").val());
+    formData.append("employed", $("input[name='employed']:checked").val());
+
+
+    formData.append("passingyear", $("#passingyear").val());
+    formData.append("email", $("#email").val());
+    formData.append("mobile", $("#mobile").val());
+    formData.append("phone", $("#phone").val());
+    formData.append("address", $("#address").val());
+    formData.append("opinion", $("#opinion").val());
+    formData.append("organization", $("#organization").val());
+    formData.append("work_profile", $("#work_profile").val());
+    formData.append("achivement", $("#achivement").val());
+
+    // Append file
+    var file_data = $("#alumni_photo").prop("files")[0];
+    if (file_data) {
+        formData.append("alumni_photo", file_data);
+    }
+
+	console.log(formData)
+
+    $.ajax({
+        url: "save_alumni.html",
+        type: "POST",
+        data: formData,
+        contentType: false,  // Required for file upload
+        processData: false,  // Required for file upload
+        success: function (data) {
+            if ($.trim(data) == "Done") {
+                alert("Thank you for your details");
+                $(".inputtextsml").val("");
+                $("#faculty, #department, #course_completed, #alumni_photo").val("");
+                window.location.reload();
+            } else {
+                alert("Error: " + data);
+            }
+        }
+    });
+}
+
+  $("#faculty").change(function()
+  {
+  //alert( "Handler for .change() called." );
+  //alert(url)
+  //return false
+  var param_data='faculty_Id='+this.value
+  //alert(param_data)
+  $.ajax({
+  type: "POST",
+  url: "get_department.php",
+  data:param_data,
+  cache: false,
+  success: function(data)
+  {
+  //alert(data)
+  if(data!='')
+  {   //alert(data);
+
+  $('#department').html(data);
+  }
+
+  }
+  });
+
+  });
+
+  $("#department").change(function()
+  {
+  //alert( "Handler for .change() called." );
+  //alert(url)
+  //return false
+  var param_data='dept_Id='+this.value
+  //alert(param_data)
+  $.ajax({
+  type: "POST",
+  url: "get_courses.php",
+  data:param_data,
+  cache: false,
+  success: function(data)
+  {
+  if(data!='')
+  {  //alert(data);
+
+  $('#course_completed').html(data);
+  }
+
+  }
+  });
+
+  });
+
+
+  refreshCaptcha();
+  function refreshCaptcha()
+  {
+  var img = document.images['captchaimg'];
+  img.src = img.src.substring(0,img.src.lastIndexOf("?"))+"?rand="+Math.random()*1000;
+  $("#letters_code").val("");
+  }
+
+  </script>
+</body>
+</html>

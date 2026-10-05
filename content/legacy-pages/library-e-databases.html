@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Subscribed E-Resources & Databases at Sangamner College Library — Access N-LIST (INFLIBNET), DELNET, e-books, and e-journals.">
+  <title>Subscribed E-Resources & Databases — Sangamner College Library</title>
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site-pages.css">
+  <link rel="stylesheet" href="assets/academic-services.css">
+  <script defer src="assets/header-footer.js"></script>
+  <script defer src="assets/academic-services.js"></script>
+  <script defer src="assets/library-subpages.js"></script>
+
+  <style>
+    .library-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 28px; align-items: start; margin-top: 30px; margin-bottom: 50px; }
+    .library-sidebar { position: sticky; top: 24px; display: grid; gap: 20px; }
+    .library-nav-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 14px; box-shadow: 0 10px 30px rgba(17, 29, 69, .04); }
+    .library-nav-title { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; color: var(--royal); padding: 6px 10px 10px; border-bottom: 1px solid var(--line); }
+    .library-nav-list { display: grid; gap: 4px; margin-top: 8px; list-style: none; padding: 0; }
+    .library-nav-list a { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; border-radius: 12px; color: var(--ink) !important; font-size: 0.875rem; font-weight: 700; transition: all .2s ease; }
+    .library-nav-list a:hover, .library-nav-list a.active { background: var(--blue); color: #fff !important; transform: translateX(3px); }
+    .library-nav-list a .badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; background: rgba(17, 29, 69, .06); color: inherit; }
+    .library-nav-list a:hover .badge, .library-nav-list a.active .badge { background: var(--gold); color: var(--ink); }
+
+    .library-hours-card { background: linear-gradient(135deg, #111d45 0%, #183b73 100%); color: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(17, 29, 69, 0.12); }
+    .library-hours-card h4 { color: var(--gold) !important; font-size: 1rem; margin-bottom: 12px; font-weight: 800; }
+    .library-hours-list { display: grid; gap: 10px; font-size: 0.85rem; color: rgba(255,255,255,.8); }
+    .library-hours-item { display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid rgba(255,255,255,.1); }
+
+    .library-hero-banner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #0f2b56 0%, #183b73 55%, #1f5cac 100%);
+      color: #fff;
+      padding: 36px 40px;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 50px rgba(24, 59, 115, 0.16);
+    }
+    .library-hero-banner::after {
+      content: "";
+      position: absolute;
+      right: -40px;
+      bottom: -60px;
+      width: 260px;
+      height: 260px;
+      border: 40px solid rgba(255, 216, 77, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .library-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 216, 77, 0.15);
+      border: 1px solid rgba(255, 216, 77, 0.3);
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .library-hero-banner h2 { color: #fff !important; font-size: clamp(1.8rem, 3.2vw, 2.4rem); margin-bottom: 12px; font-weight: 800; }
+    .library-hero-banner p { max-width: 680px; color: rgba(255, 255, 255, 0.88) !important; font-size: 1.02rem; line-height: 1.65; margin: 0; }
+
+    .library-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+    .library-stat-box { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 16px; padding: 14px 12px; text-align: center; }
+    .library-stat-box strong { display: block; color: var(--gold); font-size: 1.35rem; font-family: "Manrope", sans-serif; font-weight: 800; }
+    .library-stat-box span { font-size: 0.78rem; color: rgba(255, 255, 255, 0.82); font-weight: 600; }
+
+    .database-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(17, 29, 69, 0.03);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 24px;
+      align-items: center;
+      transition: all .25s ease;
+    }
+    .database-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(17, 29, 69, 0.08); border-color: var(--royal); }
+    .database-badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--ivory); border: 1px solid var(--line); color: var(--royal); font-size: 0.78rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+    .database-card h3 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 800; }
+    .database-card p { font-size: 0.95rem; color: rgba(17, 29, 69, 0.7); line-height: 1.6; margin-bottom: 16px; }
+    .database-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .database-tag { font-size: 0.78rem; padding: 4px 10px; border-radius: 8px; background: rgba(17, 29, 69, 0.04); color: var(--ink); font-weight: 600; }
+
+    .database-action-box { background: var(--ivory); border: 1px solid var(--line); border-radius: 20px; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+    .database-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; border-radius: 999px; background: var(--royal); color: #fff !important; font-weight: 800; font-size: 0.9rem; transition: all .2s ease; }
+    .database-btn:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(31, 92, 172, 0.25); }
+
+    .guide-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 30px; margin-top: 32px; box-shadow: 0 6px 20px rgba(17, 29, 69, 0.03); }
+    .guide-card h3 { font-size: 1.3rem; margin-bottom: 16px; font-weight: 800; }
+    .guide-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .guide-step { background: var(--ivory); border-radius: 16px; padding: 20px; border: 1px solid rgba(17,29,69,0.06); }
+    .guide-step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: var(--ink); display: grid; place-items: center; font-weight: 800; font-size: 0.9rem; margin-bottom: 12px; }
+    .guide-step h4 { font-size: 1rem; margin-bottom: 6px; font-weight: 800; }
+    .guide-step p { font-size: 0.85rem; color: rgba(17,29,69,0.65); margin: 0; line-height: 1.5; }
+
+    @media (max-width: 992px) {
+      .library-layout { grid-template-columns: 1fr; }
+      .library-sidebar { position: static; }
+      .database-card { grid-template-columns: 1fr; }
+      .library-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .guide-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-utility"></div>
+
+  <div class="site-container">
+    <div class="library-layout">
+      <!-- Left Sidebar Navigation -->
+      <aside class="library-sidebar">
+        <div class="library-nav-card">
+          <div class="library-nav-title">Library Menu</div>
+          <ul class="library-nav-list">
+            <li><a href="library.html"><span>About Library</span></a></li>
+<li><a href="library-membership.html"><span>Membership & Rules</span> <span class="badge">Rules</span></a></li>
+            <li><a href="https://sangamnercollege.vriddhionline.com/DataCenter_01OnlineOPAC.aspx?UniqueID=MALPANI_SENIOR" target="_blank"><span>Web OPAC Search</span> <span class="badge">Online</span></a></li>
+            <li><a href="library-e-databases.html" class="active"><span>E-Resources (Subscribed)</span> <span class="badge">N-LIST</span></a></li>
+            <li><a href="library-open-access-eresources.html"><span>E-Resources (Open Access)</span> <span class="badge">Free</span></a></li>
+            <li><a href="library-instituional-repository.html"><span>Institutional Repository</span> <span class="badge">Archive</span></a></li>
+            <li><a href="/media/pdf/library/Library_Holdings.pdf" target="_blank"><span>Periodicals Holdings</span> <span class="badge">PDF</span></a></li>
+            <li><a href="/media/pdf/library/New Arrivals.PDF" target="_blank"><span>New Arrivals</span> <span class="badge">2026</span></a></li>
+            <li><a href="library-student-corner.html"><span>Student Corner</span></a></li>
+            <li><a href="library-faculty-and-staff.html"><span>Library Staff</span></a></li>
+            <li><a href="library-previous-exam-question-papers.html"><span>Previous Question Papers</span></a></li>
+<li><a href="library-syllabus.html"><span>Syllabus (Department-wise)</span></a></li>
+<li><a href="library-syllabi.html"><span>Syllabi Archive (UG/PG)</span> <span class="badge">Drive</span></a></li>
+            <li><a href="library-syllabus-autonomous.html"><span>Syllabus (Autonomous)</span></a></li>
+            <li><a href="library-syllabus-NEP2020.html"><span>Syllabus (NEP 2020)</span></a></li>
+            <li><a href="library-photo-gallery.html"><span>Photo Gallery</span></a></li>
+            <li><a href="library-faq.html"><span>Library FAQ</span></a></li>
+            <li><a href="https://docs.google.com/forms/d/1rRw9FhOQtESBDl0fJdW80o5QQdUk5Vi8EdlgZnI_oyM/edit?usp=sharing" target="_blank"><span>Library Feedback</span> <span class="badge">Form</span></a></li>
+          </ul>
+        </div>
+
+        <div class="library-hours-card">
+          <h4><span aria-hidden="true">🕒</span> Working Hours</h4>
+          <div class="library-hours-list">
+            <div class="library-hours-item"><span>Reading Hall</span> <strong>7:30 AM – 6:00 PM</strong></div>
+            <div class="library-hours-item"><span>Issue / Return</span> <strong>9:30 AM – 5:00 PM</strong></div>
+            <div class="library-hours-item"><span>Night Library</span> <strong>6:00 PM – 11:00 PM</strong></div>
+            <div class="library-hours-item"><span>Sundays & Holidays</span> <strong>8:00 AM – 2:00 PM</strong></div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="library-main-content">
+        <!-- Hero Feature Banner -->
+        <div class="library-hero-banner">
+          <span class="library-hero-eyebrow">Digital Knowledge Gateway</span>
+          <h2>Subscribed E-Resources & Databases</h2>
+          <p>Sangamner College subscribes to national digital library initiatives including INFLIBNET N-LIST and DELNET, giving students, researchers, and faculty 24/7 access to millions of full-text peer-reviewed journals, e-books, and research databases.</p>
+          
+          <div class="library-stats-grid">
+            <div class="library-stat-box">
+              <strong>6,000+</strong>
+              <span>Subscribed E-Journals</span>
+            </div>
+            <div class="library-stat-box">
+              <strong>1,99,500+</strong>
+              <span>Full-Text E-Books</span>
+            </div>
+            <div class="library-stat-box">
+              <strong>3 Crore+</strong>
+              <span>DELNET Union Records</span>
+            </div>
+            <div class="library-stat-box">
+              <strong>24 / 7</strong>
+              <span>Remote Access</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subscribed Database 1: N-LIST -->
+        <div class="database-card">
+          <div>
+            <span class="database-badge">INFLIBNET MHRD Initiative</span>
+            <h3>N-LIST (Inflibnet Consortium)</h3>
+            <p>National Library and Information Services Infrastructure for Scholarly Content. Provides cross-access to top academic publishers including JSTOR, Cambridge University Press, Oxford University Press, Springer, Elsevier, AIP, APS, and Taylor & Francis.</p>
+            <div class="database-tags">
+              <span class="database-tag">6,000+ E-Journals</span>
+              <span class="database-tag">1,99,500+ E-Books</span>
+              <span class="database-tag">Off-Campus Access</span>
+              <span class="database-tag">Mobile Compatible</span>
+            </div>
+          </div>
+          <div class="database-action-box">
+            <span style="font-size:0.8rem; font-weight:700; color:rgba(17,29,69,0.6);">Official Portal</span>
+            <a href="https://nlist.inflibnet.ac.in/" target="_blank" class="database-btn">Launch N-LIST →</a>
+          </div>
+        </div>
+
+        <!-- Subscribed Database 2: DELNET -->
+        <div class="database-card">
+          <div>
+            <span class="database-badge">Developing Library Network</span>
+            <h3>DELNET (Network Portal)</h3>
+            <p>Developing Library Network offers access to over 3 crore bibliographic records of books, periodicals, articles, non-print materials, and inter-library resource sharing for academic institutions across South Asia.</p>
+            <div class="database-tags">
+              <span class="database-tag">Union Catalog Books</span>
+              <span class="database-tag">Article Database</span>
+              <span class="database-tag">Inter-Library Loan</span>
+              <span class="database-tag">Document Delivery</span>
+            </div>
+          </div>
+          <div class="database-action-box">
+            <span style="font-size:0.8rem; font-weight:700; color:rgba(17,29,69,0.6);">Official Portal</span>
+            <a href="http://www.delnet.in/" target="_blank" class="database-btn">Launch DELNET →</a>
+          </div>
+        </div>
+
+        <!-- Subscribed Database 3: Web OPAC Catalog -->
+        <div class="database-card">
+          <div>
+            <span class="database-badge">Vriddhi ERP System</span>
+            <h3>Sangamner College Web OPAC</h3>
+            <p>Online Public Access Catalog for Sangamner College Library. Search physical collection titles, author indexes, accession numbers, issue status, and place book reservations online.</p>
+            <div class="database-tags">
+              <span class="database-tag">1.22 Lakh Holdings</span>
+              <span class="database-tag">Real-Time Status</span>
+              <span class="database-tag">Title Search</span>
+              <span class="database-tag">College OPAC</span>
+            </div>
+          </div>
+          <div class="database-action-box">
+            <span style="font-size:0.8rem; font-weight:700; color:rgba(17,29,69,0.6);">College OPAC</span>
+            <a href="https://sangamnercollege.vriddhionline.com/DataCenter_01OnlineOPAC.aspx?UniqueID=MALPANI_SENIOR" target="_blank" class="database-btn">Launch Web OPAC →</a>
+          </div>
+        </div>
+
+        <!-- Access Guidelines Card -->
+        <div class="guide-card">
+          <h3>How to Access Subscribed E-Resources</h3>
+          <div class="guide-steps">
+            <div class="guide-step">
+              <div class="guide-step-num">1</div>
+              <h4>Obtain Credentials</h4>
+              <p>Visit the library helpdesk or contact the Librarian to activate your personalized N-LIST / DELNET user account.</p>
+            </div>
+            <div class="guide-step">
+              <div class="guide-step-num">2</div>
+              <h4>Login to Portal</h4>
+              <p>Click on the respective portal link above and enter your college-registered email address and assigned password.</p>
+            </div>
+            <div class="guide-step">
+              <div class="guide-step-num">3</div>
+              <h4>Search & Download</h4>
+              <p>Search millions of full-text articles and e-books. Download or bookmark research papers directly to your device.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+
+</html>

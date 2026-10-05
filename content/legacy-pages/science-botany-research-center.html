@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Botany Research Center — Science &amp; Technology, Sangamner College.">
+  <title>Botany Research Center — Science &amp; Technology | Sangamner College</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/site-pages.css">
+  <script defer src="assets/header-footer.js"></script>
+  <style>
+    /* Responsive tables: full table on desktop, labelled cards on phones */
+    .rc-table-wrap { width: 100%; margin: 1rem 0 1.5rem; overflow-x: auto; border: 1px solid #dbe3ef; border-radius: 1rem; background: #fff; box-shadow: 0 10px 30px rgba(15,23,42,.05); }
+    .rc-table-wrap .rc-table { width: 100% !important; min-width: 0; margin: 0; border: 0; border-collapse: collapse; border-radius: 0; box-shadow: none; }
+    .rc-table-wrap .rc-table th,
+    .rc-table-wrap .rc-table td { padding: .8rem 1rem !important; border: 0 !important; border-bottom: 1px solid #e2e8f0 !important; font-size: .85rem; line-height: 1.55; text-align: left; vertical-align: top; }
+    .rc-table-wrap .rc-table thead th { background: #1e3a8a !important; color: #fff !important; font-size: .72rem; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; vertical-align: middle; }
+    .rc-table-wrap .rc-table thead .rc-subhead th { background: #1d4ed8 !important; }
+    .rc-table-wrap .rc-table thead th[colspan] { border-bottom: 1px solid rgba(255,255,255,.2) !important; }
+    .rc-table-wrap .rc-table td { color: #475569; background: #fff; }
+    .rc-table-wrap .rc-table tbody tr:nth-child(even) td { background: #f8fafc; }
+    .rc-table-wrap .rc-table tbody tr:hover td { background: #eff6ff; }
+    .rc-table-wrap .rc-table tbody tr:last-child td { border-bottom: 0 !important; }
+    .rc-table-wrap .rc-table .rc-num { width: 4.5rem; color: #1e40af; font-weight: 800; }
+    .rc-table-wrap .rc-table .rc-primary { color: #0f172a; font-weight: 800; }
+    .rc-table-wrap .rc-table .rc-center { text-align: center; }
+    .rc-table-wrap .rc-table .rc-empty { color: #94a3b8; }
+    .rc-table-wrap .rc-table td[data-label="Year"], .rc-table-wrap .rc-table td[data-label^="Grants"] { white-space: nowrap; }
+
+    @media (max-width: 720px) {
+      .rc-table-wrap { overflow: visible; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+      .rc-table-wrap .rc-table, .rc-table-wrap .rc-table tbody, .rc-table-wrap .rc-table tr { display: block; width: 100% !important; }
+      .rc-table-wrap .rc-table thead { display: none; }
+      .rc-table-wrap .rc-table tbody tr { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem 1rem; margin-bottom: .75rem; padding: 1rem; border: 1px solid #e2e8f0; border-radius: 1rem; background: #fff; box-shadow: 0 6px 18px rgba(15,23,42,.05); }
+      .rc-table-wrap .rc-table tbody tr td { display: block; padding: 0 !important; border: 0 !important; background: transparent !important; text-align: left; font-size: .85rem; }
+      .rc-table-wrap .rc-table tbody td::before { content: attr(data-label); display: block; margin-bottom: .15rem; color: #64748b; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+      .rc-table-wrap .rc-table tbody td:not(.rc-num):not(.rc-center) { grid-column: 1 / -1; }
+      .rc-table-wrap .rc-table .rc-num { position: absolute; top: .85rem; right: .85rem; display: grid; width: 1.9rem; height: 1.9rem; place-items: center; border-radius: 999px; background: #eff6ff !important; font-size: .75rem; }
+      .rc-table-wrap .rc-table .rc-num::before { display: none; }
+      .rc-table-wrap .rc-table .rc-primary { padding-right: 2.4rem !important; font-size: .95rem; }    }
+
+    /* PhD scholar cards */
+    .rc-scholars { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+    .rc-scholar { display: flex; gap: 1.1rem; height: 100%; padding: 1.1rem; border: 1px solid #e2e8f0; border-radius: 1.25rem; background: #fff; box-shadow: 0 6px 20px rgba(15,23,42,.05); transition: box-shadow .2s ease, transform .2s ease; }
+    .rc-scholar:hover { box-shadow: 0 14px 32px rgba(15,23,42,.1); transform: translateY(-2px); }
+    .rc-scholar .rc-scholar-photo { flex: 0 0 auto; align-self: flex-start; width: 120px; height: 150px; max-width: none; border-radius: .9rem; object-fit: cover; object-position: center top; background: #f1f5f9; box-shadow: 0 0 0 4px #eff6ff; }
+    .rc-scholar-body { display: flex; min-width: 0; flex: 1; flex-direction: column; gap: .5rem; }
+    .rc-scholar .rc-scholar-name { margin: 0; color: #0f172a; font-size: 1rem; font-weight: 800; line-height: 1.3; }
+    .rc-scholar .rc-scholar-guide { align-self: flex-start; margin: 0; padding: .2rem .6rem; border-radius: 999px; background: #eff6ff; color: #1e40af; font-size: .75rem; font-weight: 700; }
+    .rc-scholar-facts { display: grid; gap: .3rem; margin: 0; }
+    .rc-scholar-facts > div { display: block; font-size: .82rem; line-height: 1.45; }
+    .rc-scholar-facts dt { display: inline; color: #64748b; font-weight: 700; }
+    .rc-scholar-facts dt::after { content: ": "; }
+    .rc-scholar-facts dd { display: inline; margin: 0; color: #334155; }
+    .rc-scholar .rc-scholar-topic { margin: 0; padding: .6rem .75rem; border-left: 3px solid #f59e0b; border-radius: 0 .6rem .6rem 0; background: #fffbeb; color: #334155; font-size: .82rem; line-height: 1.5; }
+    .rc-scholar-topic span { display: block; margin-bottom: .15rem; color: #92400e; font-size: .66rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .rc-scholar a { color: #1d4ed8; font-weight: 700; text-decoration: none; }
+    .rc-scholar a:hover { color: #c2410c; text-decoration: underline; }
+    .rc-scholar .rc-scholar-email { margin-top: auto; font-size: .82rem; overflow-wrap: anywhere; }
+    @media (max-width: 480px) {
+      .rc-scholar { flex-direction: column; align-items: center; text-align: center; }
+      .rc-scholar .rc-scholar-photo { align-self: center; width: 140px; height: 175px; }
+      .rc-scholar-body { align-items: center; width: 100%; }
+      .rc-scholar .rc-scholar-guide { align-self: center; }
+      .rc-scholar-facts { text-align: center; }
+      .rc-scholar .rc-scholar-topic { width: 100%; text-align: left; }
+    }
+
+    /* Partner logos and campus photos */
+    .rc-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .rc-logos img { width: 100%; height: 96px; padding: .75rem; border: 1px solid #e2e8f0; border-radius: 1rem; background: #fff; object-fit: contain; }
+    .rc-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1rem; }
+    .rc-gallery figure { margin: 0; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 1.25rem; background: #f1f5f9; aspect-ratio: 4 / 3; }
+    .rc-gallery figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+    .rc-gallery figure:hover img { transform: scale(1.03); }
+    @media (prefers-reduced-motion: reduce) { .rc-scholar, .rc-gallery figure img { transition: none; } .rc-scholar:hover { transform: none; } }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans">
+  <div class="site-utility"></div>
+
+  <main class="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
+    <div class="relative overflow-hidden rounded-3xl bg-blue-900 text-white p-6 sm:p-7 mb-6 sm:mb-8">
+      <a href="science.html" class="relative z-10 inline-flex items-center gap-1.5 text-sm font-bold opacity-80 hover:opacity-100 mb-3">← All Science &amp; Technology departments</a>
+      <div class="relative z-10 flex items-center gap-4">
+        <span class="grid w-14 h-14 flex-shrink-0 place-items-center rounded-2xl bg-white/40 text-2xl" aria-hidden="true">⚗</span>
+        <div>
+          <span class="block text-xs font-extrabold uppercase tracking-widest opacity-70 mb-1">Science &amp; Technology</span>
+          <h1 class="text-xl sm:text-2xl font-extrabold">Botany — Research Center</h1>
+        </div>
+      </div>
+      <div class="absolute -right-10 -top-16 w-48 h-48 rounded-full border-[30px] border-white/15" aria-hidden="true"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-6 sm:gap-8 items-start">
+      <nav aria-label="Department section navigation" class="rounded-2xl border border-slate-200 bg-white p-3 lg:sticky lg:top-6">
+        <div class="px-2 pb-2 mb-1 text-xs font-extrabold uppercase tracking-widest text-slate-400 border-b border-slate-100">Explore department</div>
+        <ul class="space-y-1 pt-2">
+          <li><a href="science-botany.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-100 text-slate-700 font-bold text-sm transition-colors"><span>Profile</span><span aria-hidden="true">›</span></a></li>
+          <li><a href="science-botany-faculty-profile.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-100 text-slate-700 font-bold text-sm transition-colors"><span>Faculty Profile</span><span aria-hidden="true">›</span></a></li>
+          <li><a href="science-botany-research-center.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-blue-700 text-white font-extrabold text-sm shadow-sm"><span>Research Center</span><span aria-hidden="true">›</span></a></li>
+          <li><a href="science-botany-bos.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-100 text-slate-700 font-bold text-sm transition-colors"><span>BOS</span><span aria-hidden="true">›</span></a></li>
+          <li><a href="science-botany-photogallery.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-100 text-slate-700 font-bold text-sm transition-colors"><span>Photo Gallery</span><span aria-hidden="true">›</span></a></li>
+          <li><a href="science-botany-campus-flora.html" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl hover:bg-slate-100 text-slate-700 font-bold text-sm transition-colors"><span>Campus Flora</span><span aria-hidden="true">›</span></a></li>
+        </ul>
+      </nav>
+
+      <article class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-8 shadow-sm">
+        <div class="space-y-1">
+
+
+
+
+           
+
+                    <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th rowspan="2" scope="col">Sr. No.</th>
+                  <th rowspan="2" scope="col">Name of the Research Guide</th>
+                  <th rowspan="2" scope="col">Field of Research</th>
+                  <th colspan="2" scope="colgroup" class="rc-center">No. of Ph.D. Students</th>
+                  <th rowspan="2" scope="col">Profile</th>
+                </tr>
+                <tr class="rc-subhead">
+                  <th scope="col" class="rc-center">Ongoing</th>
+                  <th scope="col" class="rc-center">Awarded</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Research Guide" class="rc-primary">Dr. S. D. Jadhav</td>
+                  <td data-label="Field of Research">Plant Pathology, Phytochemistry</td>
+                  <td data-label="Ph.D. Ongoing" class="rc-center">02</td>
+                  <td data-label="Ph.D. Awarded" class="rc-empty rc-center">—</td>
+                  <td data-label="Profile"><strong>CV</strong></td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Research Guide" class="rc-primary">Dr. A. N. Tambe</td>
+                  <td data-label="Field of Research">Plant Pathology Phytochemistry,</td>
+                  <td data-label="Ph.D. Ongoing" class="rc-center">02</td>
+                  <td data-label="Ph.D. Awarded" class="rc-empty rc-center">—</td>
+                  <td data-label="Profile"><strong>CV</strong></td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Research Guide" class="rc-primary">Dr. P. B. Roylawar</td>
+                  <td data-label="Field of Research">Plant-Microbe Interaction, Molecular Plant Pathology, Metagenomics, Plant Stress Biology</td>
+                  <td data-label="Ph.D. Ongoing" class="rc-center">02</td>
+                  <td data-label="Ph.D. Awarded" class="rc-empty rc-center">—</td>
+                  <td data-label="Profile"><strong>CV</strong></td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Research Guide" class="rc-primary">Dr. M.S. Khyade</td>
+                  <td data-label="Field of Research">Ethnopharmacology, Pharmacognosy, Phytochemistry, Nutrition and Antioxidant</td>
+                  <td data-label="Ph.D. Ongoing" class="rc-center">02</td>
+                  <td data-label="Ph.D. Awarded" class="rc-empty rc-center">—</td>
+                  <td data-label="Profile"><strong>CV</strong></td>
+                </tr>
+              </tbody>
+              </table></div>
+
+             
+
+
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Research Advisory</h3>
+            
+              <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Name of the Expert</th>
+                  <th scope="col">Organization</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Dr. Suresh Gawande</td>
+                  <td data-label="Organization">Principle Scientist, <strong>ICAR-Directorate of Onion and Garlic Research, Pune</strong></td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Dr. Mandar Datar</td>
+                  <td data-label="Organization">Scientist, MACS-Agharkar Research Institute, Pune</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Prof. (Dr.) Milind Sardesai</td>
+                  <td data-label="Organization">Professor, Department of Botany, Savitribai Phule Pune University, Pune</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Dr. Ganesh C. Nikalje</td>
+                  <td data-label="Organization">Assistant Professor, R. K. Talreja College, Affiliated to University of Mumbai, India</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">5</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Dr. Manoj Patil</td>
+                  <td data-label="Organization" class="rc-empty">—</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">6</td>
+                  <td data-label="Name of the Expert" class="rc-primary">Dr. Prashant Shingote</td>
+                  <td data-label="Organization">Assistant Professor, Dr Panjabrao Deshmukh Agricultural University, Akola (Dr PDKV, Akola)</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">PhD Students</h3>
+            <div class="rc-scholars">
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-s-k-jadhav.jpg" alt="Photo of Mr. Swapnil Kashinath Jadhav" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Mr. Swapnil Kashinath Jadhav</h4>
+                <p class="rc-scholar-guide">Guide: Dr. S. D. Jadhav</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc., B.Ed., GATE, SET</dd></div>
+                <div><dt>Mobile</dt><dd><a href="tel:9850831934">9850831934</a></dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Nutritional Composition, and Bioactive Potential of Wild Edible Fungi from Kolhapur District of Maharashtra.</p>
+                <a class="rc-scholar-email" href="mailto:swapniljadhav2222@gmail.com">swapniljadhav2222@gmail.com</a>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-g-l-shinde.jpg" alt="Photo of Ms. Gauri Laxman Shinde" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Ms. Gauri Laxman Shinde</h4>
+                <p class="rc-scholar-guide">Guide: Dr. S. D. Jadhav</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc., B.Ed., PET</dd></div>
+                <div><dt>Mobile</dt><dd><a href="tel:9850831934">9850831934</a></dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Green Synthesis of Zinc Oxide(ZnO) nanoparticles Using Selected Indian Spices and their applications in Seed Priming.</p>
+                <a class="rc-scholar-email" href="mailto:gaurishinde6997@gmail.com">gaurishinde6997@gmail.com</a>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-s-s-kokate.jpg" alt="Photo of Kokate Snehal Sudhakar" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Kokate Snehal Sudhakar</h4>
+                <p class="rc-scholar-guide">Guide: Dr. A. N. Tambe</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Address</dt><dd>Samarth Nagar, Barshi road, Paranda.</dd></div>
+                <div><dt>Mobile</dt><dd><a href="tel:8605676517">8605676517</a></dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Comparative assessment on biological activity of ZnO nanoparticles biosynthesized using some species of Lamiaceae family.</p>
+                <a class="rc-scholar-email" href="mailto:kokatess1111@gmail.com">kokatess1111@gmail.com</a>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-n-ambhore.jpg" alt="Photo of Mrs. Nikita Ambhore" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Mrs. Nikita Ambhore</h4>
+                <p class="rc-scholar-guide">Guide: Dr. A. N. Tambe</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc., B.Ed., PET</dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Phytochemical analysis and biological potential of selected weeds from Ahmednagar, District (M.S.)</p>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-s-kasar.jpg" alt="Photo of Ms. Shreya Kasar" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Ms. Shreya Kasar</h4>
+                <p class="rc-scholar-guide">Guide: Dr. P. B. Roylawar</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc; NET-JRF; SET; GATE</dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Investigating the dual role of nanoparticles in managing onion fungal disease and modulating rhizosphere microbiome</p>
+                <a class="rc-scholar-email" href="mailto:shreyakasar12@gmail.com">shreyakasar12@gmail.com</a>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-d-shirsat.jpg" alt="Photo of Mr. Dhananjay Shirsat" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Mr. Dhananjay Shirsat</h4>
+                <p class="rc-scholar-guide">Guide: Dr. P. B. Roylawar</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc Agricultural Biotechnology; SET</dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Exploring Rhizosphere microflora for the biological control of onion (Allium cepa L.) pest</p>
+                <a class="rc-scholar-email" href="mailto:dhananjayvshirsat@gmail.com">dhananjayvshirsat@gmail.com</a>
+              </div>
+            </article>
+            <article class="rc-scholar">
+              <img src="/media/images/phd-student-s-kamble.jpg" alt="Photo of Mr. Swapnil Kamble" loading="lazy" width="120" height="150" class="rc-scholar-photo">
+              <div class="rc-scholar-body">
+                <h4 class="rc-scholar-name">Mr. Swapnil Kamble</h4>
+                <p class="rc-scholar-guide">Guide: Dr. M. S. Khyade</p>
+                <dl class="rc-scholar-facts">
+                <div><dt>Qualification</dt><dd>M.Sc; NET</dd></div>
+                </dl>
+                <p class="rc-scholar-topic"><span>Research topic</span>Formulating Quality Control Standards for Selected Ethnomedicinal Plants from Bhimashankar Wildlife Sanctuary, (MS) India</p>
+                <a class="rc-scholar-email" href="mailto:sdkamble999@gmail.com">sdkamble999@gmail.com</a>
+              </div>
+            </article>
+            </div>
+
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Research Grants Received</h3>
+            
+              <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Principle Investigator</th>
+                  <th scope="col">Grants(Rs)</th>
+                  <th scope="col">Agency</th>
+                  <th scope="col">Year</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Title" class="rc-primary">In-Situ Conservation of Rare, Endemic and Threatened Plants of Kalsubai -Harishchandragad Wildlife Sanctuary</td>
+                  <td data-label="Principle Investigator">Dr. M. S. Khyade</td>
+                  <td data-label="Grants(Rs)">6,75,000/-</td>
+                  <td data-label="Agency">Government of Maharashtra Wildlife Department, Nasik (MS), India</td>
+                  <td data-label="Year">2016-18</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Title" class="rc-primary">An inventory of medicinal plants used by tribes of Kalsubai-Harishchandragarh wildlife Sanctuary for kidney stones and in vitro antilithiatic activity of some selected plants</td>
+                  <td data-label="Principle Investigator">Dr. M. S. Khyade</td>
+                  <td data-label="Grants(Rs)">2,70,000/-</td>
+                  <td data-label="Agency">BCUD, Savitribai Phule Pune University,Pune</td>
+                  <td data-label="Year">2016-18</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Title" class="rc-primary">Unravelling the nutritional profiling of two underutilized wild vegetables (Smithia bigemina and Smithia purpurea) as emerging crops in light of climate change</td>
+                  <td data-label="Principle Investigator">Dr. M. S. Khyade</td>
+                  <td data-label="Grants(Rs)">62,000/-</td>
+                  <td data-label="Agency">Shikshan Prasarak Sanstha, Sangamner</td>
+                  <td data-label="Year">2023-25</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Title" class="rc-primary">Evaluating AGN Biofertilizer-Induced Changes in the soil Microbiome associated with Tomato Plants (Solanum lycopersicum)</td>
+                  <td data-label="Principle Investigator">Dr. P. B. Roylawar</td>
+                  <td data-label="Grants(Rs)">2,80,000/-</td>
+                  <td data-label="Agency">GreenBay Biotech. International Pvt. Ltd.</td>
+                  <td data-label="Year">2024-26</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">5</td>
+                  <td data-label="Title" class="rc-primary">Comparative Metagenomic Analysis to Reveal Rhizosphere Microbial Community Composition and Function in wild and cultivated Alliums</td>
+                  <td data-label="Principle Investigator">Dr. P. B. Roylawar</td>
+                  <td data-label="Grants(Rs)">1,20,000/-</td>
+                  <td data-label="Agency">Shikshan Prasarak Sanstha, Sangamner</td>
+                  <td data-label="Year">2023-25</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Student Achievement</h3>
+            
+              <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Student</th>
+                  <th scope="col">Fellowship Received</th>
+                  <th scope="col">Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Student" class="rc-primary">Miss. Shreya Kasar</td>
+                  <td data-label="Fellowship Received">The Finish National Agency for Education (EDUFI Grant)</td>
+                  <td data-label="Location">University of Helsinki, Finland</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Student" class="rc-primary">Ms. Snehal Bhandari</td>
+                  <td data-label="Fellowship Received">Young Professional</td>
+                  <td data-label="Location">ICAR-DOGR Pune</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+				
+
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">MOU</h3>
+            
+                  <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Institute/Industry</th>
+                  <th scope="col">Area</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Institute/Industry" class="rc-primary">ICAR- Directorate of Onion and Garlic Research, Rajgurunagar, Pune</td>
+                  <td data-label="Area">Research, Training Programme, OJT</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Institute/Industry" class="rc-primary">Indian Women Scientists' Association, Kolhapur Branch</td>
+                  <td data-label="Area">Research Organization</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Institute/Industry" class="rc-primary">Swayamsiddh Agro product Pvt.Ltd.Kanwade Mala, Sawarchol Tal.Sangamner,Dist.Ahmadnagar Pin- 422605</td>
+                  <td data-label="Area">Research Organization</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Institute/Industry" class="rc-primary">Siddhakala Ayurved Mahavidyalaya , Sangamner Pimparne Road ,Sangamner Khurd, Tal. Sangamner,Dist.Ahmednager Pin-422605</td>
+                  <td data-label="Area">Research Organization</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+    				  
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Placement </h3>
+            
+              <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Name Of Student</th>
+                  <th scope="col">Company Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Name Of Student" class="rc-primary">MS. Smitha dokhare</td>
+                  <td data-label="Company Name">Agrotmissa Products LLP.<br>5th Floor, B Wing, Roongta Business Plaza, Next To Go Gas Pump, Near Om Nagar, Adgaon Naka, Nashik 422003</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Name Of Student" class="rc-primary">Ms. Harshali Dighe</td>
+                  <td data-label="Company Name">Agrotmissa Products LLP.<br>5th Floor, B Wing, Roongta Business Plaza, Next To Go Gas Pump, Near Om Nagar, Adgaon Naka, Nashik 422003</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Name Of Student" class="rc-primary">Ms. Kanchan Shinde</td>
+                  <td data-label="Company Name">Agrotmissa Products LLP.<br>5th Floor, B Wing, Roongta Business Plaza, Next To Go Gas Pump, Near Om Nagar, Adgaon Naka, Nashik 422003</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Name Of Student" class="rc-primary">Mr. Pankaj yadav</td>
+                  <td data-label="Company Name" class="rc-empty">—</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">5</td>
+                  <td data-label="Name Of Student" class="rc-primary">Mr. Hari waliba bomble</td>
+                  <td data-label="Company Name">SUVARN RESHIM FARM</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">6</td>
+                  <td data-label="Name Of Student" class="rc-primary">Ms. Snehal Bhandari</td>
+                  <td data-label="Company Name">ICAR-DOGR Pune</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+
+            
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Industrial Collaboration: </h3>
+            
+              <div class="rc-table-wrap"><table class="rc-table">
+              <thead>
+                <tr>
+                  <th scope="col">Sr. No.</th>
+                  <th scope="col">Name of Industry</th>
+                  <th scope="col">Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">1</td>
+                  <td data-label="Name of Industry" class="rc-primary">Microbial Solutions</td>
+                  <td data-label="Location">Hingoli, Maharashtra</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">2</td>
+                  <td data-label="Name of Industry" class="rc-primary">Radvocks Laboratories and RND Consultancy</td>
+                  <td data-label="Location">Pune, Maharashtra</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">3</td>
+                  <td data-label="Name of Industry" class="rc-primary">Pioneer in Veterinary Diagnostics (PVD)</td>
+                  <td data-label="Location">Pune, Maharashtra</td>
+                </tr>
+                <tr>
+                  <td data-label="Sr. No." class="rc-num">4</td>
+                  <td data-label="Name of Industry" class="rc-primary">Kamal Agro Biotech</td>
+                  <td data-label="Location">Shirur, Maharashtra</td>
+                </tr>
+              </tbody>
+              </table></div>
+            
+
+            <div class="rc-logos">
+              <img src="/media/images/industrial-logo1.jpg" alt="Industry partner logo 1" loading="lazy" />
+              <img src="/media/images/industrial-logo2.jpg" alt="Industry partner logo 2" loading="lazy" />
+              <img src="/media/images/industrial-logo3.jpg" alt="Industry partner logo 3" loading="lazy" />
+              <img src="/media/images/industrial-logo4.jpg" alt="Industry partner logo 4" loading="lazy" />
+            </div>
+
+            <h3 class="text-base font-extrabold text-blue-800 mt-6 mb-2">Campus Contrubution:</h3>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">As part of our commitment to enhancing the college campus’s biodiversity, the Botany department successfully undertook the transplantation of a 62-year-old Ficus religiosa (Pimpal) tree. This delicate process was carried out with a meticulous scientific approach, ensuring minimal disruption to the plant’s health and growth.</p>
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-4">The transplantation involved careful planning and execution, including root pruning, soil preparation, and the use of growth stimulants to facilitate the tree’s acclimatization in its new location. Our faculty collaborated with horticulturists and environmental scientists to ensure the process adhered to best practices in plant conservation and transplantation. This initiative not only preserves the historical significance of the tree but also contributes to the ecological health of our campus, fostering a greener, more sustainable environment for future generations</p>
+            <div class="rc-gallery">
+              <figure><img src="/media/images/campus-contrubution-img1.jpg" alt="Transplanting the 62-year-old Ficus religiosa (Pimpal) tree on campus" loading="lazy" /></figure>
+              <figure><img src="/media/images/campus-contrubution-img2.jpg" alt="The transplanted Ficus religiosa (Pimpal) tree at its new location" loading="lazy" /></figure>
+            </div>
+
+    		
+      </div>
+      </article>
+    </div>
+  </main>
+
+  <div class="site-footer"></div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --ink: #111d45;
+  --blue: #183b73;
+  --royal: #1f5cac;
+  --gold: #ffd84d;
+  --ivory: #fffaf0;
+  --sand: #f3e5cc;
+  --coral: #f15b3a;
+  --white: #fff;
+  --line: rgba(17, 29, 69, .12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body.modern-page {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: "DM Sans", "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+}
+:where(body.modern-page) a { color: var(--royal); text-decoration: none; }
+:where(body.modern-page) a:hover { color: var(--coral); }
+:where(body.modern-page) img { max-width: 100%; height: auto; }
+:where(body.modern-page) h1,
+:where(body.modern-page) h2,
+:where(body.modern-page) h3,
+:where(body.modern-page) h4 {
+  margin-top: 0;
+  color: inherit;
+  font-family: "Manrope", "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
+  line-height: 1.25;
+}
+:where(body.modern-page) h1 { font-size: clamp(1.8rem, 3vw, 2.5rem); }
+:where(body.modern-page) h2 { font-size: clamp(1.55rem, 2.4vw, 2rem); }
+:where(body.modern-page) h3 { font-size: 1.35rem; }
+body.modern-page p, body.modern-page li { font-size: 1rem; }
+
+/* Hide the duplicated legacy chrome while keeping original page content. */
+body.modern-page > .toplinks,
+body.modern-page > .toplogosect,
+body.modern-page > .topbluesect,
+body.modern-page > nav.navbar,
+body.modern-page > footer:not(.site-footer),
+body.modern-page > .copyright { display: none !important; }
+
+/* Header, navigation, page-hero banner and footer are built with Tailwind
+   utility classes directly in assets/header-footer.js — no component CSS needed here. */
+
+.legacy-page-content {
+  width: min(100% - 40px, 1280px);
+  margin: 0 auto;
+  padding: 48px 0 64px;
+}
+.legacy-page-content > .container,
+body.modern-page .container {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin-inline: auto !important;
+  padding-inline: 0 !important;
+}
+body.modern-page .row { display: flex; flex-wrap: wrap; gap: 24px; margin: 0 !important; }
+body.modern-page [class*="col-lg-"],
+body.modern-page [class*="col-md-"],
+body.modern-page [class*="col-sm-"] { flex: 1 1 280px; max-width: 100%; padding: 0 !important; }
+body.modern-page .col-lg-12,
+body.modern-page .col-md-12 { flex-basis: 100%; width: 100%; }
+body.modern-page .col-lg-8,
+body.modern-page .col-md-8 { flex: 2 1 560px; }
+body.modern-page .col-lg-4,
+body.modern-page .col-md-4 { flex: 1 1 280px; }
+
+:where(body.modern-page .content, body.modern-page article, body.modern-page .card, body.modern-page .panel, body.modern-page .servicebox) {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 14px 40px rgba(17,29,69,.07);
+}
+:where(body.modern-page article, body.modern-page .card, body.modern-page .panel) { padding: 24px; }
+:where(body.modern-page .servicebox) { display: block; height: 100%; padding: 22px; }
+body.modern-page .servicebox:hover { transform: translateY(-3px); box-shadow: 0 18px 44px rgba(17,29,69,.12); }
+body.modern-page ul, body.modern-page ol { padding-left: 1.35rem; }
+body.modern-page li { margin-bottom: .45rem; }
+body.modern-page hr { border: 0; border-top: 1px solid var(--line); }
+body.modern-page table { width: 100% !important; border-collapse: collapse; overflow: hidden; }
+:where(body.modern-page table) { border-radius: 16px; background: var(--white); box-shadow: 0 10px 35px rgba(17,29,69,.06); }
+:where(body.modern-page th) { background: var(--blue); color: var(--white); text-align: left; }
+body.modern-page th, body.modern-page td { padding: 13px 15px !important; border: 1px solid var(--line) !important; vertical-align: top; }
+:where(body.modern-page tr:nth-child(even) td) { background: rgba(243,229,204,.35); }
+:where(body.modern-page) .btn,
+:where(body.modern-page) button:where(:not([role="tab"])),
+:where(body.modern-page) input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--blue);
+  color: var(--white);
+  font: 700 .95rem "DM Sans", sans-serif;
+}
+/* Tab buttons sit on a sliding indicator, so they must stay transparent. */
+:where(body.modern-page button[role="tab"]) { border: 0; background: transparent; cursor: pointer; font-family: "DM Sans", sans-serif; }
+body.modern-page input,
+body.modern-page select,
+body.modern-page textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+}
+body.modern-page textarea { min-height: 120px; }
+
+@media (max-width: 800px) {
+  .legacy-page-content { padding-block: 32px 48px; }
+}

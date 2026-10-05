@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sangamner College — an autonomous, NAAC A+ institution offering transformative education in Arts, Commerce, Science and vocational studies.">
+  <title>Sangamner College — Learn. Discover. Lead.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#111d45",
+            forest: "#183b73",
+            leaf: "#1f5cac",
+            lime: "#ffd84d",
+            cream: "#fffaf0",
+            sand: "#f3e5cc",
+            coral: "#f15b3a"
+          },
+          fontFamily: {
+            sans: ["DM Sans", "sans-serif"],
+            display: ["Manrope", "Noto Sans Devanagari", "Nirmala UI", "Mangal", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 24px 70px rgba(17, 29, 69, .14)"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+    .grain {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+    }
+    .hero-mask { background: linear-gradient(90deg, rgba(9,22,57,.95) 0%, rgba(15,43,86,.79) 38%, rgba(15,43,86,.13) 70%, transparent 100%); }
+    .reveal { opacity: 0; transform: translateY(20px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .home-nav-item { position: relative; }
+    .home-nav-trigger { display: inline-flex; align-items: center; padding: 7px 12px; border-radius: 999px; transition: background .2s ease, color .2s ease; }
+    .home-nav-trigger:hover, .home-nav-item:focus-within .home-nav-trigger, .home-nav-item.open .home-nav-trigger { background: rgba(255,255,255,.1); color: #ffd84d; }
+    .home-nav-trigger::after { content: ""; width: 6px; height: 6px; margin: -3px 0 0 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .2s ease, margin .2s ease; }
+    .home-nav-item:hover .home-nav-trigger::after, .home-nav-item:focus-within .home-nav-trigger::after, .home-nav-item.open .home-nav-trigger::after { margin-top: 3px; transform: rotate(225deg); }
+    .home-nav-row > a { padding: 7px 12px; border-radius: 999px; transition: background .2s ease, color .2s ease; }
+    .home-nav-row > a:hover { background: rgba(255,255,255,.1); }
+    .home-submenu { position: absolute; z-index: 100; top: calc(100% + 16px); left: -16px; display: none; width: 260px; padding: 10px; border: 1px solid rgba(17,29,69,.12); border-radius: 16px; background: #fff; box-shadow: 0 20px 55px rgba(17,29,69,.2); color: #111d45; }
+    .home-submenu::before { content: ""; position: absolute; right: 0; bottom: 100%; left: 0; height: 18px; }
+    .home-submenu a { display: block; padding: 9px 11px; border-radius: 9px; }
+    .home-submenu a:hover { background: #fffaf0; color: #1f5cac; }
+    .home-nav-item:hover .home-submenu, .home-nav-item:focus-within .home-submenu, .home-nav-item.open .home-submenu { display: block; }
+    @media (max-width: 768px) {
+      .hero-mask { background: linear-gradient(90deg, rgba(9,22,57,.94), rgba(15,43,86,.68)); }
+    }
+  </style>
+</head>
+<body class="bg-cream font-sans text-ink antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-5 focus:py-3">Skip to content</a>
+
+  <div class="bg-ink px-5 py-2 text-sm text-white lg:px-10">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-4">
+      <p class="flex items-center gap-3"><span class="rounded-full bg-lime px-3 py-1 font-bold text-ink">Admissions 2026–27</span><span class="hidden text-white/70 sm:inline">Applications are now open</span><a href="application.html" class="font-bold text-lime hover:underline">Apply today →</a></p>
+      <div class="hidden items-center gap-5 text-white/70 lg:flex"><a href="tel:+917620111689" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="phone" class="h-4 w-4"></i> 76201 11689</a><a href="contact.html" class="inline-flex items-center gap-2 hover:text-white"><i data-lucide="map-pin" class="h-4 w-4"></i> Sangamner, Maharashtra</a></div>
+    </div>
+  </div>
+
+  <header class="relative z-50 bg-cream">
+    <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-5 px-5 py-3 lg:px-10">
+      <a href="index.html" class="flex min-w-0 items-center gap-4" aria-label="Sangamner College home">
+        <span class="flex h-20 w-28 shrink-0 items-center justify-center"><img src="/media/assets/sangamner-college-logo.png" alt="Sangamner College emblem" class="max-h-20 max-w-full object-contain"></span>
+        <span class="min-w-0 border-l border-ink/15 pl-4">
+          <span class="block font-display text-lg font-extrabold leading-tight text-ink sm:text-xl">Sangamner College</span>
+          <span class="mt-1 hidden max-w-2xl text-sm font-semibold leading-5 text-ink/65 md:block">Shikshan Prasarak Sanstha’s Sangamner Nagarpalika Arts, D. J. Malpani Commerce & B. N. Sarda Science College</span>
+          <span class="hidden text-sm text-ink/55 lg:block">शिक्षण प्रसारक संस्थेचे संगमनेर नगरपालिक कला, दा. ज. मालपाणी वाणिज्य आणि ब. ना. सारडा विज्ञान महाविद्यालय</span>
+          <span class="mt-1 block text-sm font-bold text-leaf">Autonomous College · Est. 1961</span>
+        </span>
+      </a>
+      <div class="hidden items-center gap-2 xl:flex">
+        <span class="rounded-full border border-ink/10 bg-white px-3 py-2 text-sm font-bold text-leaf">NAAC A+</span>
+        <span class="rounded-full border border-ink/10 bg-white px-3 py-2 text-sm font-bold text-leaf">CGPA 3.58</span>
+        <span class="rounded-full border border-ink/10 bg-white px-3 py-2 text-sm font-bold text-leaf">DBT Star</span>
+        <a href="application.html" class="ml-2 inline-flex items-center gap-2 rounded-full bg-coral px-5 py-3 text-sm font-bold text-ink transition hover:-translate-y-0.5"><i data-lucide="send" class="h-4 w-4"></i> Apply now</a>
+      </div>
+      <button id="menuButton" class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest text-white xl:hidden" aria-label="Open menu" aria-expanded="false">
+        <svg id="menuIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+
+    <nav class="hidden border-t border-white/10 bg-forest text-white xl:block" aria-label="Main navigation">
+      <div class="home-nav-row mx-auto flex max-w-[1440px] items-center justify-between gap-2 px-10 py-3 text-sm font-semibold">
+        <a class="rounded-full bg-lime px-4 py-2 text-ink" href="index.html">Home</a>
+        <div class="home-nav-item"><button class="home-nav-trigger transition hover:text-lime" type="button" aria-expanded="false" aria-haspopup="true">About</button><div class="home-submenu"><a href="about-sp-sanstha.html">About S.P. Sanstha</a><a href="about-college.html">About College</a><a href="organogram.html">Organogram</a></div></div>
+        <a class="transition hover:text-lime" href="administration.html">Administration</a>
+        <div class="home-nav-item"><button class="home-nav-trigger transition hover:text-lime" type="button" aria-expanded="false" aria-haspopup="true">Autonomy</button><div class="home-submenu"><a href="autonomous-governing-body.html">Governing Body</a><a href="autonomous-composition-academic-council.html">Academic Council</a><a href="autonomous-bos.html">Board of Studies</a><a href="autonomous-finance-committee.html">Finance Committee</a><a href="meeting-minutes.html">Meeting Minutes</a><a href="autonomous-committee-new.html">Other Committees</a><a href="ugc-compliance.html#undertaking">Undertaking</a><a href="ugc-compliance.html">UGC Compliance</a></div></div>
+        <div class="home-nav-item"><button class="home-nav-trigger transition hover:text-lime" type="button" aria-expanded="false" aria-haspopup="true">Departments</button><div class="home-submenu"><a href="arts.html">Humanities</a><a href="commerce.html">Commerce & Management</a><a href="science.html">Science & Technology</a><a href="vocational-degrees.html">Vocational Courses</a><a href="physical-education.html">Physical Education</a><a href="faculty-details.html">Details of Faculty</a></div></div>
+        <a class="transition hover:text-lime" href="iqac.html">IQAC</a>
+        <a class="transition hover:text-lime" href="library.html">Library</a>
+        <a class="transition hover:text-lime" href="examination.html">Examination</a>
+        <a class="transition hover:text-lime" href="photo-gallery.html">Photos</a>
+        <a class="transition hover:text-lime" href="contact.html">Contact</a>
+        <a class="transition hover:text-lime" href="naturopathy.html">Naturopathy</a>
+        <a class="transition hover:text-lime" href="aicte-bba-bca.html">AICTE-BBA/BCA</a>
+      </div>
+    </nav>
+
+    <nav id="mobileMenu" class="hidden border-t border-ink/10 bg-cream px-5 py-5 xl:hidden" aria-label="Mobile navigation">
+      <div class="grid gap-1 font-semibold">
+        <a class="rounded-xl bg-white px-4 py-3" href="index.html">Home</a>
+        <details class="rounded-xl px-4 py-3 open:bg-white"><summary class="cursor-pointer">About</summary><div class="mt-3 grid gap-1 border-l-2 border-gold pl-3 font-medium"><a class="py-2" href="about-sp-sanstha.html">About S.P. Sanstha</a><a class="py-2" href="about-college.html">About College</a><a class="py-2" href="organogram.html">Organogram</a></div></details>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="administration.html">Administration</a>
+        <details class="rounded-xl px-4 py-3 open:bg-white"><summary class="cursor-pointer">Autonomy</summary><div class="mt-3 grid gap-1 border-l-2 border-gold pl-3 font-medium"><a class="py-2" href="autonomous-governing-body.html">Governing Body</a><a class="py-2" href="autonomous-composition-academic-council.html">Academic Council</a><a class="py-2" href="autonomous-bos.html">Board of Studies</a><a class="py-2" href="autonomous-finance-committee.html">Finance Committee</a><a class="py-2" href="meeting-minutes.html">Meeting Minutes</a><a class="py-2" href="autonomous-committee-new.html">Other Committees</a><a class="py-2" href="ugc-compliance.html#undertaking">Undertaking</a><a class="py-2" href="ugc-compliance.html">UGC Compliance</a></div></details>
+        <details class="rounded-xl px-4 py-3 open:bg-white"><summary class="cursor-pointer">Departments</summary><div class="mt-3 grid gap-1 border-l-2 border-gold pl-3 font-medium"><a class="py-2" href="arts.html">Humanities</a><a class="py-2" href="commerce.html">Commerce & Management</a><a class="py-2" href="science.html">Science & Technology</a><a class="py-2" href="vocational-degrees.html">Vocational Courses</a><a class="py-2" href="physical-education.html">Physical Education</a><a class="py-2" href="faculty-details.html">Details of Faculty</a></div></details>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="iqac.html">IQAC</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="library.html">Library</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="examination.html">Examination</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="photo-gallery.html">Photos</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="contact.html">Contact</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="naturopathy.html">Naturopathy</a>
+        <a class="rounded-xl px-4 py-3 hover:bg-white" href="aicte-bba-bca.html">AICTE-BBA/BCA</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="relative min-h-[620px] overflow-hidden bg-forest md:min-h-[560px]">
+      <div class="absolute inset-0 overflow-hidden" id="heroCarousel">
+        <div class="flex h-full transition-transform duration-1000 ease-in-out" id="heroTrack">
+          <img src="/media/images/slider/slider-img1.jpg" alt="Sangamner College main entrance gate" class="h-full w-full shrink-0 object-cover object-center">
+          <img src="/media/images/gallery/gallery1.jpg" alt="Sangamner College academic building and courtyard" class="h-full w-full shrink-0 object-cover object-center">
+          <img src="/media/images/gallery/gallery4.jpg" alt="Landscaped gardens on the Sangamner College campus" class="h-full w-full shrink-0 object-cover object-center">
+          <img src="/media/images/gallery/gallery10.jpg" alt="Aerial view of Sangamner College campus grounds" class="h-full w-full shrink-0 object-cover object-center">
+        </div>
+      </div>
+      <div class="hero-mask absolute inset-0"></div>
+      <div class="grain absolute inset-0"></div>
+      <div class="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2 lg:left-10 lg:translate-x-0" id="heroDots" role="tablist" aria-label="Hero image slides">
+        <button type="button" class="h-2.5 w-6 rounded-full bg-white/40 transition hover:bg-white/70" data-slide="0" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+        <button type="button" class="h-2.5 w-2.5 rounded-full bg-white/40 transition hover:bg-white/70" data-slide="1" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+        <button type="button" class="h-2.5 w-2.5 rounded-full bg-white/40 transition hover:bg-white/70" data-slide="2" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        <button type="button" class="h-2.5 w-2.5 rounded-full bg-white/40 transition hover:bg-white/70" data-slide="3" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+      </div>
+      <div class="relative mx-auto flex min-h-[620px] max-w-[1440px] items-center px-5 py-12 md:min-h-[560px] lg:px-10">
+        <div class="max-w-3xl text-white">
+          <div class="mb-7 flex flex-wrap gap-2">
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">Autonomous</span>
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">NAAC A+</span>
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">CGPA 3.58</span>
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">DBT Star Status</span>
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">DST FIST</span>
+            <span class="rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-sm font-bold backdrop-blur">Best College Award</span>
+          </div>
+          <p class="mb-4 font-display text-sm font-bold uppercase tracking-[.3em] text-lime">Knowledge with purpose</p>
+          <h1 class="max-w-2xl font-display text-4xl font-extrabold leading-tight tracking-[-.03em] sm:text-5xl">
+            Learn boldly.<br><span class="text-lime">Lead wisely.</span>
+          </h1>
+          <p class="mt-7 max-w-xl text-lg leading-8 text-white/80 sm:text-xl">A vibrant autonomous institution where curiosity becomes capability—and every learner finds the confidence to shape what comes next.</p>
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a href="application.html" class="inline-flex items-center gap-2 rounded-full bg-lime px-7 py-4 font-bold text-forest transition hover:-translate-y-0.5 hover:bg-white">
+              Explore admissions <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#programs" class="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-7 py-4 font-bold text-white backdrop-blur transition hover:bg-white hover:text-forest">Find your program</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-0 right-0 hidden items-center gap-8 rounded-tl-[2rem] bg-cream px-10 py-6 text-ink lg:flex">
+        <div><strong class="block font-display text-2xl">65+</strong><span class="text-sm font-medium text-ink/55">Years of impact</span></div>
+        <div class="h-10 w-px bg-ink/15"></div>
+        <div><strong class="block font-display text-2xl">7,500+</strong><span class="text-sm font-medium text-ink/55">Learners</span></div>
+        <div class="h-10 w-px bg-ink/15"></div>
+        <div><strong class="block font-display text-2xl">40+</strong><span class="text-sm font-medium text-ink/55">Programs</span></div>
+      </div>
+    </section>
+
+    <section class="border-b border-ink/10 bg-white px-5 py-12 lg:px-10">
+      <div class="mx-auto max-w-[1440px]">
+        <div class="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <div>
+            <p class="mb-2 text-sm font-bold uppercase tracking-[.18em] text-leaf">Student essentials</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight">Everything you need, right here.</h2>
+          </div>
+          <p class="text-sm text-ink/50">Academic services and institutional resources</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+          <a href="application.html" class="group relative rounded-2xl bg-lime p-5 transition hover:-translate-y-1"><span class="absolute right-4 top-4 rounded-full bg-coral px-2.5 py-1 text-sm font-extrabold">New</span><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white/60 text-forest"><i data-lucide="clipboard-pen-line"></i></span><strong class="text-base">Admission 2026–27</strong><small class="mt-1 block text-sm text-ink/60">Apply online</small></a>
+          <a href="scholarships-for-students.html" class="group relative rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="absolute right-4 top-4 rounded-full bg-coral px-2.5 py-1 text-sm font-extrabold">New</span><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="badge-indian-rupee"></i></span><strong class="text-base">Scholarships for Students</strong><small class="mt-1 block text-sm text-ink/60">Funding support</small></a>
+          <a href="examination.html" class="group relative rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="absolute right-4 top-4 rounded-full bg-coral px-2.5 py-1 text-sm font-extrabold">New</span><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="file-check-2"></i></span><strong class="text-base">Examination Section</strong><small class="mt-1 block text-sm text-ink/60">Timetables & results</small></a>
+          <a href="students-corner.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="users-round"></i></span><strong class="text-base">Student’s Corner</strong><small class="mt-1 block text-sm text-ink/60">Student resources</small></a>
+          <a href="iqac.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="badge-check"></i></span><strong class="text-base">IQAC</strong><small class="mt-1 block text-sm text-ink/60">Quality assurance</small></a>
+          <a href="aishe-mis.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="database"></i></span><strong class="text-base">AISHE / MIS</strong><small class="mt-1 block text-sm text-ink/60">Institutional data</small></a>
+          <a href="nirf.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="chart-no-axes-column-increasing"></i></span><strong class="text-base">NIRF</strong><small class="mt-1 block text-sm text-ink/60">Rankings & reports</small></a>
+          <a href="innovation-incubation-startup-cell.html" class="group rounded-2xl bg-coral p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white/45 text-ink"><i data-lucide="lightbulb"></i></span><strong class="text-base">Innovation, Incubation & Startup Cell</strong><small class="mt-1 block text-sm text-ink/60">Ideas into impact</small></a>
+          <a href="policies-and-procedures.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="scroll-text"></i></span><strong class="text-base">Policies and Procedures</strong><small class="mt-1 block text-sm text-ink/60">Institutional policies</small></a>
+          <a href="https://swayam.gov.in/" target="_blank" rel="noopener" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="monitor-play"></i></span><strong class="text-base">SWAYAM</strong><small class="mt-1 block text-sm text-ink/60">Online learning ↗</small></a>
+          <a href="abc.html" class="group relative overflow-hidden rounded-2xl bg-cream p-5 transition hover:-translate-y-1 lg:col-span-2"><span class="absolute -bottom-10 -right-8 h-32 w-32 rounded-full border-[22px] border-leaf/10"></span><span class="relative mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="library-big"></i></span><strong class="relative text-base">Academic Bank of Credits</strong><small class="relative mt-1 block text-sm text-ink/60">Store, transfer and manage your academic credits digitally</small></a>
+          <a href="research.html" class="group relative overflow-hidden rounded-2xl bg-forest p-5 text-white transition hover:-translate-y-1 lg:col-span-2"><span class="absolute -right-8 -top-12 h-36 w-36 rounded-full bg-lime/10"></span><span class="absolute bottom-5 right-6 text-lime/20"><i data-lucide="atom" class="h-20 w-20"></i></span><span class="relative mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white/10 text-lime"><i data-lucide="flask-conical"></i></span><strong class="relative text-base">Research & Discovery</strong><small class="relative mt-1 block text-sm text-white/65">Explore ideas, innovation and institutional research</small></a>
+          <a href="alumni.html" class="group rounded-2xl bg-cream p-5 transition hover:-translate-y-1"><span class="mb-7 grid h-12 w-12 place-items-center rounded-xl bg-white text-leaf"><i data-lucide="graduation-cap"></i></span><strong class="text-base">Alumni</strong><small class="mt-1 block text-sm text-ink/60">Stay connected</small></a>
+        </div>
+        <div class="mt-8 overflow-hidden rounded-[1.5rem] border border-ink/10 bg-cream shadow-soft">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
+            <div class="flex items-center gap-4 bg-coral p-5 text-ink sm:col-span-2 lg:col-span-1">
+              <span class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white/50"><i data-lucide="headphones"></i></span>
+              <div><strong class="block font-display text-lg">Student Help Desk</strong><span class="text-sm text-ink/65">We’re here to help</span></div>
+            </div>
+            <a href="tel:+917620111689" class="group flex items-center gap-3 border-b border-ink/10 p-5 transition hover:bg-lime/35 sm:border-r lg:border-b-0">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-leaf transition group-hover:bg-forest group-hover:text-white"><i data-lucide="clipboard-pen-line" class="h-5 w-5"></i></span>
+              <span><strong class="block text-sm text-ink">Admission / Eligibility</strong><span class="mt-1 block text-sm text-ink/60">76201 11689</span></span>
+            </a>
+            <a href="tel:+918888147195" class="group flex items-center gap-3 border-b border-ink/10 p-5 transition hover:bg-lime/35 sm:border-r lg:border-b-0">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-leaf transition group-hover:bg-forest group-hover:text-white"><i data-lucide="file-check-2" class="h-5 w-5"></i></span>
+              <span><strong class="block text-sm text-ink">Examination</strong><span class="mt-1 block text-sm text-ink/60">+91 88881 47195</span></span>
+            </a>
+            <a href="tel:+918208295578" class="group flex items-center gap-3 border-b border-ink/10 p-5 transition hover:bg-lime/35 sm:border-r lg:border-b-0">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-leaf transition group-hover:bg-forest group-hover:text-white"><i data-lucide="badge-indian-rupee" class="h-5 w-5"></i></span>
+              <span><strong class="block text-sm text-ink">Scholarship</strong><span class="mt-1 block text-sm text-ink/60">+91 82082 95578</span></span>
+            </a>
+            <a href="tel:+918668634665" class="group flex items-center gap-3 border-b border-ink/10 p-5 transition hover:bg-lime/35 sm:border-r lg:border-b-0">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-leaf transition group-hover:bg-forest group-hover:text-white"><i data-lucide="file-user" class="h-5 w-5"></i></span>
+              <span><strong class="block text-sm text-ink">TC / LC / Bonafide</strong><span class="mt-1 block text-sm text-ink/60">+91 86686 34665</span></span>
+            </a>
+            <a href="tel:02425223181" class="group flex items-center gap-3 p-5 transition hover:bg-lime/35">
+              <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-leaf transition group-hover:bg-forest group-hover:text-white"><i data-lucide="message-circle-warning" class="h-5 w-5"></i></span>
+              <span><strong class="block text-sm text-ink">Grievances</strong><span class="mt-1 block text-sm text-ink/60">02425-223181</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[1440px] px-5 py-14 lg:px-10 lg:py-16">
+      <div class="grid gap-7 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+        <div class="reveal">
+          <p class="mb-4 text-sm font-bold uppercase tracking-[.18em] text-leaf">More than a college</p>
+          <h2 class="font-display text-3xl font-extrabold leading-tight tracking-[-.03em] sm:text-4xl">A place to become <span class="text-leaf">more you.</span></h2>
+        </div>
+        <div class="reveal">
+          <p class="max-w-2xl text-lg leading-8 text-ink/65">Since 1961, Sangamner College has opened doors for learners across the region. Our classrooms connect academic depth with practical experience, strong values, and a community that notices every student.</p>
+          <a href="about-college.html" class="mt-6 inline-flex items-center gap-3 font-bold text-leaf hover:gap-4">Discover our story <span>→</span></a>
+        </div>
+      </div>
+      <div class="mt-10 grid gap-4 md:grid-cols-3">
+        <article class="reveal group relative overflow-hidden rounded-[1.5rem] bg-forest p-6 text-white transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="absolute -bottom-12 -right-12 h-32 w-32 rounded-full border-[22px] border-white/5"></span>
+          <span class="relative mb-8 grid h-11 w-11 place-items-center rounded-full bg-lime text-forest"><i data-lucide="briefcase-business" class="h-5 w-5"></i></span>
+          <h3 class="font-display text-2xl font-bold">Learn by doing</h3>
+          <p class="relative mt-2 leading-7 text-white/65">Labs, fieldwork, projects and internships turn knowledge into confident action.</p>
+        </article>
+        <article class="reveal group relative overflow-hidden rounded-[1.5rem] bg-coral p-6 text-ink transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="absolute -right-8 -top-10 h-28 w-28 rounded-full bg-white/10"></span>
+          <span class="relative mb-8 grid h-11 w-11 place-items-center rounded-full bg-white/50"><i data-lucide="telescope" class="h-5 w-5"></i></span>
+          <h3 class="font-display text-2xl font-bold">Think beyond borders</h3>
+          <p class="relative mt-2 leading-7 text-ink/65">Research, digital learning and interdisciplinary programs expand every horizon.</p>
+        </article>
+        <article class="reveal group relative overflow-hidden rounded-[1.5rem] bg-lime p-6 text-ink transition hover:-translate-y-1 hover:shadow-soft">
+          <span class="absolute -bottom-10 -right-8 h-28 w-28 rotate-12 rounded-3xl border-2 border-forest/5"></span>
+          <span class="relative mb-8 grid h-11 w-11 place-items-center rounded-full bg-white/55"><i data-lucide="heart-handshake" class="h-5 w-5"></i></span>
+          <h3 class="font-display text-2xl font-bold">Grow together</h3>
+          <p class="relative mt-2 leading-7 text-ink/65">Mentors, peers and an active campus community make progress deeply personal.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="programs" class="bg-forest px-5 py-14 text-white lg:px-10 lg:py-16">
+      <div class="mx-auto max-w-[1440px]">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div class="reveal">
+            <p class="mb-4 text-sm font-bold uppercase tracking-[.18em] text-lime">Shape your future</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-[-.03em] sm:text-4xl">Find your direction.</h2>
+          </div>
+          <p class="max-w-md leading-7 text-white/60">Choose a pathway that matches your curiosity and builds the skills the world needs.</p>
+        </div>
+        <div class="mt-9 grid gap-4 md:grid-cols-2">
+          <a href="arts.html" class="group relative min-h-[190px] overflow-hidden rounded-[1.5rem] border border-white/15 bg-white/[.06] p-6 transition hover:-translate-y-1 hover:bg-white/[.1]">
+            <i data-lucide="palette" class="absolute -bottom-5 -right-3 h-32 w-32 text-lime/[.07] transition group-hover:rotate-6 group-hover:scale-105"></i>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-lime"><i data-lucide="palette" class="h-5 w-5"></i> Humanities · Languages · Social sciences</span>
+            <h3 class="mt-8 font-display text-3xl font-bold">Arts</h3>
+            <p class="mt-3 max-w-sm text-white/60">Read culture, understand society, and discover new ways to tell human stories.</p>
+            <span class="absolute bottom-5 right-6 grid h-10 w-10 place-items-center rounded-full border border-white/15 text-xl transition group-hover:bg-lime group-hover:text-forest">↗</span>
+          </a>
+          <a href="science.html" class="group relative min-h-[190px] overflow-hidden rounded-[1.5rem] bg-lime p-6 text-ink transition hover:-translate-y-1">
+            <i data-lucide="atom" class="absolute -bottom-5 -right-3 h-32 w-32 text-forest/[.08] transition group-hover:rotate-12 group-hover:scale-105"></i>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="microscope" class="h-5 w-5"></i> Life · Physical · Computational sciences</span>
+            <h3 class="mt-8 font-display text-3xl font-bold">Science</h3>
+            <p class="mt-3 max-w-sm text-ink/60">Question the known, test possibilities, and build solutions through discovery.</p>
+            <span class="absolute bottom-5 right-6 grid h-10 w-10 place-items-center rounded-full border border-ink/15 text-xl transition group-hover:bg-forest group-hover:text-white">↗</span>
+          </a>
+          <a href="commerce.html" class="group relative min-h-[190px] overflow-hidden rounded-[1.5rem] bg-white p-6 text-ink transition hover:-translate-y-1">
+            <i data-lucide="chart-candlestick" class="absolute -bottom-5 -right-3 h-32 w-32 text-leaf/[.06] transition group-hover:-rotate-6 group-hover:scale-105"></i>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="landmark" class="h-5 w-5"></i> Business · Finance · Management</span>
+            <h3 class="mt-8 font-display text-3xl font-bold">Commerce</h3>
+            <p class="mt-3 max-w-sm text-ink/60">Understand markets, lead organizations, and create responsible enterprise.</p>
+            <span class="absolute bottom-5 right-6 grid h-10 w-10 place-items-center rounded-full border border-ink/15 text-xl transition group-hover:bg-forest group-hover:text-white">↗</span>
+          </a>
+          <a href="vocational-degrees.html" class="group relative min-h-[190px] overflow-hidden rounded-[1.5rem] bg-coral p-6 text-ink transition hover:-translate-y-1">
+            <i data-lucide="cog" class="absolute -bottom-5 -right-3 h-32 w-32 text-ink/[.06] transition group-hover:rotate-12 group-hover:scale-105"></i>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-ink/65"><i data-lucide="wrench" class="h-5 w-5"></i> Skills · Technology · Employability</span>
+            <h3 class="mt-8 font-display text-3xl font-bold">Vocational</h3>
+            <p class="mt-3 max-w-sm text-ink/60">Build industry-ready expertise with focused, practical learning pathways.</p>
+            <span class="absolute bottom-5 right-6 grid h-10 w-10 place-items-center rounded-full border border-ink/15 text-xl transition group-hover:bg-forest group-hover:text-white">↗</span>
+          </a>
+        </div>
+        <div class="mt-6 text-center">
+          <a href="departments.html" class="inline-flex rounded-full border border-white/30 px-7 py-3.5 font-bold transition hover:bg-white hover:text-forest">View all departments</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[1440px] px-5 py-14 lg:px-10 lg:py-16">
+      <div class="grid gap-5 lg:grid-cols-[.65fr_1.35fr]">
+        <div class="reveal relative overflow-hidden rounded-[1.5rem] bg-coral p-7">
+          <i data-lucide="megaphone" class="absolute -bottom-7 -right-5 h-40 w-40 text-ink/[.06]"></i>
+          <span class="mb-7 grid h-12 w-12 place-items-center rounded-full bg-white/50 text-ink"><i data-lucide="bell-ring" class="h-5 w-5"></i></span>
+          <p class="mb-3 text-sm font-bold uppercase tracking-[.18em] text-ink/60">Stay informed</p>
+          <h2 class="font-display text-3xl font-extrabold tracking-[-.03em]">What’s happening now.</h2>
+          <p class="relative mt-4 max-w-sm leading-7 text-ink/65">Notices, deadlines and important updates—all in one place.</p>
+          <a href="news-and-events.html" class="relative mt-6 inline-flex items-center gap-3 rounded-full bg-ink px-5 py-3 font-bold text-white transition hover:bg-forest">View all updates →</a>
+        </div>
+        <div class="divide-y divide-ink/10 overflow-hidden rounded-[1.5rem] border border-ink/10 bg-white px-5">
+          <a href="application.html" class="group grid gap-3 py-4 transition hover:bg-lime/20 sm:grid-cols-[120px_1fr_auto] sm:items-center sm:px-3">
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-coral"><i data-lucide="file-plus-2" class="h-5 w-5"></i> Admission</span>
+            <span><strong class="block text-lg">F.Y.B.A. Admission Notice</strong><small class="mt-1 block text-ink/50">एफ.वाय.बी.ए. प्रवेश सूचना</small></span>
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/10 transition group-hover:bg-forest group-hover:text-white">→</span>
+          </a>
+          <a href="application.html" class="group grid gap-3 py-4 transition hover:bg-lime/20 sm:grid-cols-[120px_1fr_auto] sm:items-center sm:px-3">
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="file-plus-2" class="h-5 w-5"></i> Admission</span>
+            <span><strong class="block text-lg">F.Y.B.Sc. Admission Notice</strong><small class="mt-1 block text-ink/50">एफ.वाय.बी.एस्सी. प्रवेश सूचना</small></span>
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/10 transition group-hover:bg-forest group-hover:text-white">→</span>
+          </a>
+          <a href="application.html" class="group grid gap-3 py-4 transition hover:bg-lime/20 sm:grid-cols-[120px_1fr_auto] sm:items-center sm:px-3">
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="file-plus-2" class="h-5 w-5"></i> Admission</span>
+            <span><strong class="block text-lg">F.Y.B.Voc. Admission Notice</strong><small class="mt-1 block text-ink/50">एफ.वाय.बी.व्होक. प्रवेश सूचना</small></span>
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/10 transition group-hover:bg-forest group-hover:text-white">→</span>
+          </a>
+          <a href="application.html" class="group grid gap-3 py-4 transition hover:bg-lime/20 sm:grid-cols-[120px_1fr_auto] sm:items-center sm:px-3">
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="file-plus-2" class="h-5 w-5"></i> Admission</span>
+            <span><strong class="block text-lg">F.Y.B.Com. Admission Notice</strong><small class="mt-1 block text-ink/50">एफ.वाय.बी.कॉम. प्रवेश सूचना</small></span>
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/10 transition group-hover:bg-forest group-hover:text-white">→</span>
+          </a>
+          <a href="news-and-events.html" class="group grid gap-3 py-4 transition hover:bg-lime/20 sm:grid-cols-[120px_1fr_auto] sm:items-center sm:px-3">
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-leaf"><i data-lucide="archive" class="h-5 w-5"></i> Archive</span>
+            <span><strong class="block text-lg">Academic Year 2024–2025</strong><small class="mt-1 block text-ink/50">अर्थ – 2024–2025</small></span>
+            <span class="grid h-9 w-9 place-items-center rounded-full border border-ink/10 transition group-hover:bg-forest group-hover:text-white">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-sand/55 px-5 py-14 lg:px-10 lg:py-16">
+      <div class="mx-auto max-w-[1440px]">
+        <div class="mb-8">
+          <p class="mb-4 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[.18em] text-leaf"><i data-lucide="messages-square" class="h-5 w-5"></i> Voices & campus life</p>
+          <h2 class="font-display text-3xl font-extrabold tracking-[-.03em] sm:text-4xl">Leadership and happenings.</h2>
+        </div>
+        <div class="grid gap-5 lg:grid-cols-[1.15fr_.85fr]">
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article class="group relative overflow-hidden rounded-[1.5rem] bg-forest p-6 text-white transition hover:-translate-y-1">
+              <i data-lucide="quote" class="absolute -bottom-6 -right-4 h-28 w-28 text-white/[.05]"></i>
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-full bg-lime font-display text-lg font-extrabold text-forest">SM</span>
+                <a href="/media/pdf/Dr-Sanjay-Malpani-bio-data.pdf" class="text-sm font-bold text-lime">View biodata ↗</a>
+              </div>
+              <p class="text-sm font-bold text-white/60">Message from the Chairman</p>
+              <h3 class="mt-2 font-display text-xl font-bold">Dr. Sanjay Malpani</h3>
+              <p class="relative mt-3 leading-6 text-white/65">“It gives me immense pleasure to communicate with you all as the Chairman of an institution rooted in enduring values.”</p>
+              <a href="message-from-the-chairman.html" class="relative mt-4 inline-block font-bold text-lime">Read message →</a>
+            </article>
+            <article class="group relative overflow-hidden rounded-[1.5rem] bg-white p-6 transition hover:-translate-y-1">
+              <i data-lucide="quote" class="absolute -bottom-6 -right-4 h-28 w-28 text-leaf/[.05]"></i>
+              <div class="mb-5 flex items-center justify-between">
+                <span class="grid h-12 w-12 place-items-center rounded-full bg-coral font-display text-lg font-extrabold text-ink">AG</span>
+                <span class="flex gap-3 text-sm font-bold text-leaf"><a href="message-from-the-principal.html">Biodata</a></span>
+              </div>
+              <p class="text-sm font-bold text-ink/55">Message from the Principal</p>
+              <h3 class="mt-2 font-display text-xl font-bold">Prof. Dr. Arun H. Gaikwad</h3>
+              <p class="relative mt-3 leading-6 text-ink/60">“Established to spread knowledge unto the last, we continue to serve as a lighthouse for rural youth.”</p>
+              <a href="message-from-the-principal.html" class="relative mt-4 inline-block font-bold text-leaf">Read message →</a>
+            </article>
+          </div>
+          <div class="rounded-[1.5rem] bg-white p-5 sm:p-6">
+            <div class="flex flex-col justify-between gap-4 border-b border-ink/10 pb-4 sm:flex-row sm:items-center">
+              <h3 class="font-display text-2xl font-extrabold">Events & Happenings</h3>
+              <div class="flex rounded-full bg-cream p-1" role="tablist" aria-label="Events">
+                <button class="eventTab rounded-full bg-forest px-4 py-2 text-sm font-bold text-white" data-panel="upcoming" role="tab" aria-selected="true">Upcoming</button>
+                <button class="eventTab rounded-full px-4 py-2 text-sm font-bold text-ink/55" data-panel="past" role="tab" aria-selected="false">Past events</button>
+              </div>
+            </div>
+            <div id="upcoming" class="eventPanel py-3">
+              <div class="flex min-h-[155px] flex-col items-center justify-center text-center">
+                <span class="mb-3 grid h-12 w-12 place-items-center rounded-full bg-lime text-forest"><i data-lucide="calendar-days" class="h-5 w-5"></i></span>
+                <h4 class="font-display text-xl font-bold">New events are on the way</h4>
+                <p class="mt-1 max-w-sm text-sm text-ink/55">Academic, cultural and community events will appear here.</p>
+                <a href="news-and-events.html" class="mt-3 font-bold text-leaf">Browse all news →</a>
+              </div>
+            </div>
+            <div id="past" class="eventPanel hidden divide-y divide-ink/10 py-3">
+              <a href="news-and-events.html" class="flex items-center justify-between py-5 font-semibold"><span>College academic and cultural activities</span><span>→</span></a>
+              <a href="news-and-events.html" class="flex items-center justify-between py-5 font-semibold"><span>Research, innovation and outreach programs</span><span>→</span></a>
+              <a href="photo-gallery.html" class="flex items-center justify-between py-5 font-semibold"><span>Campus memories and photo gallery</span><span>→</span></a>
+            </div>
+            <div class="grid gap-3 border-t border-ink/10 pt-4 sm:grid-cols-2">
+              <a href="https://t.me/SangamnerCollege" target="_blank" rel="noopener" class="flex items-center gap-3 rounded-xl bg-[#229ED9] p-4 font-bold text-white"><i data-lucide="send" class="h-5 w-5"></i> Telegram channel ↗</a>
+              <a href="/media/pdf/Information_broucher-26-27.pdf" target="_blank" class="flex items-center gap-3 rounded-xl bg-coral p-4 font-bold text-ink"><i data-lucide="download" class="h-5 w-5"></i> Brochure 2026–27</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-ink px-5 pt-20 text-white lg:px-10">
+    <div class="mx-auto max-w-[1440px]">
+      <div class="grid gap-12 border-b border-white/10 pb-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="flex h-16 w-24 items-center justify-center rounded-xl bg-white p-1"><img src="/media/assets/sangamner-college-logo.png" alt="Sangamner College emblem" class="max-h-14 w-auto object-contain"></span>
+            <div><strong class="font-display text-lg">Sangamner College</strong><span class="block text-sm font-medium text-white/55">Autonomous</span></div>
+          </div>
+          <p class="mt-6 max-w-sm leading-7 text-white/55">Shikshan Prasarak Sanstha’s Sangamner Nagarpalika Arts, D. J. Malpani Commerce & B. N. Sarda Science College.</p>
+          <p class="mt-4 font-semibold text-lime">Spread knowledge unto the last.</p>
+        </div>
+        <div>
+          <h3 class="mb-5 text-sm font-bold uppercase tracking-[.16em] text-white/55">Explore</h3>
+          <ul class="space-y-3 text-sm text-white/70">
+            <li><a class="hover:text-lime" href="about-sp-sanstha.html">About S.P. Sanstha</a></li>
+            <li><a class="hover:text-lime" href="about-college.html">About College</a></li>
+            <li><a class="hover:text-lime" href="campus.html">Campus</a></li>
+            <li><a class="hover:text-lime" href="alumni.html">Alumni</a></li>
+            <li><a class="hover:text-lime" href="photo-gallery.html">Photo gallery</a></li>
+            <li><a class="hover:text-lime" href="news-and-events.html">News & Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-5 text-sm font-bold uppercase tracking-[.16em] text-white/55">Students</h3>
+          <ul class="space-y-3 text-sm text-white/70">
+            <li><a class="hover:text-lime" href="autonomy.html">Autonomy bodies</a></li>
+            <li><a class="hover:text-lime" href="iqac.html">IQAC</a></li>
+            <li><a class="hover:text-lime" href="application.html">Admissions</a></li>
+            <li><a class="hover:text-lime" href="examination.html">Examination</a></li>
+            <li><a class="hover:text-lime" href="library.html">Library</a></li>
+            <li><a class="hover:text-lime" href="students-corner.html">Student corner</a></li>
+            <li><a class="hover:text-lime" href="/media/pdf/RTI.pdf">RTI information</a></li>
+            <li><a class="hover:text-lime" href="/media/pdf/Cell-for-Prevention-of-Sexual-Harassment-Against-Men-and-Women.pdf" target="_blank" rel="noopener">Cell for Prevention of Sexual Harassment Against Men and Women</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="mb-5 text-sm font-bold uppercase tracking-[.16em] text-white/55">Get in touch</h3>
+          <p class="text-sm leading-7 text-white/70">Sangamner, Ahmednagar<br>Maharashtra, India</p>
+          <a class="mt-3 block text-sm text-lime" href="tel:+917620111689">+91 76201 11689</a>
+          <a class="mt-1 block text-sm text-white/70 hover:text-lime" href="mailto:info@sangamnercollege.edu.in">info@sangamnercollege.edu.in</a>
+          <div class="mt-5 flex flex-wrap gap-3 text-sm font-bold">
+            <a href="https://www.facebook.com/sangamnercollege" target="_blank" rel="noopener" class="rounded-full border border-white/15 px-3 py-2">Facebook</a>
+            <a href="https://www.instagram.com/sangamnercollege/" target="_blank" rel="noopener" class="rounded-full border border-white/15 px-3 py-2">Instagram</a>
+            <a href="https://www.linkedin.com/in/sangamnercollegeofficial/" target="_blank" rel="noopener" class="rounded-full border border-white/15 px-3 py-2">LinkedIn</a>
+            <a href="https://www.youtube.com/channel/UC8erfKdVDhEQN4VbIMjb5hg" target="_blank" rel="noopener" class="rounded-full border border-white/15 px-3 py-2">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col justify-between gap-4 py-7 text-sm text-white/50 sm:flex-row">
+        <p>© 2026 Sangamner College. All rights reserved.</p>
+        <div class="flex gap-5"><a href="rti-info.html">RTI</a><a href="policies-and-procedures.html">Policies</a><a href="contact.html">Contact</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mobileMenu = document.getElementById("mobileMenu");
+    menuButton.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("hidden") === false;
+      menuButton.setAttribute("aria-expanded", open);
+      menuButton.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    document.querySelectorAll(".eventTab").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".eventPanel").forEach((panel) => panel.classList.add("hidden"));
+        document.getElementById(button.dataset.panel).classList.remove("hidden");
+        document.querySelectorAll(".eventTab").forEach((tab) => {
+          tab.classList.remove("bg-forest", "text-white");
+          tab.classList.add("text-ink/55");
+          tab.setAttribute("aria-selected", "false");
+        });
+        button.classList.add("bg-forest", "text-white");
+        button.classList.remove("text-ink/55");
+        button.setAttribute("aria-selected", "true");
+      });
+    });
+    lucide.createIcons({ attrs: { "stroke-width": 1.8 } });
+
+    const navItems = document.querySelectorAll(".home-nav-item");
+    function closeAllNavItems(except) {
+      navItems.forEach((item) => {
+        if (item === except) return;
+        item.classList.remove("open");
+        item.querySelector(".home-nav-trigger").setAttribute("aria-expanded", "false");
+      });
+    }
+    navItems.forEach((item) => {
+      const trigger = item.querySelector(".home-nav-trigger");
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isOpen = item.classList.contains("open");
+        closeAllNavItems(item);
+        item.classList.toggle("open", !isOpen);
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+    });
+    document.addEventListener("click", () => closeAllNavItems());
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeAllNavItems();
+    });
+
+    const heroTrack = document.getElementById("heroTrack");
+    const heroSlides = heroTrack.children;
+    const heroDots = document.querySelectorAll("#heroDots button");
+    let heroIndex = 0;
+    let heroTimer;
+
+    function goToSlide(index) {
+      heroIndex = (index + heroSlides.length) % heroSlides.length;
+      heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+      heroDots.forEach((dot, i) => {
+        const active = i === heroIndex;
+        dot.classList.toggle("w-6", active);
+        dot.classList.toggle("w-2.5", !active);
+        dot.classList.toggle("bg-white/40", !active);
+        dot.classList.toggle("bg-white/90", active);
+        dot.setAttribute("aria-selected", active ? "true" : "false");
+      });
+    }
+
+    function startHeroAutoplay() {
+      clearInterval(heroTimer);
+      heroTimer = setInterval(() => goToSlide(heroIndex + 1), 6000);
+    }
+
+    heroDots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        goToSlide(Number(dot.dataset.slide));
+        startHeroAutoplay();
+      });
+    });
+
+    document.getElementById("heroCarousel").addEventListener("mouseenter", () => clearInterval(heroTimer));
+    document.getElementById("heroCarousel").addEventListener("mouseleave", startHeroAutoplay);
+
+    goToSlide(0);
+    startHeroAutoplay();
+  </script>
+</body>
+</html>
+
+
