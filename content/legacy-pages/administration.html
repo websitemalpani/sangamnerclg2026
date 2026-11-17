@@ -109,7 +109,7 @@
 
     <section aria-labelledby="admin-summary-heading" class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-4 sm:gap-6 mb-8 sm:mb-10">
       <div class="relative overflow-hidden rounded-3xl bg-amber-300 p-6 sm:p-8 flex flex-col justify-center">
-        <span class="inline-flex mb-3 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Academic leadership</span>
+        <span class="inline-flex items-center gap-2 mb-3 text-blue-800 text-xs font-extrabold uppercase tracking-widest"><svg aria-hidden="true" viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-[1.9]" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20v-8m5 8V4m6 16v-5m5 5V8"/><path d="M2 20h20"/></svg>Academic leadership</span>
         <h1 id="admin-summary-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">Leadership built around learners.</h1>
         <p class="text-sm sm:text-base text-slate-700/90 leading-relaxed mb-4">Our academic administration brings together experience, accountability and student-centred decision-making to advance the college's autonomous mission.</p>
         <div class="flex flex-wrap gap-2">
@@ -136,15 +136,21 @@
       </article>
     </section>
 
-    <div class="mb-8 sm:mb-10">
-      <div class="relative inline-flex max-w-full gap-1 overflow-x-auto rounded-full bg-slate-100 border border-slate-200 p-1.5 no-scrollbar" id="adminTabNav" role="tablist" aria-label="Administration sections">
-        <span id="adminTabIndicator" class="absolute top-1.5 bottom-1.5 left-0 rounded-full bg-blue-900 transition-all duration-300 ease-out" aria-hidden="true"></span>
-        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="academic" role="tab" aria-selected="true" aria-controls="panel-academic" id="tabbtn-academic">Academic</button>
-        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="office-bearers" role="tab" aria-selected="false" aria-controls="panel-office-bearers" id="tabbtn-office-bearers">Office Bearers</button>
-        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="grantable-staff" role="tab" aria-selected="false" aria-controls="panel-grantable-staff" id="tabbtn-grantable-staff">Grantable Non-Teaching Staff</button>
-        <button type="button" class="adminTab relative z-10 whitespace-nowrap px-4 sm:px-5 py-2.5 rounded-full text-sm font-extrabold text-slate-700 transition-colors" data-tab="non-grantable-staff" role="tab" aria-selected="false" aria-controls="panel-non-grantable-staff" id="tabbtn-non-grantable-staff">Non Grantable Non-Teaching Staff</button>
+    <section class="mb-6 sm:mb-8" aria-labelledby="administration-directory-heading">
+      <div class="flex flex-wrap items-end justify-between gap-3 mb-3 px-1">
+        <div>
+          <span class="block mb-1 text-blue-800 text-xs font-extrabold uppercase tracking-widest">Administration directory</span>
+          <h2 id="administration-directory-heading" class="text-lg font-extrabold text-slate-900">Find the right team</h2>
+        </div>
+        <p class="max-w-md text-sm text-slate-600 leading-relaxed">Open a full page for each administration group.</p>
       </div>
-    </div>
+      <nav class="admin-page-directory" aria-label="Administration pages">
+        <a href="administration.html"><span>Academic</span><b aria-hidden="true">↗</b></a>
+        <a href="administration-office-bearers.html"><span>Office Bearers</span><b aria-hidden="true">↗</b></a>
+        <a href="administration-grantable-non-teaching-staff.html"><span>Grantable Non-Teaching Staff</span><b aria-hidden="true">↗</b></a>
+        <a href="administration-non-grantable-non-teaching-staff.html"><span>Non Grantable Non-Teaching Staff</span><b aria-hidden="true">↗</b></a>
+      </nav>
+    </section>
 
     <div id="panel-academic" class="adminTabPanel" role="tabpanel" aria-labelledby="tabbtn-academic">
       <section aria-labelledby="leadership-heading" class="mb-8 sm:mb-10">
@@ -491,9 +497,48 @@
       text-align: left;
     }
     .admin-data-table .group-row--orange td { background: #fff7ed; }
+    .admin-page-directory {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: .7rem;
+      padding: .7rem;
+      border: 1px solid #dbe3f0;
+      border-radius: 1.25rem;
+      background: linear-gradient(135deg, #f8fafc, #fffaf0);
+      box-shadow: 0 10px 28px rgba(15, 36, 95, .06);
+    }
+    .admin-page-directory a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      min-height: 4.25rem;
+      padding: .9rem 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      background: #fff;
+      color: #0f245f;
+      font-size: .875rem;
+      font-weight: 800;
+      line-height: 1.3;
+      text-decoration: none;
+      transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+    }
+    .admin-page-directory a b { color: #f05a3d; font-size: 1.1rem; }
+    .admin-page-directory a:hover, .admin-page-directory a:focus-visible {
+      transform: translateY(-2px);
+      border-color: #0f245f;
+      background: #0f245f;
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(15, 36, 95, .16);
+      outline: none;
+    }
+    .admin-page-directory a:hover b, .admin-page-directory a:focus-visible b { color: #ffd451; }
     @media (max-width: 639px) {
       .admin-data-table { margin-inline: -1rem; border-radius: 0; }
       .admin-data-table td, .admin-data-table th { padding-inline: .75rem; }
+      .admin-page-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; padding: .5rem; border-radius: 1rem; }
+      .admin-page-directory a { min-height: 4.75rem; padding: .75rem; font-size: .78rem; border-radius: .8rem; }
     }
   </style>
 

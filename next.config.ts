@@ -1,8 +1,6 @@
 import type { NextConfig } from "next";
 
 const legacyAliases: Record<string, string> = {
-  "/administration-grantable-non-teaching-staff": "/administration",
-  "/administration-non-grantable-non-teaching-staff": "/administration",
   "/arts-sanskrit-publication": "/arts-sanskrit",
   "/arts-sanskrit-research-project": "/arts-sanskrit",
   "/commerce-bba-programme": "/commerce-bba",

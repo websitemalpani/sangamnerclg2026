@@ -17,36 +17,50 @@
   <div class="site-utility"></div>
 
   <main class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10">
-    <header class="max-w-2xl mb-8 sm:mb-10">
-      <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-2">Explore Our Faculties</h1>
-      <p class="text-sm sm:text-base text-slate-600 leading-relaxed">Find an academic pathway that matches your interests, strengths and ambitions.</p>
-    </header>
+    <section class="relative isolate overflow-hidden rounded-3xl bg-slate-900 px-6 py-7 text-white shadow-lg sm:px-8 sm:py-10">
+      <div class="relative z-10 grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
+        <div>
+          <span class="inline-flex items-center gap-2 rounded-full bg-amber-300 px-3 py-1.5 text-xs font-extrabold uppercase tracking-widest text-blue-950"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-4 w-4 fill-none stroke-current stroke-[2]" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 5H12v14H7.5A3.5 3.5 0 0 0 4 20.5v-15ZM20 5.5A3.5 3.5 0 0 0 16.5 5H12v14h4.5a3.5 3.5 0 0 1 3.5 1.5v-15Z"/></svg>Academic pathways</span>
+          <h1 class="mt-4 max-w-2xl text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Choose your area of study</h1>
+          <p class="mt-3 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">Explore the college&rsquo;s main faculties and find a course of study that matches your interests.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4"><strong class="block text-amber-300">4</strong><span class="mt-1 block text-white/70">Main faculties</span></div>
+          <div class="rounded-2xl border border-white/15 bg-white/10 p-4"><strong class="block text-amber-300">1961</strong><span class="mt-1 block text-white/70">College established</span></div>
+        </div>
+      </div>
+      <div class="absolute -right-16 -top-20 -z-10 h-64 w-64 rounded-full border-[34px] border-white/10" aria-hidden="true"></div>
+      <div class="absolute -bottom-24 left-1/2 -z-10 h-48 w-48 rounded-full border-[24px] border-amber-300/20" aria-hidden="true"></div>
+    </section>
 
-    <section aria-label="Academic faculties" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-      <a href="arts.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Humanities</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Languages, social sciences, culture and human experience.</p>
-      </a>
-      <a href="commerce.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Commerce &amp; Management</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Business, finance, accounting and enterprise.</p>
-      </a>
-      <a href="science.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Science &amp; Technology</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Life, physical and computational sciences.</p>
-      </a>
-      <a href="vocational-degrees.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Vocational Courses</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Practical, industry-focused degree pathways.</p>
-      </a>
-      <a href="physical-education.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Physical Education</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Sport, fitness and holistic student development.</p>
-      </a>
-      <a href="mental-moral.html" class="group block rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md hover:border-blue-300 hover:-translate-y-0.5 transition-all">
-        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 group-hover:text-blue-700 mb-2">Mental &amp; Moral Education</h2>
-        <p class="text-sm text-slate-600 leading-relaxed">Values, wellbeing and responsible citizenship.</p>
-      </a>
+    <section aria-labelledby="faculty-directory-heading" class="mt-8 sm:mt-10">
+      <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div><span class="block text-xs font-extrabold uppercase tracking-widest text-blue-800">Faculty directory</span><h2 id="faculty-directory-heading" class="mt-1 text-xl font-extrabold text-slate-900 sm:text-2xl">Four ways to begin</h2></div>
+        <p class="max-w-md text-sm leading-relaxed text-slate-600">Open a faculty to see its departments, courses and academic information.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <a href="arts.html" class="group relative min-h-[220px] overflow-hidden rounded-3xl bg-orange-500 p-6 text-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500 sm:p-7">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/20 text-amber-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A3.5 3.5 0 0 1 7.5 5H12v14H7.5A3.5 3.5 0 0 0 4 20.5v-15ZM20 5.5A3.5 3.5 0 0 0 16.5 5H12v14h4.5a3.5 3.5 0 0 1 3.5 1.5v-15Z"/></svg></span><span class="absolute right-6 top-6 text-2xl text-amber-300 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">&rarr;</span><h3 class="mt-10 text-xl font-extrabold">Humanities</h3><p class="mt-2 max-w-sm text-sm leading-relaxed text-white/80">Languages, social sciences, culture and human experience.</p><span class="absolute -bottom-20 -right-16 h-48 w-48 rounded-full border-[30px] border-white/10" aria-hidden="true"></span>
+        </a>
+        <a href="commerce.html" class="group relative min-h-[220px] overflow-hidden rounded-3xl bg-amber-300 p-6 text-slate-900 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500 sm:p-7">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/60 text-blue-900"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10m5 10V4m5 16v-7m5 7V7"/><path d="M2 20h20"/></svg></span><span class="absolute right-6 top-6 text-2xl text-slate-900 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">&rarr;</span><h3 class="mt-10 text-xl font-extrabold">Commerce &amp; Management</h3><p class="mt-2 max-w-sm text-sm leading-relaxed text-slate-800/75">Business, finance, accounting and enterprise.</p><span class="absolute -bottom-20 -right-16 h-48 w-48 rounded-full border-[30px] border-white/30" aria-hidden="true"></span>
+        </a>
+        <a href="science.html" class="group relative min-h-[220px] overflow-hidden rounded-3xl bg-blue-800 p-6 text-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500 sm:p-7">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-amber-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6m-3 0v6l5.5 8.5A2.5 2.5 0 0 1 15.4 21H8.6a2.5 2.5 0 0 1-2.1-3.5L12 9"/><path d="M8.5 16h7"/></svg></span><span class="absolute right-6 top-6 text-2xl text-amber-300 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">&rarr;</span><h3 class="mt-10 text-xl font-extrabold">Science &amp; Technology</h3><p class="mt-2 max-w-sm text-sm leading-relaxed text-white/75">Life, physical and computational sciences.</p><span class="absolute -bottom-20 -right-16 h-48 w-48 rounded-full border-[30px] border-white/10" aria-hidden="true"></span>
+        </a>
+        <a href="vocational-degrees.html" class="group relative min-h-[220px] overflow-hidden rounded-3xl bg-emerald-700 p-6 text-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500 sm:p-7">
+          <span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/15 text-amber-300"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-6 w-6 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5M9 5h10v10"/><path d="M5 9v10h10"/></svg></span><span class="absolute right-6 top-6 text-2xl text-amber-300 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true">&rarr;</span><h3 class="mt-10 text-xl font-extrabold">Vocational Courses</h3><p class="mt-2 max-w-sm text-sm leading-relaxed text-white/75">Practical, industry-focused degree pathways.</p><span class="absolute -bottom-20 -right-16 h-48 w-48 rounded-full border-[30px] border-white/10" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="additional-areas-heading" class="mt-8 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <div class="flex flex-wrap items-end justify-between gap-3"><div><span class="block text-xs font-extrabold uppercase tracking-widest text-blue-800">Additional areas</span><h2 id="additional-areas-heading" class="mt-1 text-lg font-extrabold text-slate-900">More ways to learn and participate</h2></div><p class="max-w-md text-sm text-slate-600">Academic and student-development opportunities across the college.</p></div>
+      <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <a href="physical-education.html" class="group flex min-h-[106px] items-center gap-4 rounded-2xl bg-orange-50 p-4 transition-colors hover:bg-amber-100 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500"><span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-white text-orange-600"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="m7 21 2-7 3 2 2-5 3 2M9 14l-4-2m7 4 4 3"/></svg></span><span><strong class="block text-base font-extrabold text-slate-900">Physical Education</strong><small class="mt-1 block text-sm leading-relaxed text-slate-600">Sport, fitness and student development.</small></span><span class="ml-auto text-blue-800 transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span></a>
+        <a href="mental-moral.html" class="group flex min-h-[106px] items-center gap-4 rounded-2xl bg-blue-50 p-4 transition-colors hover:bg-blue-100 focus-visible:outline focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-orange-500"><span class="grid h-11 w-11 flex-none place-items-center rounded-xl bg-white text-blue-800"><svg aria-hidden="true" viewBox="0 0 24 24" class="h-5 w-5 fill-none stroke-current stroke-[1.8]" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10Z"/><path d="M9.5 12h5m-2.5-2.5v5"/></svg></span><span><strong class="block text-base font-extrabold text-slate-900">Mental &amp; Moral Education</strong><small class="mt-1 block text-sm leading-relaxed text-slate-600">Values, wellbeing and responsible citizenship.</small></span><span class="ml-auto text-blue-800 transition-transform group-hover:translate-x-1" aria-hidden="true">&rarr;</span></a>
+      </div>
     </section>
   </main>
 

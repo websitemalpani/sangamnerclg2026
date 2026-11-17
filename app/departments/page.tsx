@@ -33,9 +33,9 @@ const schools = [
   {
     id: "humanities",
     number: "01",
-    eyebrow: "Arts & Humanities",
+    eyebrow: "Humanities",
     title: "Ideas that shape society.",
-    intro: "Study language, place, culture and public life through departments grounded in research and regional relevance.",
+    intro: "Explore languages, history, culture and public life through subjects that help us understand people and communities.",
     href: "/arts",
     accent: "blue",
     icon: BookOpenText,
@@ -58,7 +58,7 @@ const schools = [
     number: "02",
     eyebrow: "Commerce & Management",
     title: "Enterprise with perspective.",
-    intro: "Build commercial judgement, leadership and digital fluency for changing organisations and markets.",
+    intro: "Learn the foundations of business, finance and management for changing organisations and markets.",
     href: "/commerce",
     accent: "coral",
     icon: BriefcaseBusiness,
@@ -93,9 +93,9 @@ const schools = [
   {
     id: "vocational",
     number: "04",
-    eyebrow: "Vocational Degrees",
+    eyebrow: "Vocational Courses",
     title: "Knowledge put to work.",
-    intro: "Career-focused programmes combine disciplinary learning with practical experience and industry context.",
+    intro: "Build practical skills alongside your degree through programmes shaped for the workplace.",
     href: "/vocational-degrees",
     accent: "green",
     icon: GraduationCap,
@@ -116,8 +116,8 @@ export default function DepartmentsPage() {
       <main className={styles.page}>
         <section className={styles.hero}>
           <div className={`container ${styles.heroInner}`}>
-            <div><p className={styles.kicker}>Academic directory</p><h1>Find your <em>field.</em></h1></div>
-            <p>Explore every department at Sangamner College, grouped into four academic areas.</p>
+            <div><p className={styles.kicker}>Academic pathways</p><h1>Study with <em>purpose.</em><br />Grow with <em>confidence.</em></h1></div>
+            <p>Explore our four main faculties and choose the subject area that fits where you want to go.</p>
           </div>
         </section>
 

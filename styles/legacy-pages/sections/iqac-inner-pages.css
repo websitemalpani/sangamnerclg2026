@@ -1,0 +1,87 @@
+/* Shared layout for IQAC pages outside the hub, AQAR and policy directories. */
+.legacy-page .iqac-inner-layout{
+  display:grid!important;
+  grid-template-columns:260px minmax(0,1fr)!important;
+  align-items:start!important;
+  gap:1.25rem!important;
+}
+.legacy-page .iqac-inner-nav{
+  position:sticky!important;
+  top:1rem!important;
+  max-height:calc(100vh - 2rem);
+  overflow:auto;
+  border:1px solid #dbe3ef!important;
+  border-radius:18px!important;
+  background:linear-gradient(165deg,#fff,#f5f8fc)!important;
+  box-shadow:0 18px 36px -32px #111d4599!important;
+  scrollbar-width:thin;
+}
+.legacy-page .iqac-inner-nav>ul>li>a.bg-blue-50,
+.legacy-page .iqac-inner-nav>ul>li>a.text-blue-700{
+  background:linear-gradient(135deg,#1f5cac,#153d78)!important;
+  color:#fff!important;
+  box-shadow:0 8px 18px -14px #123f77;
+}
+.legacy-page .iqac-inner-nav details[open]>summary{color:#1f5cac!important}
+.legacy-page .iqac-inner-content{
+  min-width:0;
+  padding:1.75rem!important;
+  border-color:#dbe3ef!important;
+  border-radius:24px!important;
+  background:#fff!important;
+  box-shadow:0 22px 44px -38px #111d458f!important;
+}
+.legacy-page .iqac-inner-content>h2:first-child{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  margin:0 0 1.35rem!important;
+  padding-bottom:1rem;
+  border-bottom:1px solid #dbe3ef;
+  color:#111d45!important;
+  font:800 clamp(1.45rem,2.6vw,2.15rem)/1.1 var(--font-display)!important;
+  letter-spacing:-.035em;
+}
+.legacy-page .iqac-inner-content>h2:first-child::before{
+  content:"IQ";
+  display:grid;
+  width:2.2rem;
+  height:2.2rem;
+  flex:0 0 auto;
+  place-items:center;
+  border-radius:10px;
+  background:#eaf1ff;
+  color:#1f5cac;
+  font:800 .78rem/1 var(--font-display);
+  letter-spacing:.04em;
+}
+.legacy-page .iqac-inner-content :is(h2,h3,h4){color:#123f77!important;letter-spacing:-.015em}
+.legacy-page .iqac-inner-content h3{margin-top:1.8rem!important}
+.legacy-page .iqac-inner-content p{max-width:80ch;color:#40546c!important;line-height:1.72!important}
+.legacy-page .iqac-inner-content :is(ul,ol){max-width:80ch}
+.legacy-page .iqac-inner-content li{margin-block:.35rem;color:#40546c!important;line-height:1.6!important}
+.legacy-page .iqac-inner-content :is(.overflow-x-auto,.faculty-table-wrap,.bos-responsive-wrap){max-width:100%;margin-block:1.25rem!important;border:1px solid #dbe3ef!important;border-radius:14px!important;scrollbar-width:thin}
+.legacy-page .iqac-inner-content table{width:100%;border-collapse:separate;border-spacing:0}
+.legacy-page .iqac-inner-content table :is(th,td){padding:.75rem .9rem!important;border-color:#dbe3ef!important;vertical-align:top}
+.legacy-page .iqac-inner-content table th{background:#123f77!important;color:#fff!important;font-size:.8125rem!important;letter-spacing:.02em}
+.legacy-page .iqac-inner-content table tr:nth-child(even) td{background:#f8fafc}
+.legacy-page .iqac-inner-content img{max-width:100%;height:auto;border-radius:16px;box-shadow:0 12px 28px -24px #111d45}
+.legacy-page .iqac-inner-content a{color:#1f5cac;text-underline-offset:3px}
+@media(max-width:980px){
+  .legacy-page .iqac-inner-layout{grid-template-columns:1fr!important;gap:1rem!important}
+  .legacy-page .iqac-inner-nav{position:static!important;max-height:none}
+  .legacy-page .iqac-inner-nav>ul{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+}
+@media(max-width:700px){
+  .legacy-page .iqac-inner-layout{gap:.85rem!important}
+  .legacy-page .iqac-inner-nav>ul{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .legacy-page .iqac-inner-content{padding:1.15rem!important;border-radius:20px!important}
+  .legacy-page .iqac-inner-content>h2:first-child{font-size:1.35rem!important}
+  .legacy-page .iqac-inner-content table{min-width:560px}
+  .legacy-page .iqac-inner-content table :is(th,td){padding:.65rem .75rem!important;font-size:.8125rem!important}
+}
+@media(max-width:480px){
+  .legacy-page .iqac-inner-nav>ul{grid-template-columns:1fr!important}
+  .legacy-page .iqac-inner-content>h2:first-child{gap:.55rem}
+  .legacy-page .iqac-inner-content>h2:first-child::before{width:2rem;height:2rem}
+}

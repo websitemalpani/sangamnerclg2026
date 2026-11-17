@@ -453,6 +453,26 @@
 .content-page--autonomous-finance-committee .page-hero{padding-block:1.5rem}
 .content-page--autonomous-finance-committee .page-hero h1{font-size:clamp(1.5rem,2.4vw,2rem);margin-block:.45rem}
 .legacy-page--autonomous-finance-committee h1{font-size:1.125rem!important}
+.legacy-page--autonomy{overflow-x:clip}
+.legacy-page--autonomy>main{width:100%;min-width:0}
+.legacy-page--autonomy a{min-width:0}
+.legacy-page--departments{overflow-x:clip}
+.legacy-page--departments>main{width:100%;min-width:0}
+.legacy-page--departments a{min-width:0}
+@media(max-width:640px){
+  .legacy-page--autonomy>main{padding-inline:1rem!important}
+  .legacy-page--autonomy>main>section:first-child{padding:1.5rem!important}
+  .legacy-page--autonomy>main>section:first-child h1{font-size:1.45rem!important}
+  .legacy-page--autonomy>main>section:first-child>div>div:last-child{grid-template-columns:1fr 1fr!important}
+  .legacy-page--autonomy>main>section:nth-child(2)>div:last-child{grid-template-columns:1fr!important}
+  .legacy-page--autonomy>main>section:nth-child(2)>div:last-child>a{min-height:170px}
+  .legacy-page--autonomy>main>section:nth-child(2)>div:last-child>a:first-child{grid-column:auto!important}
+  .legacy-page--departments>main{padding-inline:1rem!important}
+  .legacy-page--departments>main>section:first-child{padding:1.5rem!important}
+  .legacy-page--departments>main>section:first-child h1{font-size:1.45rem!important}
+  .legacy-page--departments>main>section:nth-child(2)>div:last-child{grid-template-columns:1fr!important}
+  .legacy-page--departments>main>section:nth-child(2)>div:last-child>a{min-height:210px}
+}
 @media(max-width:700px){
   .legacy-page{--type-body:.9375rem;--type-small:.8125rem;--type-h1:1.375rem;--type-h2:1.1875rem;--type-h3:1.0625rem}
   .legacy-page :is(th,td){font-size:.8125rem!important}
@@ -638,3 +658,29 @@
   .legacy-page--bvoc-ht-faculty-profile article>.space-y-1>.grid img{width:76px!important;height:94px!important}
   .legacy-page--bvoc-ht-faculty-profile .faculty-table-row td{grid-template-columns:1fr;gap:.15rem}
 }
+
+@media(max-width:700px){
+  .content-page[class*="content-page--library-"]>.page-hero{min-height:0;padding-block:1.45rem}
+  .content-page[class*="content-page--library-"]>.page-hero h1{max-width:100%;font-size:clamp(1.35rem,6.2vw,1.7rem);line-height:1.13;overflow-wrap:anywhere}
+  .content-page[class*="content-page--library-"]>.page-hero p:last-child{font-size:.82rem;overflow-wrap:anywhere}
+}
+
+@media(max-width:700px){
+  .content-page>.page-hero{min-height:0;padding-block:1.45rem}
+  .content-page>.page-hero h1{max-width:100%;font-size:clamp(1.35rem,6.2vw,1.7rem);line-height:1.13;overflow-wrap:anywhere}
+  .content-page>.page-hero p:last-child{font-size:.82rem;overflow-wrap:anywhere}
+}
+
+.legacy-page--examination .overflow-x-auto{max-width:100%;scrollbar-color:#1f5cac #e8eef7;scrollbar-width:thin}
+@media(max-width:700px){
+  .legacy-page--examination>main{padding-inline:1rem!important}
+  .legacy-page--examination .overflow-x-auto{position:relative;margin-inline:-.15rem!important}
+  .legacy-page--examination .overflow-x-auto::after{content:"Swipe to view all columns";display:block;padding:.45rem .7rem;background:#edf3fa;color:#52677f;font-size:.72rem;font-weight:700;letter-spacing:.01em}
+}
+
+/* The official Academic roster currently lists two Vice Principals. */
+.legacy-page--administration article:has(>div>img[src$="admin-laddha.jpg"]){display:none}
+
+.administration-tabs{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.15rem 0 1.8rem}.administration-tabs a{position:relative;isolation:isolate;display:flex;align-items:center;gap:.5rem;min-height:3.05rem;padding:.78rem 1.12rem;border:1px solid #d6e0ed;border-radius:1rem;background:linear-gradient(145deg,#fff,#f8fbff);color:#163560;font-size:.86rem;font-weight:800;line-height:1;text-decoration:none;white-space:nowrap;box-shadow:0 4px 12px rgba(15,36,95,.045);transition:transform .18s ease,border-color .18s ease,background-color .18s ease,color .18s ease,box-shadow .18s ease}.administration-tabs a::before{width:.42rem;height:.42rem;border-radius:50%;background:#f3b51b;box-shadow:0 0 0 3px #fff4cc;content:""}.administration-tabs a:hover,.administration-tabs a:focus-visible{transform:translateY(-2px);border-color:#1f5cac;background:#eef5ff;color:#1554a2;box-shadow:0 9px 18px rgba(31,92,172,.13);outline:none}.administration-tabs a[aria-current="page"]{border-color:#1f5cac;background:linear-gradient(135deg,#e7f0ff,#f8fbff);color:#1554a2;box-shadow:0 8px 18px rgba(31,92,172,.13)}.administration-tabs a[aria-current="page"]::before{background:#1f5cac;box-shadow:0 0 0 4px #cfe1ff}
+@media(max-width:700px){.administration-tabs{flex-wrap:nowrap;overflow-x:auto;margin-block:1rem;padding:0 .1rem .4rem;scrollbar-width:thin}.administration-tabs a{flex:0 0 auto;min-height:2.8rem;padding:.7rem .95rem;font-size:.8rem}}
+

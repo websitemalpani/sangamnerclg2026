@@ -30,19 +30,19 @@ const essentials = [
   ["Academic Bank of Credits", "Manage academic credits", "/abc", BookOpen],
 ] as const;
 
-const stats = [["65+", "Years of impact"], ["7,500+", "Learners"], ["40+", "Programs"], ["3.58", "NAAC CGPA"]] as const;
+const stats = [["65+", "Years of learning"], ["7,500+", "Students"], ["40+", "Programmes"], ["3.58", "NAAC CGPA"]] as const;
 
 const values = [
-  [BriefcaseBusiness, "Learn by doing", "Labs, fieldwork, projects and internships turn knowledge into confident action."],
-  [Telescope, "Think beyond borders", "Research, digital learning and interdisciplinary programs expand every horizon."],
-  [HeartHandshake, "Grow together", "Mentors, peers and an active campus community make progress deeply personal."],
+  [BriefcaseBusiness, "Learn through practice", "Labs, fieldwork, projects and internships bring study into real situations."],
+  [Telescope, "Explore new ideas", "Research and digital learning give students room to question, test and discover."],
+  [HeartHandshake, "Find support", "Teachers, classmates and campus life support students throughout college."],
 ] as const;
 
 const programs: Program[] = [
-  { title: "Arts", tag: "Humanities · Languages · Social sciences", text: "Read culture, understand society, and discover new ways to tell human stories.", href: "/arts", image: "/images/common/arts-economics-img1.jpg", position: "center top", crop: true },
-  { title: "Science", tag: "Life · Physical · Computational sciences", text: "Question the known, test possibilities, and build solutions through discovery.", href: "/science", image: "/images/common/zoology-laboratory.jpg" },
-  { title: "Commerce", tag: "Business · Finance · Management", text: "Understand markets, lead organizations, and create responsible enterprise.", href: "/commerce", image: "/images/common/commerce-bba1.jpg" },
-  { title: "Vocational", tag: "Skills · Technology · Employability", text: "Build industry-ready expertise with focused, practical learning pathways.", href: "/vocational-degrees", image: "/images/common/bvoc-at-img1.jpg" },
+  { title: "Arts", tag: "Humanities · Languages · Social sciences", text: "Study culture, society and the ways people make sense of the world.", href: "/arts", image: "/images/common/arts-economics-img1.jpg", position: "center top", crop: true },
+  { title: "Science", tag: "Life · Physical · Computational sciences", text: "Use observation, experiments and research to understand how things work.", href: "/science", image: "/images/common/zoology-laboratory.jpg" },
+  { title: "Commerce", tag: "Business · Finance · Management", text: "Learn how markets, organisations and financial decisions work.", href: "/commerce", image: "/images/common/commerce-bba1.jpg" },
+  { title: "Vocational", tag: "Skills · Technology · Employability", text: "Build practical skills through focused programmes and hands-on learning.", href: "/vocational-degrees", image: "/images/common/bvoc-at-img1.jpg" },
 ];
 
 const campus = [
@@ -61,23 +61,23 @@ export default function Home() {
     <section className={s.hero}>
       <div className={`container ${s.heroGrid}`}>
         <div className={s.heroCopy}>
-          <p className={s.kicker}><span className={s.pulse} />Admissions 2026-27 are open</p>
-          <h1>Learn <em>boldly.</em><br />Lead <em>wisely.</em></h1>
-          <p className={s.lead}>A vibrant autonomous institution where curiosity becomes capability, and every learner finds the confidence to shape what comes next.</p>
+          <p className={s.kicker}><span className={s.pulse} />Admissions 2026-27 are now open</p>
+          <h1>A place to <em>begin well.</em></h1>
+          <p className={s.lead}>Sangamner College brings good teaching, practical learning and a close campus community together for every student.</p>
           <div className={s.actions}>
             <Link className={`${s.btn} ${s.btnYellow}`} href="/application">Apply for 2026-27 <ArrowUpRight /></Link>
-            <Link className={`${s.btn} ${s.btnLine}`} href="#programs">Find your program</Link>
+            <Link className={`${s.btn} ${s.btnLine}`} href="#programs">View programmes</Link>
+          </div>
+          <div className={s.heroRoutes} aria-label="Study areas">
+            <span>Arts</span><span>Science</span><span>Commerce</span><span>Vocational</span>
           </div>
         </div>
-        <div className={s.collage}>
-          <figure className={`${s.photo} ${s.photoMain}`}><Image src="/images/slider/slider-img1.jpg" alt="Students walking through the Sangamner College gate" fill sizes="(max-width: 900px) 90vw, 40vw" fetchPriority="high" loading="eager" /></figure>
-          <figure className={`${s.photo} ${s.photoGarden}`}><Image src="/images/gallery/gallery10.jpg" alt="Landscaped gardens in the college courtyard" fill sizes="(max-width: 900px) 50vw, 22vw" /></figure>
-          <figure className={`${s.photo} ${s.photoBooks}`}><Image src="/images/common/library-img1.jpg" alt="Rows of bookshelves in the college library" fill sizes="(max-width: 900px) 45vw, 18vw" /></figure>
-          <div className={s.seal} aria-hidden="true">
-            <svg viewBox="0 0 200 200"><defs><path id="seal-circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><text><textPath href="#seal-circle">AUTONOMOUS · NAAC A+ · SINCE 1961 · </textPath></text></svg>
-            <b>A+</b>
-          </div>
-          <div className={s.floatCard}><b>65+</b><span>years opening doors<br />across the region</span></div>
+        <div className={s.heroVisual}>
+          <div className={s.heroVisualTop}><span>Est. 1961</span><span>Sangamner, Maharashtra</span></div>
+          <figure className={s.heroFrame}><Image src="/images/slider/slider-img1.jpg" alt="Students walking through the Sangamner College gate" fill sizes="(max-width: 900px) 92vw, 43vw" fetchPriority="high" loading="eager" /></figure>
+          <div className={s.heroFact}><b>65+</b><span>years serving<br />the region</span></div>
+          <div className={s.heroAccreditation}><b>A+</b><span>NAAC accredited<br />Autonomous college</span></div>
+          <p className={s.heroCaption}>Learn locally. Think widely. Move forward with confidence.</p>
         </div>
       </div>
     </section>
@@ -106,20 +106,20 @@ export default function Home() {
     <section className={s.section}>
       <div className="container">
         <header className={s.heading}>
-          <p className={s.eyebrow}>Start here</p>
-          <h2>Everything you need, <em>right here.</em></h2>
+          <p className={s.eyebrow}>Student services</p>
+          <h2>Useful information, <em>in one place.</em></h2>
         </header>
         <div className={s.bento}>
           <Link href="/application" className={s.bentoHero}>
             <span className={s.bentoLabel}>Admission 2026-27</span>
-            <strong>Your seat for the new academic year is waiting.</strong>
+            <strong>Apply for the 2026-27 academic year.</strong>
             <span className={s.bentoCta}>Apply online <ArrowUpRight /></span>
           </Link>
           {essentials.map(([title, text, href, Icon]) => <Link href={href} className={s.tile} key={title}>
             <Icon /><b>{title}</b><small>{text}</small><ArrowUpRight className={s.tileArrow} />
           </Link>)}
           <Link href="/innovation-incubation-startup-cell" className={s.bentoIdea}>
-            <Lightbulb /><div><b>Innovation & Startup Cell</b><small>Ideas into impact</small></div><ArrowRight className={s.tileArrow} />
+            <Lightbulb /><div><b>Innovation & Startup Cell</b><small>Support for student ideas</small></div><ArrowRight className={s.tileArrow} />
           </Link>
         </div>
       </div>
@@ -130,9 +130,9 @@ export default function Home() {
       <div className={`container ${s.storyGrid}`}>
         <div className={s.year} aria-hidden="true">1961</div>
         <div>
-          <p className={s.eyebrow}>More than a college</p>
+          <p className={s.eyebrow}>Since 1961</p>
           <blockquote className={s.motto}>“Spread knowledge<br /><em>unto the last.</em>”</blockquote>
-          <p className={s.storyText}>Since 1961, Sangamner College has opened doors for learners across the region. Our classrooms connect academic depth with practical experience, strong values, and a community that notices every student.</p>
+          <p className={s.storyText}>Since 1961, Sangamner College has welcomed students from across the region. The college brings together classroom study, practical experience and a close campus community.</p>
           <Link className={s.textLink} href="/about-college">Discover our story <ArrowRight /></Link>
         </div>
       </div>
@@ -146,8 +146,8 @@ export default function Home() {
     <section id="programs" className={`${s.section} ${s.programs}`}>
       <div className="container">
         <header className={`${s.heading} ${s.headingSplit}`}>
-          <div><p className={`${s.eyebrow} ${s.eyebrowLight}`}>Shape your future</p><h2>Find your <em>direction.</em></h2></div>
-          <p>Choose a pathway that matches your curiosity and builds the skills the world needs.</p>
+          <div><p className={`${s.eyebrow} ${s.eyebrowLight}`}>Study options</p><h2>Choose a course that <em>fits you.</em></h2></div>
+          <p>Explore subjects that interest you and courses that help you build useful skills.</p>
         </header>
         <ProgramExplorer programs={programs} />
         <Link className={`${s.btn} ${s.btnLine} ${s.allDepts}`} href="/departments">View all departments <ArrowRight /></Link>
@@ -158,7 +158,7 @@ export default function Home() {
     <section className={s.section}>
       <div className="container">
         <header className={`${s.heading} ${s.headingSplit}`}>
-          <div><p className={s.eyebrow}>Life on campus</p><h2>A campus that <em>breathes.</em></h2></div>
+          <div><p className={s.eyebrow}>Life on campus</p><h2>Space to study, <em>meet and grow.</em></h2></div>
           <Link className={s.textLink} href="/photo-gallery">Open the photo gallery <ArrowRight /></Link>
         </header>
         <div className={s.mosaic}>{campus.map(([src, title, text]) => <Link href="/photo-gallery" key={src} className={s.mosaicItem}>
@@ -184,17 +184,37 @@ export default function Home() {
         <Link href="/research" className={s.research}>
           <Image src="/images/common/zoology-visit-to-research-labs.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 35vw" className={s.researchPhoto} />
           <FlaskConical />
-          <p className={`${s.eyebrow} ${s.eyebrowLight}`}>Research & Discovery</p>
-          <strong>Explore ideas, innovation and institutional research.</strong>
+          <p className={`${s.eyebrow} ${s.eyebrowLight}`}>Research</p>
+          <strong>See the research work taking place across the college.</strong>
           <span className={s.bentoCta}>Explore research <ArrowUpRight /></span>
         </Link>
+      </div>
+    </section>
+
+    {/* Leadership messages */}
+    <section className={`${s.section} ${s.leadership}`} aria-labelledby="leadership-title">
+      <div className="container">
+        <header className={`${s.heading} ${s.leadershipHead}`}>
+          <div><p className={s.eyebrow}>Leadership messages</p><h2 id="leadership-title">Guidance that keeps us <em>grounded.</em></h2></div>
+          <p>Two voices, one commitment: meaningful education for every learner.</p>
+        </header>
+        <div className={s.leadershipGrid}>
+          <article className={`${s.leadershipCard} ${s.chairmanCard}`}>
+            <Image className={s.leadershipPortrait} src="/images/college/chairman-photo.jpg" width={152} height={186} alt="Dr. Sanjay Malpani, Chairman" />
+            <div className={s.leadershipBody}><span>Message from the Chairman</span><blockquote>“Education should reach every aspiring student.”</blockquote><p>Opportunity, integrity and care for the community guide our work.</p><footer><div><strong>Dr. Sanjay Malpani</strong><small>Chairman</small></div><Link href="/message-from-the-chairman">Read message <ArrowRight /></Link></footer></div>
+          </article>
+          <article className={`${s.leadershipCard} ${s.principalCard}`}>
+            <Image className={s.leadershipPortrait} src="/images/common/principal-photo.jpg" width={152} height={186} alt="Prof. Dr. Arun Hari Gaikwad, Principal" />
+            <div className={s.leadershipBody}><span>Message from the Principal</span><blockquote>“Knowledge, character and confidence grow together.”</blockquote><p>We help students prepare for work, life and the responsibilities ahead.</p><footer><div><strong>Prof. Dr. Arun Hari Gaikwad</strong><small>Principal</small></div><Link href="/message-from-the-principal">Read message <ArrowRight /></Link></footer></div>
+          </article>
+        </div>
       </div>
     </section>
 
     {/* Closing call to action */}
     <section className={s.cta}>
       <div className={`container ${s.ctaInner}`}>
-        <h2>Your chapter<br /><em>starts here.</em></h2>
+        <h2>Begin your<br /><em>application.</em></h2>
         <div>
           <p>Applications for 2026-27 are open across Arts, Science, Commerce and Vocational programs.</p>
           <div className={s.actions}>

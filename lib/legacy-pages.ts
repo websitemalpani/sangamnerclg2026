@@ -5,6 +5,10 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
 const contentDirectory = path.join(process.cwd(), "content", "legacy-pages");
+const virtualAdministrationStaffSlugs = [
+  "administration-grantable-non-teaching-staff",
+  "administration-non-grantable-non-teaching-staff",
+] as const;
 // Legacy page CSS: base/ is linked by every page, sections/ is added per page below.
 const styleHrefPrefix = "styles/legacy-pages";
 const styleDirectory = path.join(process.cwd(), "styles", "legacy-pages");
@@ -13,16 +17,18 @@ export type LegacyPage = { slug: string; title: string; description: string; htm
 
 export function getLegacySlugs() {
   if (!existsSync(contentDirectory)) return [];
-  return readdirSync(contentDirectory)
+  return [...readdirSync(contentDirectory)
     .filter((file) => file.toLowerCase().endsWith(".html") && file.toLowerCase() !== "index.html")
     .map((file) => file.replace(/\.html$/i, ""))
+    , ...virtualAdministrationStaffSlugs]
+    .filter((slug, index, all) => all.indexOf(slug) === index)
     .sort();
 }
 
 export function getLegacyPage(slug: string): LegacyPage | null {
   if (!/^[a-zA-Z0-9-]+$/.test(slug)) return null;
   const filename = path.join(contentDirectory, `${slug}.html`);
-  if (!existsSync(filename)) return null;
+  if (!existsSync(filename)) return getVirtualAdministrationStaffPage(slug);
 
   const $ = cheerio.load(readFileSync(filename, "utf8"), { xml: false });
   const title = cleanText($("title").first().text()) || titleFromSlug(slug);
@@ -53,6 +59,8 @@ export function getLegacyPage(slug: string): LegacyPage | null {
   if (slug === "autonomous-bos") transformBoardOfStudies($);
   if (usesBosResponsiveTable(slug)) transformBosTable($);
   if (slug === "administration") transformAdministration($);
+  if (slug === "administration-office-bearers") transformOfficeBearers($);
+  if (isAdministrationSuitePage(slug)) addAdministrationTabs($, slug);
   if (slug === "contact") transformContact($);
   if (slug === "application" || slug === "scholarships-for-students") transformEligibilitySearch($, slug);
   if (slug === "alumni") transformAlumniForm($);
@@ -60,6 +68,7 @@ export function getLegacyPage(slug: string): LegacyPage | null {
   if (slug === "iqac") transformIqac($);
   if (slug === "aqar-reports" || slug === "policies-and-procedures") transformIqacResourcePage($, slug);
   if (usesFacultyResponsiveTable(slug)) transformFacultyTables($);
+  const hasDepartmentSuite = transformDepartmentSuite($);
   const hasIqacNavigation = transformIqacNavigation($);
   const hasLibrarySubpage = usesLibrarySubpage(slug) ? transformLibrarySubpage($) : false;
 
@@ -70,9 +79,11 @@ export function getLegacyPage(slug: string): LegacyPage | null {
   if (slug === "autonomous-bos") linkedStyles.push(scopeLegacyCss(readStyle("sections/autonomy-suite.css")));
   if (usesBosResponsiveTable(slug)) linkedStyles.push(readStyle("sections/bos-responsive.css"));
   if (usesFacultyResponsiveTable(slug)) linkedStyles.push(readStyle("sections/faculty-table.css"));
+  if (hasDepartmentSuite) linkedStyles.push(readStyle("sections/department-suite.css"));
   if (slug === "iqac") linkedStyles.push(readStyle("sections/iqac-creative.css"));
   if (slug === "aqar-reports" || slug === "policies-and-procedures") linkedStyles.push(readStyle("sections/iqac-resources.css"));
   if (hasIqacNavigation) linkedStyles.push(readStyle("sections/iqac-nav.css"));
+  if (hasIqacNavigation === "suite") linkedStyles.push(readStyle("sections/iqac-inner-pages.css"));
   if (hasLibrarySubpage) linkedStyles.push(readStyle("sections/library-responsive.css"));
   if (slug === "contact") linkedStyles.push(readStyle("sections/contact-creative.css"));
   const libraryRoot = $(".library-suite-layout").first();
@@ -105,6 +116,53 @@ function encodeInternalPath(value: string) {
     catch { return encodeURIComponent(segment); }
   }).join("/");
   return query ? `${encoded}?${query}` : encoded;
+}
+
+function getVirtualAdministrationStaffPage(slug: string): LegacyPage | null {
+  const page = slug === "administration-grantable-non-teaching-staff"
+    ? { panel: "#panel-grantable-staff", title: "Grantable Non-Teaching Staff", count: "19 staff members" }
+    : slug === "administration-non-grantable-non-teaching-staff"
+      ? { panel: "#panel-non-grantable-staff", title: "Non Grantable Non-Teaching Staff", count: "76 staff members" }
+      : null;
+  if (!page) return null;
+
+  const administrationFile = path.join(contentDirectory, "administration.html");
+  if (!existsSync(administrationFile)) return null;
+  const $ = cheerio.load(readFileSync(administrationFile, "utf8"), { xml: false });
+  const section = $(page.panel).find("section").first();
+  if (!section.length) return null;
+  section.find(".hidden").remove();
+
+  const sourceStyles = $("head style").map((_, style) => $(style).html() || "").get().join("\n");
+  const html = `<main class="staff-directory mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-10 py-8 sm:py-10"><section class="staff-directory__hero"><span>Administration directory</span><h2>${page.title}</h2><p>Official staff listing for Sangamner College.</p><strong>${page.count}</strong></section>${administrationTabs(slug)}<section class="staff-directory__table">${$.html(section)}</section></main>`;
+  const css = `${sourceStyles}
+.staff-directory{max-width:1320px}.staff-directory__hero{position:relative;overflow:hidden;margin-bottom:1rem;padding:1.5rem 1.75rem;border-radius:24px;background:linear-gradient(120deg,#111d45,#1f5cac);color:#fff;box-shadow:0 20px 38px -30px #111d45aa}.staff-directory__hero::after{content:"";position:absolute;right:-42px;top:-70px;width:190px;height:190px;border:32px solid #ffffff1c;border-radius:50%}.staff-directory__hero>*{position:relative;z-index:1}.staff-directory__hero span{display:block;color:#ffd84d;font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.staff-directory__hero h2{margin:.35rem 0;font:800 clamp(1.45rem,3vw,2.25rem)/1.08 var(--font-display)}.staff-directory__hero p{margin:0;color:#ffffffc7}.staff-directory__hero strong{display:inline-block;margin-top:.85rem;padding:.35rem .7rem;border-radius:999px;background:#fff;color:#1f5cac;font-size:.78rem}.staff-directory__table{padding:1.25rem;border:1px solid #dbe3ef;border-radius:22px;background:#fff;box-shadow:0 18px 36px -34px #111d458f}.staff-directory__table section>div:first-child{margin-bottom:1rem!important}.staff-directory__table h2{margin:0!important;color:#111d45!important;font:800 1.3rem/1.2 var(--font-display)!important}.staff-directory__table .admin-data-table{max-width:100%;scrollbar-width:thin;scrollbar-color:#1f5cac #e8eef7}@media(max-width:700px){.staff-directory{padding-inline:1rem!important}.staff-directory__hero{padding:1.25rem;border-radius:20px}.staff-directory__hero h2{font-size:1.45rem}.staff-directory__table{padding:1rem;border-radius:18px}.staff-directory__table .admin-data-table{margin-inline:-.1rem!important}.staff-directory__table .admin-data-table::after{content:"Swipe to view all columns";display:block;padding:.45rem .7rem;background:#edf3fa;color:#52677f;font-size:.72rem;font-weight:700}}
+`;
+  return { slug, title: `${page.title} | Sangamner College`, description: `${page.title} at Sangamner College.`, html, css };
+}
+
+function isAdministrationSuitePage(slug: string) {
+  return slug === "administration" || slug === "administration-office-bearers";
+}
+
+function administrationTabs(activeSlug: string) {
+  const links = [
+    ["administration", "Academic"],
+    ["administration-office-bearers", "Office Bearers"],
+    ["administration-grantable-non-teaching-staff", "Grantable staff"],
+    ["administration-non-grantable-non-teaching-staff", "Non-grantable staff"],
+  ];
+  return `<nav class="administration-tabs" aria-label="Administration pages">${links.map(([slug, label]) => `<a href="/${slug}"${slug === activeSlug ? ' aria-current="page"' : ""}>${label}</a>`).join("")}</nav>`;
+}
+
+function addAdministrationTabs($: cheerio.CheerioAPI, slug: string) {
+  const tabs = administrationTabs(slug);
+  if (slug === "administration") {
+    $(".admin-page-directory").closest("section").first().replaceWith(tabs);
+    return;
+  }
+  const intro = $(".office-intro").first();
+  if (intro.length) intro.after(tabs);
 }
 
 function transformEligibilitySearch($: cheerio.CheerioAPI, slug: string) {
@@ -191,6 +249,15 @@ function transformAdministration($: cheerio.CheerioAPI) {
   });
 }
 
+function transformOfficeBearers($: cheerio.CheerioAPI) {
+  $(".office-profile__responsibilities").each((_, element) => {
+    const responsibilities = $(element);
+    const items = responsibilities.find("li");
+    if (!items.length) return;
+    responsibilities.replaceWith(`<details class="office-profile__details"><summary><span>Responsibilities</span><small>${items.length} points</small><b aria-hidden="true">+</b></summary><ul>${items.map((__, item) => `<li>${$(item).html() || ""}</li>`).get().join("")}</ul></details>`);
+  });
+}
+
 function transformContact($: cheerio.CheerioAPI) {
   const main = $("body main").first();
   const sections = main.children("div");
@@ -246,7 +313,17 @@ function transformIqacNavigation($: cheerio.CheerioAPI) {
   const nav = $('nav[aria-label="IQAC section navigation"]').first();
   if (!nav.length) return false;
   nav.addClass("iqac-shared-nav");
-  return true;
+
+  // The hub and resource pages have dedicated layouts. The remaining IQAC pages
+  // share the classic navigation + article pattern, so turn that into one shell.
+  if (nav.hasClass("iqac-nav") || nav.hasClass("iqac-resource-nav")) return true;
+  const layout = nav.parent();
+  const article = layout.children("article").first();
+  if (!layout.length || !article.length) return true;
+  layout.addClass("iqac-inner-layout");
+  nav.addClass("iqac-inner-nav");
+  article.addClass("iqac-inner-content");
+  return "suite" as const;
 }
 
 function transformLibrarySubpage($: cheerio.CheerioAPI) {
@@ -356,6 +433,27 @@ function transformFacultyTables($: cheerio.CheerioAPI) {
       cells.each((index, cell) => { $(cell).attr("data-label", labels[index] || ""); });
     });
   });
+}
+
+// Department profile pages share a legacy structure. Adding stable, semantic hooks here
+// lets one responsive treatment cover every subject profile and its related subpages.
+function transformDepartmentSuite($: cheerio.CheerioAPI) {
+  const nav = $('nav[aria-label="Department section navigation"]').first();
+  if (!nav.length) return false;
+
+  const main = $("body main").first();
+  const layout = nav.parent();
+  const banner = main.children("div").first();
+  const article = layout.children("article").first();
+
+  if (!main.length || !layout.length || !banner.length || !article.length) return false;
+
+  main.addClass("department-suite");
+  banner.addClass("department-suite__banner");
+  layout.addClass("department-suite__layout");
+  nav.addClass("department-suite__nav");
+  article.addClass("department-suite__content");
+  return true;
 }
 
 function usesFacultyResponsiveTable(slug: string) {
