@@ -13,7 +13,6 @@ export function LegacyEnhancements() {
   const [lightbox, setLightbox] = useState<LightboxState | null>(null);
 
   useEffect(() => {
-    setLightbox(null);
     const cleanups: Array<() => void> = [];
 
     document.querySelectorAll<HTMLElement>(".legacy-page [role='tablist']").forEach((tablist) => {

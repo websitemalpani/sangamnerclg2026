@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -31,7 +32,7 @@ export default async function ContentPage({ params }: PageProps) {
   return <>
     <Header />
     <main className={`content-page content-page--${slug}`}>
-      <section className="page-hero"><div className="container"><p className="eyebrow yellow">Sangamner College</p><h1>{displayTitle} <span aria-hidden="true">|</span> Sangamner College</h1><p><a href="/">Home</a> / {displayTitle} <span aria-hidden="true">|</span> Sangamner College</p></div></section>
+      <section className="page-hero"><div className="container"><p className="eyebrow yellow">Sangamner College</p><h1>{displayTitle} <span aria-hidden="true">|</span> Sangamner College</h1><p><Link href="/">Home</Link> / {displayTitle} <span aria-hidden="true">|</span> Sangamner College</p></div></section>
       {page.css ? <style dangerouslySetInnerHTML={{ __html: page.css }} /> : null}
       <div className={`legacy-page legacy-page--${slug}`} dangerouslySetInnerHTML={{ __html: page.html }} />
       <LegacyEnhancements />

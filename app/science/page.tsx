@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 };
 
 const departments = [
-  { name: "Botany", href: "/science-botany", icon: "/media/images/botany.png", tone: "blue" },
-  { name: "Chemistry", href: "/science-chemistry", icon: "/media/images/chemistry.png", tone: "yellow" },
-  { name: "Computer Science", href: "/science-computer-science", icon: "/media/images/computer_science.png", tone: "coral" },
-  { name: "Electronic Science", href: "/science-electronic-science", icon: "/media/images/electronic_science.png", tone: "cream" },
-  { name: "Geography", href: "/science-geography", icon: "/media/images/geography.png", tone: "ink" },
-  { name: "Mathematics & Statistics", href: "/science-mathematics", icon: "/media/images/mathematics_and_statistics.png", tone: "cream" },
-  { name: "Microbiology", href: "/science-microbiology", icon: "/media/images/microbiology.png", tone: "coral" },
-  { name: "Physics", href: "/science-physics", icon: "/media/images/physics.png", tone: "yellow" },
-  { name: "Zoology", href: "/science-zoology", icon: "/media/images/zoology.png", tone: "blue" },
+  { name: "Botany", href: "/science-botany", icon: "/images/science/botany.png", tone: "blue" },
+  { name: "Chemistry", href: "/science-chemistry", icon: "/images/science/chemistry.png", tone: "yellow" },
+  { name: "Computer Science", href: "/science-computer-science", icon: "/images/science/computer_science.png", tone: "coral" },
+  { name: "Electronic Science", href: "/science-electronic-science", icon: "/images/science/electronic_science.png", tone: "cream" },
+  { name: "Geography", href: "/science-geography", icon: "/images/science/geography.png", tone: "ink" },
+  { name: "Mathematics & Statistics", href: "/science-mathematics", icon: "/images/science/mathematics_and_statistics.png", tone: "cream" },
+  { name: "Microbiology", href: "/science-microbiology", icon: "/images/science/microbiology.png", tone: "coral" },
+  { name: "Physics", href: "/science-physics", icon: "/images/science/physics.png", tone: "yellow" },
+  { name: "Zoology", href: "/science-zoology", icon: "/images/science/zoology.png", tone: "blue" },
 ] as const;
 
 export default function SciencePage() {

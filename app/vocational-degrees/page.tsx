@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 };
 
 const departments = [
-  { name: "Accounting & Taxation", href: "/vocational-degrees-account-and-taxation", icon: "/media/images/accounting.png", tone: "blue" },
-  { name: "Agriculture & Soil Science", href: "/vocational-degrees-agriculture-and-soil-science", icon: "/media/images/agriculture.png", tone: "yellow" },
-  { name: "Dairy Products & Processing", href: "/vocational-degrees-dairyproduct-and-processing", icon: "/media/images/dairyproduct.png", tone: "coral" },
-  { name: "Hospitality & Tourism", href: "/bvoc-ht", icon: "/media/images/hospitality-tourism.png", tone: "cream" },
-  { name: "Muktangan", href: "/vocational-degrees-muktangan", icon: "/media/images/muktangan.png", tone: "ink" },
-  { name: "Software Development", href: "/vocational-degrees-softwear-development", icon: "/media/images/softwear-development.png", tone: "blue" },
+  { name: "Accounting & Taxation", href: "/vocational-degrees-account-and-taxation", icon: "/images/vocational/accounting.png", tone: "blue" },
+  { name: "Agriculture & Soil Science", href: "/vocational-degrees-agriculture-and-soil-science", icon: "/images/vocational/agriculture.png", tone: "yellow" },
+  { name: "Dairy Products & Processing", href: "/vocational-degrees-dairyproduct-and-processing", icon: "/images/vocational/dairyproduct.png", tone: "coral" },
+  { name: "Hospitality & Tourism", href: "/bvoc-ht", icon: "/images/vocational/hospitality-tourism.png", tone: "cream" },
+  { name: "Muktangan", href: "/vocational-degrees-muktangan", icon: "/images/vocational/muktangan.png", tone: "ink" },
+  { name: "Software Development", href: "/vocational-degrees-softwear-development", icon: "/images/vocational/softwear-development.png", tone: "blue" },
 ] as const;
 
 export default function VocationalDegreesPage() {

@@ -5,7 +5,9 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 
 const contentDirectory = path.join(process.cwd(), "content", "legacy-pages");
-const assetDirectory = path.join(process.cwd(), "assets");
+// Legacy page CSS: base/ is linked by every page, sections/ is added per page below.
+const styleHrefPrefix = "styles/legacy-pages";
+const styleDirectory = path.join(process.cwd(), "styles", "legacy-pages");
 
 export type LegacyPage = { slug: string; title: string; description: string; html: string; css: string };
 
@@ -35,14 +37,26 @@ export function getLegacyPage(slug: string): LegacyPage | null {
   });
   $("img").each((_, element) => {
     const image = $(element);
+    const src = image.attr("src");
+    if (src && !/^(https?:|data:)/i.test(src)) image.attr("src", encodeInternalPath(src));
     if (!image.attr("loading")) image.attr("loading", "lazy");
     if (!image.attr("alt")) image.attr("alt", "Sangamner College");
+  });
+
+  // The shared page hero owns the document's single H1. Imported page titles become H2s.
+  $("h1").each((_, element) => {
+    const heading = $(element);
+    const attributes = Object.entries(element.attribs || {}).map(([key, value]) => `${key}="${value.replaceAll('"', "&quot;")}"`).join(" ");
+    heading.replaceWith(`<h2${attributes ? ` ${attributes}` : ""}>${heading.html() || ""}</h2>`);
   });
 
   if (slug === "autonomous-bos") transformBoardOfStudies($);
   if (usesBosResponsiveTable(slug)) transformBosTable($);
   if (slug === "administration") transformAdministration($);
   if (slug === "contact") transformContact($);
+  if (slug === "application" || slug === "scholarships-for-students") transformEligibilitySearch($, slug);
+  if (slug === "alumni") transformAlumniForm($);
+  if (slug === "news-and-events") transformNewsAndEvents($);
   if (slug === "iqac") transformIqac($);
   if (slug === "aqar-reports" || slug === "policies-and-procedures") transformIqacResourcePage($, slug);
   if (usesFacultyResponsiveTable(slug)) transformFacultyTables($);
@@ -50,44 +64,17 @@ export function getLegacyPage(slug: string): LegacyPage | null {
   const hasLibrarySubpage = usesLibrarySubpage(slug) ? transformLibrarySubpage($) : false;
 
   const linkedStyles = $("link[rel='stylesheet']").map((_, element) => $(element).attr("href")).get()
-    .filter((href): href is string => Boolean(href && href.startsWith("assets/") && href.endsWith(".css")))
-    .map((href) => {
-      const cssFile = path.join(assetDirectory, path.basename(href));
-      return existsSync(cssFile) ? scopeLegacyCss(readFileSync(cssFile, "utf8")) : "";
-    });
+    .filter((href): href is string => Boolean(href && href.startsWith(`${styleHrefPrefix}/`) && href.endsWith(".css")))
+    .map((href) => scopeLegacyCss(readStyle(href.slice(styleHrefPrefix.length + 1))));
   const inlineStyles = $("head style").map((_, element) => $(element).html() || "").get();
-  if (slug === "autonomous-bos") {
-    const autonomyCss = path.join(assetDirectory, "autonomy-suite.css");
-    if (existsSync(autonomyCss)) linkedStyles.push(scopeLegacyCss(readFileSync(autonomyCss, "utf8")));
-  }
-  if (usesBosResponsiveTable(slug)) {
-    const responsiveBosCss = path.join(assetDirectory, "bos-responsive.css");
-    if (existsSync(responsiveBosCss)) linkedStyles.push(readFileSync(responsiveBosCss, "utf8"));
-  }
-  if (usesFacultyResponsiveTable(slug)) {
-    const facultyTableCss = path.join(assetDirectory, "faculty-table.css");
-    if (existsSync(facultyTableCss)) linkedStyles.push(readFileSync(facultyTableCss, "utf8"));
-  }
-  if (slug === "iqac") {
-    const iqacCss = path.join(assetDirectory, "iqac-creative.css");
-    if (existsSync(iqacCss)) linkedStyles.push(readFileSync(iqacCss, "utf8"));
-  }
-  if (slug === "aqar-reports" || slug === "policies-and-procedures") {
-    const iqacResourceCss = path.join(assetDirectory, "iqac-resources.css");
-    if (existsSync(iqacResourceCss)) linkedStyles.push(readFileSync(iqacResourceCss, "utf8"));
-  }
-  if (hasIqacNavigation) {
-    const iqacNavCss = path.join(assetDirectory, "iqac-nav.css");
-    if (existsSync(iqacNavCss)) linkedStyles.push(readFileSync(iqacNavCss, "utf8"));
-  }
-  if (hasLibrarySubpage) {
-    const libraryCss = path.join(assetDirectory, "library-responsive.css");
-    if (existsSync(libraryCss)) linkedStyles.push(readFileSync(libraryCss, "utf8"));
-  }
-  if (slug === "contact") {
-    const contactCss = path.join(assetDirectory, "contact-creative.css");
-    if (existsSync(contactCss)) linkedStyles.push(readFileSync(contactCss, "utf8"));
-  }
+  if (slug === "autonomous-bos") linkedStyles.push(scopeLegacyCss(readStyle("sections/autonomy-suite.css")));
+  if (usesBosResponsiveTable(slug)) linkedStyles.push(readStyle("sections/bos-responsive.css"));
+  if (usesFacultyResponsiveTable(slug)) linkedStyles.push(readStyle("sections/faculty-table.css"));
+  if (slug === "iqac") linkedStyles.push(readStyle("sections/iqac-creative.css"));
+  if (slug === "aqar-reports" || slug === "policies-and-procedures") linkedStyles.push(readStyle("sections/iqac-resources.css"));
+  if (hasIqacNavigation) linkedStyles.push(readStyle("sections/iqac-nav.css"));
+  if (hasLibrarySubpage) linkedStyles.push(readStyle("sections/library-responsive.css"));
+  if (slug === "contact") linkedStyles.push(readStyle("sections/contact-creative.css"));
   const libraryRoot = $(".library-suite-layout").first();
   const main = $("body main").first();
   const html = libraryRoot.length ? $.html(libraryRoot) : main.length ? $.html(main) : ($("body").html() || "");
@@ -100,9 +87,49 @@ function normalizeInternalLink(href: string) {
   const hashAt = href.indexOf("#");
   const pathname = hashAt >= 0 ? href.slice(0, hashAt) : href;
   const hash = hashAt >= 0 ? href.slice(hashAt) : "";
-  const cleanPath = pathname.replace(/^\.\//, "").replace(/\.html$/i, "");
+  const legacyPdfPaths: Record<string, string> = {
+    "iqac/AQAR 2019-20 as uploaded.pdf": "pdf/iqac/aqar/AQAR 2019-20 as uploaded.pdf",
+    "iqac/sangamnercollegeaqar1819.pdf": "pdf/iqac/aqar/sangamnercollegeaqar1819.pdf",
+    "iqac/sangamnercollegeaqar1718.pdf": "pdf/iqac/aqar/sangamnercollegeaqar1718.pdf",
+    "iqac/sangamnercollegeaqar1617.pdf": "pdf/iqac/aqar/sangamnercollegeaqar1617.pdf",
+  };
+  const cleanPath = (legacyPdfPaths[pathname.replace(/^\.\//, "")] || pathname).replace(/^\.\//, "").replace(/\.html$/i, "");
   const normalized = cleanPath === "index" ? "/" : cleanPath.startsWith("/") ? cleanPath : `/${cleanPath}`;
-  return `${normalized}${hash}`;
+  return `${encodeInternalPath(normalized)}${hash}`;
+}
+
+function encodeInternalPath(value: string) {
+  const [pathname, query = ""] = value.split("?", 2);
+  const encoded = pathname.split("/").map((segment) => {
+    try { return encodeURIComponent(decodeURIComponent(segment)); }
+    catch { return encodeURIComponent(segment); }
+  }).join("/");
+  return query ? `${encoded}?${query}` : encoded;
+}
+
+function transformEligibilitySearch($: cheerio.CheerioAPI, slug: string) {
+  const form = $("#search_form").first();
+  if (!form.length) return;
+  const isAdmission = slug === "application";
+  form.replaceWith(`<div class="service-notice" role="note"><h3>${isAdmission ? "Admission eligibility assistance" : "Scholarship eligibility assistance"}</h3><p>For a secure eligibility check, please use the official student portal or contact the college help desk. Do not submit Aadhaar information on this page.</p><div class="service-notice__actions">${isAdmission ? '<a href="https://sangamnercollege.vriddhionline.com/OrganizationInfo_13InstructionForStudents_OCMS2.aspx" target="_blank" rel="noopener noreferrer">Open official admission portal</a>' : '<a href="https://mahadbt.maharashtra.gov.in/" target="_blank" rel="noopener noreferrer">Open MahaDBT scholarship portal</a>'}<a href="/contact">Contact the college</a></div></div>`);
+}
+
+function transformAlumniForm($: cheerio.CheerioAPI) {
+  const form = $("#alumni_form").first();
+  if (!form.length) return;
+  form.replaceWith('<div class="service-notice" role="note"><h2>Alumni registration assistance</h2><p>The legacy registration form depended on a retired CAPTCHA service. Please contact the college while the secure replacement form is being prepared.</p><div class="service-notice__actions"><a href="mailto:info@sangamnercollege.edu.in?subject=Alumni%20registration">Email alumni registration</a><a href="/contact">Contact the college</a></div></div>');
+}
+
+function transformNewsAndEvents($: cheerio.CheerioAPI) {
+  const list = $("#UserModalContent").first();
+  if (!list.length || list.children().length) return;
+  list.html('<li><a href="/application"><span>Admissions 2026-27 are open</span><span aria-hidden="true">→</span></a></li><li><a href="/pdf/campus/Information_broucher-26-27.pdf" target="_blank"><span>Information Brochure 2026-27</span><span aria-hidden="true">↗</span></a></li><li><a href="/examination"><span>Examination notices and results</span><span aria-hidden="true">→</span></a></li>');
+}
+
+function readStyle(relativePath: string) {
+  const cssFile = path.join(styleDirectory, relativePath);
+  if (!cssFile.startsWith(styleDirectory + path.sep) || !existsSync(cssFile)) return "";
+  return readFileSync(cssFile, "utf8");
 }
 
 function scopeLegacyCss(css: string) {

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Award, ChevronDown, MapPin, Menu, Phone, Send, Sparkles, Star, X } from "lucide-react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { navigation } from "./site-data";
+import { navigation } from "@/lib/site-data";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -19,7 +19,7 @@ export function Header() {
     <header className="header">
       <div className="container brand-row">
         <Link className="brand" href="/">
-          <span className="brand-logo"><Image src="/media/assets/sangamner-college-logo.png" width={112} height={80} alt="Sangamner College emblem" loading="eager" fetchPriority="high" /></span>
+          <span className="brand-logo"><Image src="/images/brand/sangamner-college-logo.png" width={112} height={80} alt="Sangamner College emblem" loading="eager" fetchPriority="high" /></span>
           <span className="brand-copy"><b>Sangamner College</b><span>Shikshan Prasarak Sanstha&apos;s Sangamner Nagarpalika Arts, D. J. Malpani Commerce & B. N. Sarda Science College</span><em>Autonomous College · Est. 1961</em></span>
         </Link>
         <div className="accreditation"><ul className="accred-group" aria-label="Accreditation"><li><Award /><span><small>NAAC</small>A+</span></li><li><Sparkles /><span><small>CGPA</small>3.58</span></li><li><Star /><span><small>DBT</small>Star</span></li></ul><Link className="button coral small" href="/application"><Send /> Apply now</Link></div>

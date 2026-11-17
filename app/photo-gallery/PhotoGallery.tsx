@@ -7,8 +7,8 @@ import styles from "./photo-gallery.module.css";
 
 const photos = [
   ...[...Array.from({ length: 31 }, (_, index) => index + 1), ...Array.from({ length: 18 }, (_, index) => index + 34)]
-    .map(number => `/media/images/gallery/gallery${number}.jpg`),
-  ...[10, 15, 16, 17, 18, 27, 37, 45, 55, 65, 75, 84, 92, 111, 121, 131, 141, 151].map(number => `/media/images/pcs-facilties/${number}.jpg`),
+    .map(number => `/images/gallery/gallery${number}.jpg`),
+  ...[10, 15, 16, 17, 18, 27, 37, 45, 55, 65, 75, 84, 92, 111, 121, 131, 141, 151].map(number => `/images/pcs-facilties/${number}.jpg`),
 ];
 
 export function PhotoGallery() {

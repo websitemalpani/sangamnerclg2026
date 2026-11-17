@@ -39,17 +39,17 @@ const values = [
 ] as const;
 
 const programs: Program[] = [
-  { title: "Arts", tag: "Humanities · Languages · Social sciences", text: "Read culture, understand society, and discover new ways to tell human stories.", href: "/arts", image: "/media/images/arts-economics-img1.jpg", position: "center top", crop: true },
-  { title: "Science", tag: "Life · Physical · Computational sciences", text: "Question the known, test possibilities, and build solutions through discovery.", href: "/science", image: "/media/images/zoology-laboratory.jpg" },
-  { title: "Commerce", tag: "Business · Finance · Management", text: "Understand markets, lead organizations, and create responsible enterprise.", href: "/commerce", image: "/media/images/commerce-bba1.jpg" },
-  { title: "Vocational", tag: "Skills · Technology · Employability", text: "Build industry-ready expertise with focused, practical learning pathways.", href: "/vocational-degrees", image: "/media/images/bvoc-at-img1.jpg" },
+  { title: "Arts", tag: "Humanities · Languages · Social sciences", text: "Read culture, understand society, and discover new ways to tell human stories.", href: "/arts", image: "/images/common/arts-economics-img1.jpg", position: "center top", crop: true },
+  { title: "Science", tag: "Life · Physical · Computational sciences", text: "Question the known, test possibilities, and build solutions through discovery.", href: "/science", image: "/images/common/zoology-laboratory.jpg" },
+  { title: "Commerce", tag: "Business · Finance · Management", text: "Understand markets, lead organizations, and create responsible enterprise.", href: "/commerce", image: "/images/common/commerce-bba1.jpg" },
+  { title: "Vocational", tag: "Skills · Technology · Employability", text: "Build industry-ready expertise with focused, practical learning pathways.", href: "/vocational-degrees", image: "/images/common/bvoc-at-img1.jpg" },
 ];
 
 const campus = [
-  ["/media/images/gallery/gallery4.jpg", "A green campus", "Gardens, palms and open courtyards"],
-  ["/media/images/gallery/gallery20.jpg", "Reading rooms", "Quiet corners to think"],
-  ["/media/images/naturopathy-gal-yaga-10.jpg", "Body & mind", "Yoga and naturopathy"],
-  ["/media/images/gallery/gallery1.jpg", "Built for learning", "Classrooms, labs & more"],
+  ["/images/gallery/gallery4.jpg", "A green campus", "Gardens, palms and open courtyards"],
+  ["/images/gallery/gallery20.jpg", "Reading rooms", "Quiet corners to think"],
+  ["/images/common/naturopathy-gal-yaga-10.jpg", "Body & mind", "Yoga and naturopathy"],
+  ["/images/gallery/gallery1.jpg", "Built for learning", "Classrooms, labs & more"],
 ] as const;
 
 const notices = ["F.Y.B.A. Admission Notice", "F.Y.B.Sc. Admission Notice", "F.Y.B.Voc. Admission Notice", "F.Y.B.Com. Admission Notice"];
@@ -70,9 +70,9 @@ export default function Home() {
           </div>
         </div>
         <div className={s.collage}>
-          <figure className={`${s.photo} ${s.photoMain}`}><Image src="/media/images/slider/slider-img1.jpg" alt="Students walking through the Sangamner College gate" fill sizes="(max-width: 900px) 90vw, 40vw" fetchPriority="high" loading="eager" /></figure>
-          <figure className={`${s.photo} ${s.photoGarden}`}><Image src="/media/images/gallery/gallery10.jpg" alt="Landscaped gardens in the college courtyard" fill sizes="(max-width: 900px) 50vw, 22vw" /></figure>
-          <figure className={`${s.photo} ${s.photoBooks}`}><Image src="/media/images/library-img1.jpg" alt="Rows of bookshelves in the college library" fill sizes="(max-width: 900px) 45vw, 18vw" /></figure>
+          <figure className={`${s.photo} ${s.photoMain}`}><Image src="/images/slider/slider-img1.jpg" alt="Students walking through the Sangamner College gate" fill sizes="(max-width: 900px) 90vw, 40vw" fetchPriority="high" loading="eager" /></figure>
+          <figure className={`${s.photo} ${s.photoGarden}`}><Image src="/images/gallery/gallery10.jpg" alt="Landscaped gardens in the college courtyard" fill sizes="(max-width: 900px) 50vw, 22vw" /></figure>
+          <figure className={`${s.photo} ${s.photoBooks}`}><Image src="/images/common/library-img1.jpg" alt="Rows of bookshelves in the college library" fill sizes="(max-width: 900px) 45vw, 18vw" /></figure>
           <div className={s.seal} aria-hidden="true">
             <svg viewBox="0 0 200 200"><defs><path id="seal-circle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><text><textPath href="#seal-circle">AUTONOMOUS · NAAC A+ · SINCE 1961 · </textPath></text></svg>
             <b>A+</b>
@@ -182,7 +182,7 @@ export default function Home() {
           <Link className={s.textLink} href="/news-and-events">View all updates <ArrowRight /></Link>
         </div>
         <Link href="/research" className={s.research}>
-          <Image src="/media/images/zoology-visit-to-research-labs.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 35vw" className={s.researchPhoto} />
+          <Image src="/images/common/zoology-visit-to-research-labs.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 35vw" className={s.researchPhoto} />
           <FlaskConical />
           <p className={`${s.eyebrow} ${s.eyebrowLight}`}>Research & Discovery</p>
           <strong>Explore ideas, innovation and institutional research.</strong>

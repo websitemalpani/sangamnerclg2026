@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 };
 
 const departments = [
-  { name: "BBA", href: "/commerce-bba", icon: "/media/images/bba.png", tone: "blue" },
-  { name: "BBA(CA) / BCA", href: "/commerce-bca", icon: "/media/images/bca.png", tone: "yellow" },
-  { name: "Commerce", href: "/commerce-commerce", icon: "/media/images/commerce.png", tone: "coral" },
+  { name: "BBA", href: "/commerce-bba", icon: "/images/commerce/bba.png", tone: "blue" },
+  { name: "BBA(CA) / BCA", href: "/commerce-bca", icon: "/images/commerce/bca.png", tone: "yellow" },
+  { name: "Commerce", href: "/commerce-commerce", icon: "/images/commerce/commerce.png", tone: "coral" },
 ] as const;
 
 export default function CommercePage() {

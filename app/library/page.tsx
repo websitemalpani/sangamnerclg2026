@@ -58,7 +58,7 @@ export default function LibraryPage() {
     <Header />
     <main className={styles.page}>
       <section className={styles.hero}>
-        <Image src="/media/images/library-img1.jpg" alt="Book stacks inside Sangamner College library" fill priority sizes="100vw" />
+        <Image src="/images/common/library-img1.jpg" alt="Book stacks inside Sangamner College library" fill priority sizes="100vw" />
         <div className={styles.heroShade} />
         <div className={`container ${styles.heroInner}`}>
           <span className={styles.eyebrow}><LibraryBig /> Knowledge Resource Centre · Est. 1961</span>
@@ -110,12 +110,12 @@ export default function LibraryPage() {
           </section>
 
           <section className={styles.librarian}>
-            <Image src="/media/images/b-v-chavan.jpg" width={180} height={180} alt="Prof. Dr. Baban Vitthalrao Chavan" />
+            <Image src="/images/library/b-v-chavan.jpg" width={180} height={180} alt="Prof. Dr. Baban Vitthalrao Chavan" />
             <div><span className={styles.sectionLabel}>Library leadership</span><h2>Prof. Dr. Baban Vitthalrao Chavan</h2><p>Head Librarian · M.A., M.Lib. & I.Sc., SET, Ph.D.</p><a href="mailto:hodlibrarian@sangamnercollege.edu.in"><Mail /> hodlibrarian@sangamnercollege.edu.in</a></div>
           </section>
 
           <section className={styles.bottomLinks}>
-            <div><BookOpen /><span><strong>New arrivals</strong><small>Browse the latest additions to the collection.</small></span><a href="/media/pdf/library/New Arrivals.PDF" target="_blank" rel="noreferrer" aria-label="Open new arrivals PDF"><ArrowUpRight /></a></div>
+            <div><BookOpen /><span><strong>New arrivals</strong><small>Browse the latest additions to the collection.</small></span><a href="/pdf/library/New Arrivals.PDF" target="_blank" rel="noreferrer" aria-label="Open new arrivals PDF"><ArrowUpRight /></a></div>
             <div><Users /><span><strong>Library feedback</strong><small>Share suggestions about resources and services.</small></span><a href="https://docs.google.com/forms/d/1rRw9FhOQtESBDl0fJdW80o5QQdUk5Vi8EdlgZnI_oyM/edit?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open library feedback form"><ArrowUpRight /></a></div>
           </section>
         </div>

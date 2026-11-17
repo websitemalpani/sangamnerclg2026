@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const slides = ["/media/images/slider/slider-img1.jpg", "/media/images/gallery/gallery1.jpg", "/media/images/gallery/gallery4.jpg", "/media/images/gallery/gallery10.jpg"];
+const slides = ["/images/slider/slider-img1.jpg", "/images/gallery/gallery1.jpg", "/images/gallery/gallery4.jpg", "/images/gallery/gallery10.jpg"];
 
 export function Hero() {
   const [active, setActive] = useState(0);

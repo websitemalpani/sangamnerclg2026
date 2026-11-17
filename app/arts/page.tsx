@@ -12,16 +12,16 @@ export const metadata: Metadata = {
 };
 
 const departments = [
-  { name: "Economics", href: "/arts-economics", icon: "/media/images/economics.png", tone: "blue" },
-  { name: "English", href: "/arts-english", icon: "/media/images/english.png", tone: "yellow" },
-  { name: "Hindi", href: "/arts-hindi", icon: "/media/images/hindi.png", tone: "coral" },
-  { name: "History", href: "/arts-history", icon: "/media/images/history.png", tone: "cream" },
-  { name: "Marathi", href: "/arts-marathi", icon: "/media/images/marathi.png", tone: "ink" },
-  { name: "Philosophy", href: "/arts-philosophy", icon: "/media/images/philosophy.png", tone: "cream" },
-  { name: "Physical Education", href: "/arts-physical-education", icon: "/media/images/physical-education.png", tone: "coral" },
-  { name: "Political Science", href: "/arts-political-science", icon: "/media/images/political-science.png", tone: "yellow" },
-  { name: "Sanskrit", href: "/arts-sanskrit", icon: "/media/images/sanskrit.png", tone: "ink" },
-  { name: "Yoga", href: "/arts-yoga", icon: "/media/images/yoga.png", tone: "blue" },
+  { name: "Economics", href: "/arts-economics", icon: "/images/arts/economics.png", tone: "blue" },
+  { name: "English", href: "/arts-english", icon: "/images/arts/english.png", tone: "yellow" },
+  { name: "Hindi", href: "/arts-hindi", icon: "/images/arts/hindi.png", tone: "coral" },
+  { name: "History", href: "/arts-history", icon: "/images/arts/history.png", tone: "cream" },
+  { name: "Marathi", href: "/arts-marathi", icon: "/images/arts/marathi.png", tone: "ink" },
+  { name: "Philosophy", href: "/arts-philosophy", icon: "/images/arts/philosophy.png", tone: "cream" },
+  { name: "Physical Education", href: "/arts-physical-education", icon: "/images/arts/physical-education.png", tone: "coral" },
+  { name: "Political Science", href: "/arts-political-science", icon: "/images/arts/political-science.png", tone: "yellow" },
+  { name: "Sanskrit", href: "/arts-sanskrit", icon: "/images/arts/sanskrit.png", tone: "ink" },
+  { name: "Yoga", href: "/arts-yoga", icon: "/images/arts/yoga.png", tone: "blue" },
 ] as const;
 
 export default function ArtsPage() {
