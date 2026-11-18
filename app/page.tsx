@@ -64,14 +64,6 @@ const notices = ["F.Y.B.A. Admission Notice", "F.Y.B.Sc. Admission Notice", "F.Y
 export default function Home() {
   return <>
     <HomeAnimations />
-    <div className={s.pageIntro} aria-hidden="true">
-      <div className={s.pageIntroBrand}>
-        <Image src="/images/brand/sangamner-college-logo.png" alt="" width={82} height={82} priority />
-        <span><b>Sangamner College</b><small>Knowledge · Character · Confidence</small></span>
-      </div>
-      <span className={s.pageIntroLine} />
-      <span className={s.pageIntroYear}>Est. 1961</span>
-    </div>
     <Header /><main className={s.home} data-home-motion-root>
 
     {/* Hero — editorial type beside a photo collage */}

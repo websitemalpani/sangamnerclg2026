@@ -155,8 +155,8 @@
 
 /* Program explorer */
 .programs{position:relative;overflow:hidden;background:var(--forest);color:#fff}
-.programs::before{content:"";position:absolute;left:-10%;bottom:-230px;width:500px;aspect-ratio:1;border:1px solid #ffffff2e;border-radius:50%;box-shadow:0 0 0 55px #ffffff0a,0 0 0 110px #ffffff08}
-.programs .container{position:relative}
+.programs::before{content:"";position:absolute;left:-10%;bottom:-230px;width:500px;aspect-ratio:1;border:1px solid #ffffff2e;border-radius:50%;box-shadow:0 0 0 55px #ffffff0a,0 0 0 110px #ffffff08;pointer-events:none}
+.programs .container{position:relative;z-index:1}
 .programs .heading h2 em{color:var(--yellow)}
 .explorer{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.25rem,2.5vw,2.25rem);align-items:stretch}
 .explorerList{margin:0;padding:0;list-style:none;border-top:1px solid #ffffff2e}

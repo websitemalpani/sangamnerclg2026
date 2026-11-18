@@ -1,20 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import styles from "./SiteOpening.module.css";
 
 export function SiteOpening() {
+  const pathname = usePathname();
   const rootRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(true);
 
   useLayoutEffect(() => {
+    if (pathname !== "/") return;
     const root = rootRef.current;
     if (!root) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      root.remove();
-      return;
-    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -26,7 +27,7 @@ export function SiteOpening() {
         onComplete: () => {
           document.body.style.overflow = previousOverflow;
           delete document.body.dataset.siteOpening;
-          root.remove();
+          setVisible(false);
         },
       })
         .from(`.${styles.orbit}`, { scale: .45, rotate: -35, autoAlpha: 0, duration: .65 })
@@ -45,12 +46,14 @@ export function SiteOpening() {
       document.body.style.overflow = previousOverflow;
       delete document.body.dataset.siteOpening;
     };
-  }, []);
+  }, [pathname]);
+
+  if (pathname !== "/" || !visible) return null;
 
   return <div ref={rootRef} className={styles.opening} aria-hidden="true">
     <div className={styles.panelTop} /><div className={styles.panelBottom} /><div className={styles.texture} />
     <div className={styles.content}>
-      <div className={styles.mark}><span className={styles.orbit} /><Image className={styles.logo} src="/images/brand/sangamner-college-logo.png" alt="" width={104} height={104} priority /></div>
+      <div className={styles.mark}><span className={styles.orbit} /><Image className={styles.logo} src="/images/brand/sangamner-college-logo.png" alt="" width={240} height={144} sizes="(max-width: 600px) 120px, 150px" priority /></div>
       <div className={styles.title}><span className={styles.word}><span>Sangamner</span></span><span className={`${styles.word} ${styles.accent}`}><span>College</span></span></div>
       <p className={styles.meta}>Knowledge <i /> Character <i /> Confidence</p>
       <div className={styles.progress}><span className={styles.progressFill} /></div>
