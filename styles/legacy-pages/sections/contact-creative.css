@@ -4,6 +4,7 @@
 .legacy-page--contact .contact-campus{background:linear-gradient(145deg,#11244e,#183b73)!important;color:#fff!important}
 .legacy-page--contact .contact-campus::after{content:"";position:absolute;right:-70px;bottom:-70px;width:180px;height:180px;border:30px solid #ffd84d1f;border-radius:50%;pointer-events:none}
 .legacy-page--contact .contact-campus h2,.legacy-page--contact .contact-help h2{position:relative;z-index:1;display:flex!important;align-items:center!important;gap:10px!important;margin:0 0 12px!important;color:inherit!important;font:800 1.25rem/1.15 var(--font-display)!important;letter-spacing:-.025em}
+.legacy-page--contact .contact-campus h2{color:#fff!important}
 .legacy-page--contact .contact-campus h2>span,.legacy-page--contact .contact-help h2>span{display:grid!important;width:40px!important;height:40px!important;flex:0 0 auto!important;place-items:center!important;border-radius:12px!important;background:#ffd84d!important;color:#111d45!important}
 .legacy-page--contact h2 svg{width:19px!important;height:19px!important}
 .legacy-page--contact .contact-campus>div:nth-of-type(1){position:relative;z-index:1;display:grid;gap:7px!important;margin:0!important;color:#ffffffc4!important}
@@ -14,6 +15,7 @@
 .legacy-page--contact .contact-campus>div:nth-of-type(2)>a:first-child{background:#ffd84d!important;color:#111d45!important}
 .legacy-page--contact .contact-campus>div:nth-of-type(2)>a:hover{transform:translateX(3px);background:#fff!important;color:#1f5cac!important}
 .legacy-page--contact .contact-campus>div:nth-of-type(2) svg{width:16px!important;height:16px!important}
+.legacy-page--contact .contact-campus>div:nth-of-type(2)>a svg{color:currentColor!important}
 .legacy-page--contact .contact-help{background:#fff!important}
 .legacy-page--contact .contact-help h2>span{background:#fff0ec!important;color:#f15b3a!important}
 .legacy-page--contact .contact-help>p{margin:0 0 12px!important;color:#64748b!important;font-size:.8rem!important}

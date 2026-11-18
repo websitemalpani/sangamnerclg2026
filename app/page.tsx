@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Award, BadgeIndianRupee, ClipboardCheck, Database, FileText, GraduationCap, Library, MessageSquareQuote, Scale, ShieldCheck, Sparkles, Target, BookOpen, BriefcaseBusiness, Building2, ChartNoAxesColumnIncreasing, FileCheck2, FlaskConical, HeartHandshake, Lightbulb, Phone, Telescope, UsersRound } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { CountUp } from "@/components/home/CountUp";
+import { HomeAnimations } from "@/components/home/HomeAnimations";
 import { ProgramExplorer, type Program } from "@/components/home/ProgramExplorer";
 import s from "./home.module.css";
 
@@ -30,7 +32,12 @@ const essentials = [
   ["Academic Bank of Credits", "Manage academic credits", "/abc", BookOpen],
 ] as const;
 
-const stats = [["65+", "Years of learning"], ["7,500+", "Students"], ["40+", "Programmes"], ["3.58", "NAAC CGPA"]] as const;
+const stats = [
+  { end: 65, suffix: "+", decimals: 0, label: "Years of learning" },
+  { end: 7500, suffix: "+", decimals: 0, label: "Students" },
+  { end: 40, suffix: "+", decimals: 0, label: "Programmes" },
+  { end: 3.58, suffix: "", decimals: 2, label: "NAAC CGPA" },
+] as const;
 
 const values = [
   [BriefcaseBusiness, "Learn through practice", "Labs, fieldwork, projects and internships bring study into real situations."],
@@ -55,7 +62,17 @@ const campus = [
 const notices = ["F.Y.B.A. Admission Notice", "F.Y.B.Sc. Admission Notice", "F.Y.B.Voc. Admission Notice", "F.Y.B.Com. Admission Notice"];
 
 export default function Home() {
-  return <><Header /><main className={s.home}>
+  return <>
+    <HomeAnimations />
+    <div className={s.pageIntro} aria-hidden="true">
+      <div className={s.pageIntroBrand}>
+        <Image src="/images/brand/sangamner-college-logo.png" alt="" width={82} height={82} priority />
+        <span><b>Sangamner College</b><small>Knowledge · Character · Confidence</small></span>
+      </div>
+      <span className={s.pageIntroLine} />
+      <span className={s.pageIntroYear}>Est. 1961</span>
+    </div>
+    <Header /><main className={s.home} data-home-motion-root>
 
     {/* Hero — editorial type beside a photo collage */}
     <section className={s.hero}>
@@ -75,7 +92,7 @@ export default function Home() {
         <div className={s.heroVisual}>
           <div className={s.heroVisualTop}><span>Est. 1961</span><span>Sangamner, Maharashtra</span></div>
           <figure className={s.heroFrame}><Image src="/images/slider/slider-img1.jpg" alt="Students walking through the Sangamner College gate" fill sizes="(max-width: 900px) 92vw, 43vw" fetchPriority="high" loading="eager" /></figure>
-          <div className={s.heroFact}><b>65+</b><span>years serving<br />the region</span></div>
+          <div className={s.heroFact}><b><CountUp end={65} suffix="+" /></b><span>years serving<br />the region</span></div>
           <div className={s.heroAccreditation}><b>A+</b><span>NAAC accredited<br />Autonomous college</span></div>
           <p className={s.heroCaption}>Learn locally. Think widely. Move forward with confidence.</p>
         </div>
@@ -136,7 +153,7 @@ export default function Home() {
           <Link className={s.textLink} href="/about-college">Discover our story <ArrowRight /></Link>
         </div>
       </div>
-      <div className={`container ${s.stats}`}>{stats.map(([n, label]) => <div key={label}><b>{n}</b><span>{label}</span></div>)}</div>
+      <div className={`container ${s.stats}`}>{stats.map(({ end, suffix, decimals, label }) => <div key={label}><b><CountUp end={end} suffix={suffix} decimals={decimals} /></b><span>{label}</span></div>)}</div>
       <ol className={`container ${s.values}`}>{values.map(([Icon, title, text], i) => <li key={title}>
         <span className={s.valueNum}>0{i + 1}</span><Icon /><h3>{title}</h3><p>{text}</p>
       </li>)}</ol>

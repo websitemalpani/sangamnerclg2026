@@ -4,6 +4,23 @@
 .home h2{font:800 clamp(1.6rem,2.8vw,2.4rem)/1.08 var(--font-display);letter-spacing:-.035em;margin:.4rem 0 0}
 .home svg{flex-shrink:0}
 
+/* Branded first-load curtain. It is decorative, brief and removed for reduced motion. */
+.pageIntro{position:fixed;z-index:1000;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 46%,#183b73 0,#111d45 42%,#09132f 100%);color:#fff;pointer-events:none;animation:introCurtain 1.75s cubic-bezier(.76,0,.24,1) both}
+.pageIntro::before,.pageIntro::after{position:absolute;border:1px solid #ffffff14;border-radius:50%;content:""}
+.pageIntro::before{width:min(72vw,720px);aspect-ratio:1;box-shadow:0 0 0 70px #ffffff05,0 0 0 140px #ffffff03}
+.pageIntro::after{width:min(42vw,420px);aspect-ratio:1;border-color:#ffd84d4d}
+.pageIntroBrand{position:relative;z-index:1;display:flex;align-items:center;gap:1.1rem;animation:introBrand 1.25s ease both}
+.pageIntroBrand img{width:82px;height:82px;padding:.35rem;border-radius:20px;background:#fff;object-fit:contain;box-shadow:0 18px 50px #050b1f73}
+.pageIntroBrand span{display:grid;gap:.32rem}
+.pageIntroBrand b{font:800 clamp(1.55rem,3vw,2.35rem)/1 var(--font-display);letter-spacing:-.035em}
+.pageIntroBrand small{color:#ffffffa6;font-size:clamp(.67rem,1.2vw,.8rem);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.pageIntroLine{position:absolute;z-index:1;top:calc(50% + 66px);left:50%;width:min(320px,70vw);height:3px;border-radius:999px;background:var(--yellow);transform-origin:left;animation:introLine 1.15s .12s ease both}
+.pageIntroYear{position:absolute;z-index:1;right:clamp(1rem,4vw,4rem);bottom:clamp(1rem,4vw,3rem);color:var(--yellow);font:800 .72rem var(--font-display);letter-spacing:.18em;text-transform:uppercase;animation:introYear 1.15s .18s ease both}
+@keyframes introCurtain{0%,68%{visibility:visible;clip-path:inset(0)}100%{visibility:hidden;clip-path:inset(0 0 100% 0)}}
+@keyframes introBrand{0%{opacity:0;transform:translateY(18px) scale(.97)}24%,72%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
+@keyframes introLine{0%{opacity:0;transform:translateX(-50%) scaleX(0)}28%,75%{opacity:1;transform:translateX(-50%) scaleX(1)}100%{opacity:0;transform:translateX(-50%) scaleX(1)}}
+@keyframes introYear{0%,18%{opacity:0;transform:translateY(8px)}45%,78%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-6px)}}
+
 .section{padding:clamp(1.75rem,3.5vw,2.75rem) 0}
 .eyebrow{display:inline-flex;align-items:center;gap:.6rem;margin:0;color:var(--leaf);font-size:.78rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
 .eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
@@ -41,6 +58,7 @@
 .lead{max-width:520px;margin:1rem 0 0;font-size:1.05rem;line-height:1.6;color:#111d45b3}
 .actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem}
 .hero .btnLine{color:var(--ink)}
+.hero .btnLine:hover,.hero .btnLine:focus-visible{background:var(--ink);border-color:var(--ink);color:#fff}
 .heroRoutes{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.1rem}
 .heroRoutes span{display:inline-flex;align-items:center;gap:.45rem;padding:.28rem 0;color:#111d4599;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
 .heroRoutes span:not(:last-child)::after{content:"/";margin-left:.45rem;color:var(--coral)}
@@ -79,6 +97,7 @@
 .heroCopy{padding-left:0}.heroCopy::before{content:"SANGAMNER";top:-1.1rem;left:0;color:#1f5cac33;font:800 .68rem/1 var(--font-display);font-style:normal;letter-spacing:.26em}
 .heroCopy h1{max-width:9ch;font-size:clamp(3rem,5.4vw,5.15rem);line-height:.91}.heroCopy h1 em{display:block;color:var(--leaf);font-size:.85em}.lead{max-width:470px;font-size:1.02rem}.heroRoutes{margin-top:1.35rem}.heroRoutes span{padding:.35rem .62rem;border:1px solid #1f5cac26;border-radius:999px;background:#ffffff8f;color:var(--ink);letter-spacing:.04em}.heroRoutes span:not(:last-child)::after{display:none}
 .heroVisual{position:relative;width:100%;min-height:clamp(340px,34vw,470px);padding:1.1rem;isolation:isolate}.heroVisual::before{position:absolute;z-index:-1;inset:2.6rem 0 1.5rem 2.6rem;border-radius:30px;background:var(--ink);content:""}.heroVisual::after{position:absolute;z-index:-1;right:0;bottom:.25rem;width:42%;height:42%;border:1px solid #f15b3a66;border-radius:0 0 26px 0;content:""}.heroVisualTop{position:absolute;z-index:2;top:0;left:0;display:flex;gap:.6rem;align-items:center;padding:.55rem .8rem;border-radius:0 0 14px 0;background:var(--yellow);color:var(--ink);font-size:.68rem;font-weight:900;letter-spacing:.09em;text-transform:uppercase}.heroVisualTop span+span{padding-left:.6rem;border-left:1px solid #111d4533}.heroFrame{position:absolute;inset:2.2rem 1.1rem 1.1rem 2.2rem;margin:0;overflow:hidden;border:8px solid #fffdf7;border-radius:26px 26px 26px 0;box-shadow:18px 20px 0 #1f5cac,0 26px 50px -28px #111d4599}.heroFrame::after{position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,#0b15357a);content:""}.heroFrame img{object-fit:cover;transition:transform .8s ease}.heroVisual:hover .heroFrame img{transform:scale(1.035)}.heroFact{position:absolute;z-index:3;left:-.6rem;bottom:2.3rem;display:flex;align-items:center;gap:.55rem;padding:.7rem .85rem;border:3px solid var(--cream);border-radius:14px;background:var(--coral);color:#fff;box-shadow:0 12px 28px -16px #111d45}.heroFact b{font:800 1.7rem/1 var(--font-display);letter-spacing:-.06em}.heroFact span{font-size:.71rem;font-weight:800;line-height:1.25}.heroAccreditation{position:absolute;z-index:3;right:-.4rem;top:3.15rem;display:flex;align-items:center;gap:.55rem;padding:.55rem .75rem;border-radius:14px;background:#fffdf8;box-shadow:0 12px 28px -16px #111d45}.heroAccreditation b{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--yellow);font:400 italic 1.3rem var(--font-serif)}.heroAccreditation span{color:var(--leaf);font-size:.65rem;font-weight:900;line-height:1.3;letter-spacing:.05em;text-transform:uppercase}.heroCaption{position:absolute;z-index:3;right:1.8rem;bottom:1.7rem;max-width:28ch;margin:0;color:#fff;font:400 italic clamp(.95rem,1.4vw,1.15rem)/1.2 var(--font-serif)}
+.heroFact b [data-count-up],.stats b [data-count-up]{display:inline-block;font-variant-numeric:tabular-nums}
 
 /* Ribbon */
 .ribbon{display:flex;overflow:hidden;background:var(--ink);color:#fff;transform:rotate(-1deg) scale(1.02);margin:-.5rem 0 0;border-block:3px solid var(--yellow)}
@@ -224,12 +243,6 @@
 .leadershipBody footer a{display:inline-flex;align-items:center;gap:.35rem;flex:0 0 auto;padding:.55rem .85rem;border-radius:999px;background:#fff;color:#1d3ea2;font-size:.78rem;font-weight:800;transition:transform .2s ease,background .2s ease}.principalCard .leadershipBody footer a{background:var(--ink);color:#fff}
 .leadershipBody footer a:hover{transform:translateY(-2px);background:var(--yellow);color:var(--ink)}.leadershipBody footer a:focus-visible{outline:3px solid var(--coral);outline-offset:3px}.leadershipBody footer a svg{width:15px;height:15px}
 
-/* Scroll-driven reveal where supported; content is fully visible otherwise. */
-@supports (animation-timeline:view()){
-  .tile,.bentoHero,.bentoIdea,.values li,.stats div,.mosaicItem,.board,.research{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
-}
-@keyframes rise{from{opacity:0;transform:translateY(28px)}}
-
 @media(max-width:1100px){
   .bento{grid-template-columns:repeat(2,1fr)}
   .explorerTitle{font-size:clamp(2rem,5vw,3rem)}
@@ -253,10 +266,12 @@
   .leadershipHead{align-items:start;flex-direction:column;gap:.7rem}
 }
 @media(max-width:600px){
-  .bento{grid-template-columns:1fr 1fr;gap:.6rem}
-  .bentoHero,.bentoIdea{grid-column:span 2}
+  .section{padding-block:2.25rem}
+  .bento{grid-template-columns:1fr;gap:.6rem}
+  .bentoHero,.bentoIdea{grid-column:auto}
   .bentoHero{grid-row:auto}
-  .tile{padding:1rem}
+  .bentoHero{min-height:210px}
+  .tile{min-height:104px;padding:1rem}
   .tileArrow{display:none}
   .mosaic{grid-template-columns:1fr;grid-template-rows:none;grid-auto-rows:170px}
   .mosaicItem:first-child,.mosaicItem:last-child{grid-column:auto}
@@ -264,7 +279,9 @@
   .noticeDate{width:38px;height:38px}
   .seal{width:96px}
   .seal text{font-size:17px}
-  .heroRoutes{gap:.25rem .45rem}
+  .heroCopy .actions{display:grid;grid-template-columns:1fr;max-width:358px}
+  .heroCopy .btn{width:100%;justify-content:center}
+  .heroRoutes{gap:.35rem .4rem}
   .heroRoutes span{font-size:.68rem}
   .locationNote{right:2%;font-size:.61rem}
   .hero{padding-block:1.7rem 2.2rem}.heroCopy h1{font-size:clamp(2.75rem,13vw,3.55rem)}.heroVisual{min-height:310px;padding:.7rem}.heroVisual::before{inset:2rem 0 1rem 1.6rem;border-radius:22px}.heroFrame{inset:1.75rem .7rem .7rem 1.6rem;border-width:5px;border-radius:19px 19px 19px 0;box-shadow:10px 12px 0 #1f5cac,0 20px 36px -24px #111d4599}.heroVisualTop{padding:.42rem .55rem;font-size:.56rem}.heroAccreditation{right:.45rem;top:2.45rem;padding:.4rem .5rem}.heroAccreditation b{width:30px;height:30px;font-size:1rem}.heroAccreditation span{font-size:.5rem}.heroFact{left:.15rem;bottom:1.55rem;padding:.5rem .6rem;border-width:2px}.heroFact b{font-size:1.35rem}.heroFact span{font-size:.58rem}.heroCaption{right:1rem;bottom:1.15rem;max-width:18ch;font-size:.72rem}
@@ -275,9 +292,20 @@
   .leadershipBody p{font-size:.82rem}
   .leadershipBody footer{align-items:start;flex-direction:column;margin-top:.7rem;padding-top:.75rem}
 }
+@media(max-width:380px){
+  .heroCopy h1{font-size:2.65rem}
+  .kicker{font-size:.78rem}
+  .heroRoutes span{padding:.32rem .5rem;font-size:.63rem}
+  .heroVisual{min-height:285px}
+  .heroVisualTop span:last-child{display:none}
+  .heroAccreditation span{max-width:10ch}
+  .heading h2{font-size:1.55rem}
+  .leadershipCard{grid-template-columns:78px minmax(0,1fr);gap:.75rem;padding:.85rem}
+  .leadershipPortrait{width:78px;height:104px}
+}
 @media(prefers-reduced-motion:reduce){
+  .pageIntro{display:none}
   .pulse,.seal svg,.floatCard,.ribbon ul{animation:none}
-  .tile,.bentoHero,.bentoIdea,.values li,.stats div,.mosaicItem,.board,.research{animation:none}
   .explorerPanel img,.photo img,.mosaicItem img{transition:opacity .3s ease}
 }
 
