@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, Instrument_Serif, Manrope } from "next/font/google";
 import "./globals.css";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { MainMenuPageAnimations } from "@/components/MainMenuPageAnimations";
+import { SiteOpening } from "@/components/SiteOpening";
 
 const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-display" });
@@ -31,7 +33,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${dmSans.variable} ${manrope.variable} ${instrumentSerif.variable}`}>{children}<ScrollToTop /></body>
+      <body className={`${dmSans.variable} ${manrope.variable} ${instrumentSerif.variable}`}>
+        <SiteOpening />
+        {children}
+        <MainMenuPageAnimations />
+        <ScrollToTop />
+      </body>
     </html>
   );
 }
